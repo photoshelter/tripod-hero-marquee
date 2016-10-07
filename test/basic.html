@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+    <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../bower_components/web-component-tester/browser.js"></script>
+    <script src="../bower_components/test-fixture/test-fixture-mocha.js"></script>
+
+    <!-- Step 1: import the element to test -->
+    <link rel="import" href="../bower_components/action-hero/action-hero.html">
+    <link rel="import" href="../bower_components/test-fixture/test-fixture.html">
+</head>
+<body>
+
+  <!-- You can use the document as a place to set up your fixtures. -->
+  <test-fixture id="action-hero">
+      <template>
+          <action-hero></action-hero>
+      </template>
+  </test-fixture>
+
+  <script>
+    var elem;
+
+    beforeEach(function() {
+      elem = fixture('action-hero');
+    });
+
+    describe('<action-hero>', function() {
+
+      a11ySuite('action-hero');
+
+      // it('Passing test checking the prop', function() {
+      //     expect(elem.prop1).to.be.equal('TEST');
+      // });
+
+      it('A simple demonstration of a passing test', function() {
+          expect(true).to.be.equal(true);
+      });
+
+      // it('A simple demonstration of a failing test', function() {
+      //     expect(true).to.be.equal(false);
+      // });
+
+    });
+
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+
+<link rel="import" href="../polymer/polymer.html">
+
+
+<!--
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+-->
+
+<!--
+Example: Use the action-hero
+```html
+<action-hero></action-hero>
+```
+
+### Styling
+
+Custom property                  | Description                            | Default
+---------------------------------|----------------------------------------|--------------------
+`--action-hero-width`     | Width of the element                   | 256px
+
+
+@group action
+@element action-hero
+@demo
+@test test/index.html
+-->
+
+
+<link rel="import" href="action-hero-styles.html">
+
+<dom-module id="action-hero">
+
+  <template>
+
+    <style include="action-hero-styles"></style>
+
+    <h1>Hello [[prop1]]</h1>
+
+  </template>
+
+  <script src="action-hero.js"></script>
+</dom-module>

@@ -1,0 +1,28 @@
+{
+  "name": "action-hero",
+  "author":"Will Schneekloth",
+  "version": "1.0.0",
+  "description": "Displays a flexible hero banner with text and a button overlaying an image or video with content attribution",
+  "private": true,
+  "license": "https://github.com/PhotoShelter/action-hero/LICENSE.txt",
+  "homepage": "https://github.com/PhotoShelter/action-hero",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/PhotoShelter/action-hero.git"
+  },
+  "keywords": [
+    "web-components",
+    "web-component",
+    "polymer"
+  ],
+  "dependencies": {
+    
+    "polymer": "Polymer/polymer#^1.6.0",
+    "iron-component-page": "PolymerElements/iron-component-page#^1.1.7",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.2.5",
+	"ps-image": "git@gh.corp.bitshelter.com:Components/ps-image.git",
+	"ps-video": "git@gh.corp.bitshelter.com:Components/ps-video.git",
+    "web-component-tester": "*"
+    
+  }
+}
