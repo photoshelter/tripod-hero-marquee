@@ -2,15 +2,203 @@
   <template>
     <style>
     :host {
-        var(--action-hero-width, 256px);
-        display: block;
-        box-sizing: border-box;
+      --action-hero-width: 100vw;
+      --action-hero-height: 500px;
+      --action-hero-background-color: gray;
+      --action-hero-button-color: #F4D80D;
+      --action-hero-text-color: white;
+      font-family: "Roboto","Helvetica Neue",arial,sans-serif;        
+      position: relative;
+      display: block;
+      box-sizing: border-box;
+      contain: content;
     }
+    .button ::slotted(a) {
+      background-color: var(--action-hero-button-color);
+      color: black;
+      font-size: 1em;
+      font-weight: 2000;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+    .content {
+      text-align: center;
+    }
+    .background {
+      background-color: var(--action-hero-background-color);
+      width: var(--action-hero-width);
+      height: var(--action-hero-height);
+      padding-top: var(--image-padding-top);
+      overflow: hidden;
+    }
+    .background ::slotted(img) {
+      max-width: var(--action-hero-width);
+    }
+    .background ::slotted(ps-image) iron-image {
+      width: inherit;
+      height: inherit;
+    }
+    .tagline ::slotted(h2) {
+      color: var(--action-hero-text-color);
+      font-size: 2em;
+      font-weight: 200;
+    }
+    
+    /* Smartphones (portrait and landscape) ----------- */
+    @media only screen and (min-width : 320px) and (max-width : 480px) {
+      .tagline {
+        position: relative;
+        background-color: white;
+      }
+      .tagline ::slotted(h2) {
+        color: var(--mobile-text-color, black);
+      }
+      .button {
+        background-color: var(--action-hero-button-color);
+        padding: 14px;
+      }
+      .background {
+        height: 300px;
+      }
+      .background ::slotted(img) {
+        max-width: 200vw;
+        height: 300px;
+      }    
+      .background ::slotted(ps-image) {
+        width: inherit;
+        height: 300px;
+      }
+      .background ::slotted(iron-image) {
+        width: inherit;
+        height: 300px;
+      }
+    }
+    /* Skinny tablets? -------------------------------- */
+    @media only screen and (min-width : 481px) and (max-width : 767px) {
+       .button ::slotted(a) {
+        padding: 14px 21px;
+      }
+      .tagline ::slotted(h2) {
+        color: var(--action-hero-text-color);
+        font-size: 2em;
+        font-weight: 200;
+      }
+      .background ::slotted(ps-image) {
+        width: inherit;
+        height: inherit;
+      }
+      .background ::slotted(iron-image) {
+        width: inherit;
+        height: inherit;
+      }
+      .background ::slotted(img) {
+        height: inherit;
+        width: auto;
+      } 
+      .content {
+        text-align: center;
+        width: var(--action-hero-width); 
+        position: absolute;
+        bottom: 40px;
+      }
+      .content-top {
+        position: absolute;
+        top: 20px;
+      }
+      .content-left {
+        width: 33vw;
+        position: absolute;
+        top: 30%;
+        left: 20px;
+        text-align: left;
+      }
+    }
+    /* iPads (portrait and landscape) ----------- */
+    @media only screen and (min-width : 768px) and (max-width : 1224px) {
+      .button ::slotted(a) {
+        padding: 14px 21px;
+      }
+      .tagline ::slotted(h2) {
+        color: var(--action-hero-text-color);
+        font-size: 2em;
+        font-weight: 200;
+      }
+      .background ::slotted(ps-image) {
+        width: inherit;
+        height: inherit;
+      }
+      .background ::slotted(iron-image) {
+        width: inherit;
+        height: inherit;
+      }
+      .content {
+        text-align: center;
+        width: var(--action-hero-width); 
+        position: absolute;
+        bottom: 40px;
+      }
+      .content-top {
+        position: absolute;
+        top: 20px;
+      }
+      .content-left {
+        width: 33vw;
+        position: absolute;
+        top: 30%;
+        left: 20px;
+        text-align: left;
+      }
+    }
+    
+    /* Desktops and laptops ----------- */
+    @media only screen  and (min-width : 1224px) {
+      .button ::slotted(a) {
+        padding: 14px 21px;
+      }
+      .tagline ::slotted(h2) {
+        color: var(--action-hero-text-color);
+        font-size: 2em;
+        font-weight: 200;
+      }
+      .background ::slotted(ps-image) {
+        width: inherit;
+        height: inherit;
+      }
+      .background ::slotted(iron-image) {
+        width: inherit;
+        height: inherit;
+      }
+      .content {
+        text-align: center;
+        width: var(--action-hero-width); 
+        position: absolute;
+        bottom: 40px;
+      }
+      .content-top {
+        position: absolute;
+        top: 20px;
+      }
+      .content-left {
+        width: 33vw;
+        position: absolute;
+        top: 30%;
+        left: 20px;
+        text-align: left;
+      }
+    }
+    
+    /* Large screens ----------- */
+    @media only screen  and (min-width : 1824px) {
+      .background ::slotted(ps-image) {
+        height: inherit;
+      }
+      .background ::slotted(ps-image) iron-image {
+        width: inherit;
+        height: inherit;
+      }
+    }
+    
 
-    h1 {
-      background-color: red;
-      width: --action-hero-width;
-    }
     </style>
   </template>
 </dom-module>

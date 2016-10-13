@@ -1,59 +1,93 @@
+'use strict';
+
 (function () {
 
-  Polymer({
-    is: 'action-hero',
+	Polymer({
+		is: 'action-hero',
 
-    properties: {
-      /**
-       * A  test property to show off the docs.
-       */
-      prop1: {
-        type:String,
-        value :'TEST'
+		properties: {
+			width: {
+				type: String,
+				observer: '_widthChanged'
+			},
+      height: {
+        type: String,
+				observer: '_heightChanged'
+      },
+			backgroundWidth: Number,
+			backgroundHeight: Number,
+			aspect: {
+				type: String,
+				observer: '_aspectRatioChanged'
+			},
+			contentPosition: {
+				type: String,
+        value: 'bottom',
+				observer: '_contentPositionChanged'
+			},
+			textColor: {
+				type: String,
+        value: 'white',
+        observer: '_textColorChanged'
+			}
+		},
+
+    ready: function ready() {},
+
+		/**
+		* Life cycle function that gets called when the element is
+		* first attached to the DOM
+		*/
+		attached: function attached() {},
+
+		/**
+		 * Observers for width and height changes
+		 */
+		_widthChanged: function() {
+			this.customStyle['--action-hero-width'] = this.width
+		},
+		_heightChanged: function() {
+			this.customStyle['--action-hero-height'] = this.height
+		},
+
+		/**
+		 * Observer for text-position changes
+		 */
+		_contentPositionChanged: function() {
+      if(this.contentPosition === 'bottom') {
+        return
+      } else {
+				const allowedPositions = ['top', 'left']
+				if (allowedPositions.includes(this.textPosition)) {
+		      console.log('text position: ' + this.textPosition);
+					const mktContent = (this.shadowRoot.querySelector('.content'))
+					mktContent.addClass('content-top')
+				}
       }
+		},
+
+		/**
+		 * Observer for textColor changes
+		 */
+    _textColorChanged: function() {
+			if(this.textColor === 'black') {
+				this._setTextColor();
+			} else {
+				return;
+			}
     },
+		_setTextColor: function() {
+			this.customStyle['--action-hero-text-color'] = this.textColor;
+		}
+		/**
+   * ### Events
+   */
 
-    /**
-     * Life cycle function that gets called when the element is
-     * first attached to the DOM
-     */
-    attached: function () {
+		/**
+   * Fired when action-hero does something
+   *
+   * @event action-hero-action
+   */
 
-    },
-
-    /**
-     * A public function  that doesnt do anything
-     *
-     * Just demonstating how to document methods
-     *
-     * @param {object} takes a baz object
-     * @return {null}
-     */
-    foo: function (baz) {
-      return this._bar();
-    },
-
-    /**
-     * A private that doesnt do anything
-     *
-     * Just demonstating how to document private methods
-     *
-     * @return {null}
-     */
-    _bar: function () {
-      return null
-    }
-
-    /**
-     * ### Events
-     */
-
-    /**
-     * Fired when action-hero does something
-     *
-     * @event action-hero-action
-     */
-
-  })
-
+	});
 })();

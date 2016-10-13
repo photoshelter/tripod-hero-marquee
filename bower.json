@@ -16,13 +16,11 @@
     "polymer"
   ],
   "dependencies": {
-    
-    "polymer": "Polymer/polymer#^1.6.0",
+
+    "polymer": "Polymer/polymer#^1.7.0",
     "iron-component-page": "PolymerElements/iron-component-page#^1.1.7",
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.2.5",
-	"ps-image": "git@gh.corp.bitshelter.com:Components/ps-image.git",
-	"ps-video": "git@gh.corp.bitshelter.com:Components/ps-video.git",
     "web-component-tester": "*"
-    
+
   }
 }

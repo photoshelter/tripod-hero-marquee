@@ -1,7 +1,6 @@
 
 <link rel="import" href="../polymer/polymer.html">
 
-
 <!--
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -19,7 +18,8 @@ Example: Use the action-hero
 
 Custom property                  | Description                            | Default
 ---------------------------------|----------------------------------------|--------------------
-`--action-hero-width`     | Width of the element                   | 256px
+`--action-hero-width`     | Width of the element                   | 100vw
+`--action-hero-height`    | Height of the element                  | 500px
 
 
 @group action
@@ -36,8 +36,18 @@ Custom property                  | Description                            | Defa
   <template>
 
     <style include="action-hero-styles"></style>
-
-    <h1>Hello [[prop1]]</h1>
+    
+    <div class="background">
+      <slot></slot>
+    </div>
+    <div class$="content content-[[contentPosition]]">
+      <div class="tagline">
+        <slot name="tagline"><h2>This is the fallback tag line<h2></slot>
+      </div>
+      <div class="button">
+        <slot name="button"></slot>
+      </div>
+    </div>
 
   </template>
 
