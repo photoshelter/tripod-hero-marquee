@@ -6,6 +6,7 @@
 		is: 'action-hero',
 
 		properties: {
+
 			width: {
 				type: String,
 				observer: '_widthChanged'
@@ -14,8 +15,6 @@
         type: String,
 				observer: '_heightChanged'
       },
-			backgroundWidth: Number,
-			backgroundHeight: Number,
 			aspect: {
 				type: String,
 				observer: '_aspectRatioChanged'
@@ -40,6 +39,9 @@
 		*/
 		attached: function attached() {},
 
+		_extractImgSrc: function() {
+			return 'hi';
+		},
 		/**
 		 * Observers for width and height changes
 		 */
@@ -59,7 +61,6 @@
       } else {
 				const allowedPositions = ['top', 'left']
 				if (allowedPositions.includes(this.textPosition)) {
-		      console.log('text position: ' + this.textPosition);
 					const mktContent = (this.shadowRoot.querySelector('.content'))
 					mktContent.addClass('content-top')
 				}

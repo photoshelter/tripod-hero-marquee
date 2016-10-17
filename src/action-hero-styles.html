@@ -2,48 +2,45 @@
   <template>
     <style>
     :host {
-      --action-hero-width: 100vw;
-      --action-hero-height: 500px;
-      --action-hero-background-color: gray;
-      --action-hero-button-color: #F4D80D;
-      --action-hero-text-color: white;
-      font-family: "Roboto","Helvetica Neue",arial,sans-serif;        
+      font-family: "Roboto","Helvetica Neue",arial,sans-serif;
       position: relative;
       display: block;
       box-sizing: border-box;
       contain: content;
     }
     .button ::slotted(a) {
-      background-color: var(--action-hero-button-color);
-      color: black;
+      background-color: var(--action-hero-button-color, #F4D80D);
+      color: var(--action-hero-button-text-color, black);
       font-size: 1em;
       font-weight: 2000;
       text-transform: uppercase;
       text-decoration: none;
     }
     .content {
-      text-align: center;
+      text-align: center
     }
     .background {
-      background-color: var(--action-hero-background-color);
-      width: var(--action-hero-width);
-      height: var(--action-hero-height);
+      background-color: var(--action-hero-background-color, gray);
+      width: var(--action-hero-width, 100vw);
+      height: var(--action-hero-height, 500px);
       padding-top: var(--image-padding-top);
       overflow: hidden;
     }
     .background ::slotted(img) {
-      max-width: var(--action-hero-width);
+      min-width: var(--action-hero-width, 100vw);
+      max-width: var(--action-hero-width, 100vw);
     }
     .background ::slotted(ps-image) iron-image {
       width: inherit;
       height: inherit;
     }
     .tagline ::slotted(h2) {
-      color: var(--action-hero-text-color);
+      color: var(--action-hero-text-color, white);
       font-size: 2em;
       font-weight: 200;
+
     }
-    
+
     /* Smartphones (portrait and landscape) ----------- */
     @media only screen and (min-width : 320px) and (max-width : 480px) {
       .tagline {
@@ -51,10 +48,12 @@
         background-color: white;
       }
       .tagline ::slotted(h2) {
-        color: var(--mobile-text-color, black);
+        color: var(--action-hero-mobile-text-color, black);
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
       }
       .button {
-        background-color: var(--action-hero-button-color);
+        background-color: var(--action-hero-button-color, #F4D80D);
         padding: 14px;
       }
       .background {
@@ -63,7 +62,7 @@
       .background ::slotted(img) {
         max-width: 200vw;
         height: 300px;
-      }    
+      }
       .background ::slotted(ps-image) {
         width: inherit;
         height: 300px;
@@ -79,7 +78,7 @@
         padding: 14px 21px;
       }
       .tagline ::slotted(h2) {
-        color: var(--action-hero-text-color);
+        color: var(--action-hero-text-color, white);
         font-size: 2em;
         font-weight: 200;
       }
@@ -92,12 +91,12 @@
         height: inherit;
       }
       .background ::slotted(img) {
-        height: inherit;
-        width: auto;
-      } 
+        top: 0px;
+        bottom: 0px;
+      }
       .content {
         text-align: center;
-        width: var(--action-hero-width); 
+        width: var(--action-hero-width, 100vw);
         position: absolute;
         bottom: 40px;
       }
@@ -119,7 +118,7 @@
         padding: 14px 21px;
       }
       .tagline ::slotted(h2) {
-        color: var(--action-hero-text-color);
+        color: var(--action-hero-text-color, white);
         font-size: 2em;
         font-weight: 200;
       }
@@ -133,7 +132,7 @@
       }
       .content {
         text-align: center;
-        width: var(--action-hero-width); 
+        width: var(--action-hero-width, 100vw);
         position: absolute;
         bottom: 40px;
       }
@@ -149,28 +148,29 @@
         text-align: left;
       }
     }
-    
+
     /* Desktops and laptops ----------- */
     @media only screen  and (min-width : 1224px) {
       .button ::slotted(a) {
         padding: 14px 21px;
       }
       .tagline ::slotted(h2) {
-        color: var(--action-hero-text-color);
+        color: var(--action-hero-text-color, pink);
         font-size: 2em;
         font-weight: 200;
       }
       .background ::slotted(ps-image) {
-        width: inherit;
-        height: inherit;
+        /*width: inherit;
+        height: 1000px;
+        padding-bottom: 30%;*/
       }
-      .background ::slotted(iron-image) {
+      .background ::slotted() {
         width: inherit;
         height: inherit;
       }
       .content {
         text-align: center;
-        width: var(--action-hero-width); 
+        width: var(--action-hero-width, 100vw);
         position: absolute;
         bottom: 40px;
       }
@@ -186,7 +186,7 @@
         text-align: left;
       }
     }
-    
+
     /* Large screens ----------- */
     @media only screen  and (min-width : 1824px) {
       .background ::slotted(ps-image) {
@@ -197,7 +197,7 @@
         height: inherit;
       }
     }
-    
+
 
     </style>
   </template>
