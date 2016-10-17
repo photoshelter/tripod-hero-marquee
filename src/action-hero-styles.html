@@ -11,7 +11,7 @@
     .button ::slotted(a) {
       background-color: var(--action-hero-button-color, #F4D80D);
       color: var(--action-hero-button-text-color, black);
-      font-size: 1em;
+      font-size: 1.25em;
       font-weight: 800;
       text-transform: uppercase;
       text-decoration: none;
@@ -23,7 +23,7 @@
       background-color: var(--action-hero-background-color, gray);
       width: var(--action-hero-width, 100vw);
       height: var(--action-hero-height, 500px);
-      padding-top: var(--image-padding-top);
+      padding-top: var(--image-padding-top, 0%);
       overflow: hidden;
     }
     .background ::slotted(img) {
@@ -36,7 +36,7 @@
     }
     .tagline ::slotted(h2) {
       color: var(--action-hero-text-color, white);
-      font-size: 2em;
+      font-size: 2.2em;
       font-weight: 200;
 
     }
@@ -49,8 +49,9 @@
       }
       .tagline ::slotted(h2) {
         color: var(--action-hero-mobile-text-color, black);
-        -webkit-margin-before: 0.5em;
-        -webkit-margin-after: 0.5em;
+        -webkit-margin-before: 0em;
+        -webkit-margin-after: 0em;
+        padding: 16px;
       }
       .button {
         background-color: var(--action-hero-button-color, #F4D80D);
