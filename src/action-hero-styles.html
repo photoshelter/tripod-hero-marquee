@@ -38,7 +38,6 @@
       color: var(--action-hero-text-color, white);
       font-size: 2.2em;
       font-weight: 200;
-
     }
 
     /* Smartphones (portrait and landscape) ----------- */
@@ -73,8 +72,7 @@
         height: 300px;
       }
     }
-    /* Skinny tablets? -------------------------------- */
-    @media only screen and (min-width : 481px) and (max-width : 767px) {
+    @media only screen and (min-width : 481px) {
        .button ::slotted(a) {
         padding: 14px 21px;
       }
@@ -113,91 +111,7 @@
         text-align: left;
       }
     }
-    /* iPads (portrait and landscape) ----------- */
-    @media only screen and (min-width : 768px) and (max-width : 1224px) {
-      .button ::slotted(a) {
-        padding: 14px 21px;
-      }
-      .tagline ::slotted(h2) {
-        color: var(--action-hero-text-color, white);
-        font-size: 2em;
-        font-weight: 200;
-      }
-      .background ::slotted(ps-image) {
-        width: inherit;
-        height: inherit;
-      }
-      .background ::slotted(iron-image) {
-        width: inherit;
-        height: inherit;
-      }
-      .content {
-        text-align: center;
-        width: var(--action-hero-width, 100vw);
-        position: absolute;
-        bottom: 40px;
-      }
-      .content-top {
-        position: absolute;
-        top: 20px;
-      }
-      .content-left {
-        width: 33vw;
-        position: absolute;
-        top: 30%;
-        left: 20px;
-        text-align: left;
-      }
-    }
 
-    /* Desktops and laptops ----------- */
-    @media only screen  and (min-width : 1224px) {
-      .button ::slotted(a) {
-        padding: 14px 21px;
-      }
-      .tagline ::slotted(h2) {
-        color: var(--action-hero-text-color, white);
-        font-size: 2em;
-        font-weight: 200;
-      }
-      .background ::slotted(ps-image) {
-        /*width: inherit;
-        height: 1000px;
-        padding-bottom: 30%;*/
-      }
-      .background ::slotted() {
-        width: inherit;
-        height: inherit;
-      }
-      .content {
-        text-align: center;
-        width: var(--action-hero-width, 100vw);
-        position: absolute;
-        bottom: 40px;
-      }
-      .content-top {
-        position: absolute;
-        top: 20px;
-      }
-      .content-left {
-        width: 33vw;
-        position: absolute;
-        top: 30%;
-        left: 20px;
-        text-align: left;
-      }
-    }
-
-    /* Large screens ----------- */
-    @media only screen  and (min-width : 1824px) {
-      .background ::slotted(ps-image) {
-        height: inherit;
-      }
-      .background ::slotted(ps-image) iron-image {
-        width: inherit;
-        height: inherit;
-      }
-    }
 
 
     </style>
