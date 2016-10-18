@@ -21,8 +21,7 @@
 			},
 			contentPosition: {
 				type: String,
-        value: 'bottom',
-				observer: '_contentPositionChanged'
+        value: 'bottom'
 			},
 			textColor: {
 				type: String,
@@ -53,28 +52,15 @@
 		},
 
 		/**
-		 * Observer for text-position changes
-		 */
-		_contentPositionChanged: function() {
-      if(this.contentPosition === 'bottom') {
-        return
-      } else {
-				const allowedPositions = ['top', 'left']
-				if (allowedPositions.includes(this.textPosition)) {
-					const mktContent = (this.shadowRoot.querySelector('.content'))
-					mktContent.addClass('content-top')
-				}
-      }
-		},
-
-		/**
 		 * Observer for textColor changes
 		 */
     _textColorChanged: function() {
-			if(this.textColor === 'black') {
-				this._setTextColor();
+			let div = document.createElement('div');
+			div.style.backgroundColor = this.textColor;
+			if (div.style.backgroundColor === '') {
+				return
 			} else {
-				return;
+				this._setTextColor();
 			}
     },
 		_setTextColor: function() {
