@@ -1,26 +1,10 @@
 const path = require('path');
 const gulp = require('gulp');
-const babel = require('gulp-babel');
-const flatten = require('gulp-flatten');
-const minify = require('gulp-minify');
-const uglify = require('gulp-uglify');
+const ghPages  = require('gulp-gh-pages');
 const browserSync = require('browser-sync').create();
 
-gulp.task('transpile', () =>
-  gulp.src('src/*.js')
-  .pipe(babel({
-    presets: ['es2015-node5']
-  }))
-  .pipe(flatten())
-  //.pipe(minify())
-  //.pipe(uglify())
-  .pipe(gulp.dest('./'))
-  .pipe(gulp.dest('./bower_components/action-hero'))
-);
-
 gulp.task('copy',() =>
-  gulp.src('src/*.html')
-  .pipe(gulp.dest('./'))
+  gulp.src('action-hero*')
   .pipe(gulp.dest('./bower_components/action-hero'))
 );
 
@@ -34,23 +18,16 @@ gulp.task('serve',(done) => {
   },done);
 
 
-  gulp.watch("src/**").on("change", gulp.series('transpile', 'copy', browserSync.reload));
+  gulp.watch("action-hero*").on("change", gulp.series('copy', browserSync.reload));
+  gulp.watch("demo/**").on("change", gulp.series(browserSync.reload));
+  
 });
 
-gulp.task('build', gulp.series('transpile', 'copy'));
+gulp.task('pages', function() {
+  return gulp.src(["./index.html","./demo/*","./test/*", "./bower_components/**/*"],{base: '.'})
+  .pipe(ghPages());
+});
+
+gulp.task('build', gulp.series('copy'));
+gulp.task('pages-deployment', gulp.series('build', 'pages'));
 gulp.task('default', gulp.series('build', 'serve'));
-
-
-// // If you remove this you can remove these deps from the package.json
-// var wct = require('web-component-tester');
-// var gutil = require('gulp-util');
-// gulp.task('test-without-safari', function(done) {
-//   wct.test({
-//     plugins: {local: ['chrome', 'firefox'], sauce: false}
-//   }, function(err) {
-//     if (err) {
-//       err = new gutil.PluginError('wct', err, {showStack: true});
-//     }
-//     done(err);
-//   });
-// });

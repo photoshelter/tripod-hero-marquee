@@ -5,16 +5,17 @@
   "description": "Displays a flexible, generic hero banner with text and a button overlaying an image or video with visible attribution",
   "repository": {
     "type": "git",
-    "url": "https://github.com/PhotoShelter/action-hero.git"
+    "url": "https://gh.corp.bitshelter.com/Components/PhotoShelter/action-hero.git"
   },
   "bugs": {
-    "url": "https://github.com/PhotoShelter/action-hero/issues"
+    "url": "https://gh.corp.bitshelter.com/Components/PhotoShelter/action-hero/issues"
   },
-  "license": "https://github.com/PhotoShelter/action-hero/LICENSE.txt",
+  "license": "https://gh.corp.bitshelter.com/Components/PhotoShelter/action-hero/LICENSE.txt",
   "scripts": {
-    "clean": "rm -rf action-hero && rm -rf bower_components/action-hero",
+    "clean": "rm -rf bower_components/action-hero",
     "build": "gulp",
-    "start":"npm run clean && npm run build"
+    "start":"npm run clean && npm run build",
+    "pages":"npm run clean && gulp pages-deployment"
   },
   "engines": {
     "node": ">=4.0"
@@ -22,14 +23,9 @@
 
   "private": true,
   "devDependencies": {
-    "babel-preset-es2015-node5": "^1.2.0",
-    "browser-sync": "^2.15.0",
     "gulp": "github:gulpjs/gulp#4.0",
-    "gulp-babel": "^6.1.2",
-    "gulp-flatten": "^0.3.1",
-    "gulp-minify": "0.0.14",
-    "gulp-uglify": "^2.0.0",
-    "gulp-util": "^3.0.7",
-    "web-component-tester": "^4.3.4"
+    "gulp-gh-pages": "^0.5.4",
+    "web-component-tester": "^4.3.4",
+    "browser-sync": "^2.15.0"
   }
 }
