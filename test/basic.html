@@ -15,35 +15,35 @@
 <body>
 
   <!-- You can use the document as a place to set up your fixtures. -->
-  <test-fixture id="action-hero">
+  <test-fixture id="baseActionHero">
       <template>
           <action-hero></action-hero>
       </template>
   </test-fixture>
 
   <script>
-    var elem;
-
-    beforeEach(function() {
-      elem = fixture('action-hero');
-    });
-
-    describe('<action-hero>', function() {
-
-      a11ySuite('action-hero');
-
-      // it('Passing test checking the prop', function() {
-      //     expect(elem.prop1).to.be.equal('TEST');
-      // });
-
-      it('A simple demonstration of a passing test', function() {
-          expect(true).to.be.equal(true);
+    suite('<action-hero>', function() {
+      var baseHero;
+      
+      setup(function() {
+        baseHero = fixture('baseActionHero')
       });
 
-      // it('A simple demonstration of a failing test', function() {
-      //     expect(true).to.be.equal(false);
-      // });
-
+      test('has a content position of bottom', function() {
+        assert.equal(baseHero.contentPosition, 'bottom');
+      });
+      test('has a text color of white', function() {
+        assert.equal(baseHero.textColor, 'white');
+      });
+      test('has a width of 100%', function() {
+        debugger;
+        assert.equal(baseHero.width, '100%');
+      });
+      test('has a height of 500px', function() {
+        assert.equal(baseHero.attr('height'), '500px');
+      });
+      
+      
     });
 
 
