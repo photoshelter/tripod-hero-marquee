@@ -11,10 +11,6 @@ Polymer({
 			type: String,
 			observer: '_heightChanged'
 		},
-		aspect: {
-			type: String,
-			observer: '_aspectRatioChanged'
-		},
 		contentPosition: {
 			type: String,
 			value: 'bottom'
@@ -33,16 +29,15 @@ Polymer({
 	* first attached to the DOM
 	*/
 	attached: function attached() {},
-
-	_extractImgSrc: function() {
-		return 'hi';
-	},
 	/**
-	 * Observers for width and height changes
+	 * Observer for width change
 	 */
 	_widthChanged: function() {
 		this.customStyle['--action-hero-width'] = this.width
 	},
+	/**
+	 * Observer for height change
+	 */
 	_heightChanged: function() {
 		this.customStyle['--action-hero-height'] = this.height
 	},
