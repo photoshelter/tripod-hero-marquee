@@ -21,31 +21,16 @@
       </template>
   </test-fixture>
 
-  <script>
-    suite('<action-hero>', function() {
-      var baseHero;
-      
-      setup(function() {
-        baseHero = fixture('baseActionHero')
-      });
+<test-fixture id="ctaActionHero">
+    <template>
+      <action-hero 
+        cta-text="Click here"
+        cta-link="http://www.photoshelter.com"
+        ></action-hero>
+    </template>
+  </test-fixture>
 
-      test('has a content position of bottom', function() {
-        assert.equal(baseHero.contentPosition, 'bottom');
-      });
-      test('has a text color of white', function() {
-        assert.equal(baseHero.textColor, 'white');
-      });
-      test('has a width of 100%', function() {
-        debugger;
-        assert.equal(baseHero.width, '100%');
-      });
-      test('has a height of 500px', function() {
-        assert.equal(baseHero.attr('height'), '500px');
-      });
-      
-      
-    });
-
+  <script src="basic.js">
 
   </script>
 

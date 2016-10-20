@@ -78,7 +78,7 @@ Polymer({
 	 * Check to see if contentPosition is valid
 	 */
 	_contentPositionCheck: function() {
-		const allowedPositions = ['top', 'bottom', 'left', 'right'];
+		const allowedPositions = ['top', 'bottom', 'left', 'right', 'center'];
 		if (!allowedPositions.includes(this.contentPosition)) {
 			this.contentPosition = 'bottom';
 		} else {
@@ -92,6 +92,7 @@ Polymer({
 		let div = document.createElement('div');
 		div.style.backgroundColor = this.textColor;
 		if (div.style.backgroundColor === '') {
+			this.textColor = 'white'
 			return
 		} else {
 			this._setTextColor();

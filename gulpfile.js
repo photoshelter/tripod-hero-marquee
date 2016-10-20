@@ -20,6 +20,7 @@ gulp.task('serve',(done) => {
 
   gulp.watch("action-hero*").on("change", gulp.series('copy', browserSync.reload));
   gulp.watch("demo/**").on("change", gulp.series(browserSync.reload));
+  gulp.watch("test/**").on("change", gulp.series(browserSync.reload));
   
 });
 
