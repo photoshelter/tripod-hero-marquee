@@ -2,19 +2,51 @@ Polymer({
 	is: 'action-hero',
 
 	properties: {
-
+		/**
+		 * The headline to be displayed over the slotted-in background
+		 */
+		headline: {
+			type: String,
+			value: 'This is the default headline text.',
+		},
+		/**
+		 * The text of the CTA button displayed below the headline
+		 */
+		ctaText: {
+			type: String
+		},
+		/**
+		 * The link for the CTA button
+		 */
+		ctaLink: {
+			type: String,
+			value: '/'
+		},
+		/**
+		 * The width of the element
+		 */
 		width: {
 			type: String,
 			observer: '_widthChanged'
 		},
+		/**
+		 * The height of the element
+		 */
 		height: {
 			type: String,
 			observer: '_heightChanged'
 		},
+		/**
+		 * The position of the content. Permitted values are `top`, `right`, `bottom`, and `left`
+		 */
 		contentPosition: {
 			type: String,
-			value: 'bottom'
+			value: 'bottom',
+			observer: '_contentPositionCheck'
 		},
+		/**
+		 * The text color for the headline
+		 */
 		textColor: {
 			type: String,
 			value: 'white',
@@ -42,6 +74,17 @@ Polymer({
 		this.customStyle['--action-hero-height'] = this.height
 	},
 
+	/**
+	 * Check to see if contentPosition is valid
+	 */
+	_contentPositionCheck: function() {
+		const allowedPositions = ['top', 'bottom', 'left', 'right'];
+		if (!allowedPositions.includes(this.contentPosition)) {
+			this.contentPosition = 'bottom';
+		} else {
+			return;
+		}
+	},
 	/**
 	 * Observer for textColor changes
 	 */

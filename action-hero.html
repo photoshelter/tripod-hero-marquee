@@ -42,12 +42,14 @@ Custom property                  | Description                            | Defa
       <slot></slot>
     </div>
     <div class$="content content-[[contentPosition]]">
-      <div class="tagline">
-        <slot name="tagline"><h2>This is the fallback tag line<h2></slot>
+      <div class="headline">
+        <h2>[[headline]]</h2>
       </div>
-      <div class="button">
-        <slot name="button"></slot>
-      </div>
+      <template is="dom-if" if="[[ctaText]]">
+        <div class="button">
+          <a href="[[ctaLink]]">[[ctaText]]</a>
+        </div>
+      </template>
     </div>
 
   </template>
