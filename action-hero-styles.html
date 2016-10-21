@@ -3,91 +3,60 @@
     <style>
     :host {
       position: relative;
-      display: block;
+      display: flex;
       box-sizing: border-box;
-      contain: content;
-    }
-    .button a {
-      background-color: var(--action-hero-button-color, #F4D80D);
-      color: var(--action-hero-button-text-color, black);
-      font-family: "Cairo", sans-serif;
-      font-size: 1.25em;
-      font-weight: 700;
-      text-transform: uppercase;
-      text-decoration: none;
-      padding: 5px 40px;
-    }
-    .content {
-      text-align: center
-    }
-    .background {
       background-color: var(--action-hero-background-color, gray);
-      padding-top: var(--image-padding-top, 0%);
-      overflow: hidden;
-      width: var(--action-hero-width, 100%);
-      height: var(--action-hero-height, 500px);
     }
+    .background,
     .background ::slotted(*) {
       width: 100%;
-      height: 100%;
-    }
-    .headline h2 {
-      color: var(--action-hero-text-color, white);
-      font-family: "Cairo", sans-serif;
-      font-size: 2.5em;
-      font-weight: 400;
-      line-height: 150%;
-      -webkit-margin-after: .5em;
-      -webkit-margin-before: .5em;
-      overflow: hidden;
+      height: 500px;
     }
 
     /* Smartphones (portrait and landscape) ----------- */
     @media only screen and (min-width : 320px) and (max-width : 480px) {
-      .headline {
-        position: relative;
-        background-color: white;
-      }
-      .headline h2 {
-        color: var(--action-hero-mobile-text-color, black);
-        line-height: 110%;
-        -webkit-margin-before: 0em;
-        -webkit-margin-after: 0em;
-        padding: 16px;
-      }
-      .button {
-        padding: 14px;
+      :host {
+        -webkit-flex-direction: column;
+        flex-direction: column;
       }
       .background {
         height: 300px;
         width: 100%;
       }
-    }
-    @media only screen and (min-width : 481px) {
       .content {
         text-align: center;
         width: 100%;
+      }
+    }
+    @media only screen and (min-width : 480px) {
+      .content {
+        width: calc(100% - 40px);
+        text-align: center;
+        overflow: hidden;
         position: absolute;
-        bottom: 40px;
+        padding: 20px;
       }
       .content-top {
-        position: absolute;
-        top: 20px;
-        bottom: 40px;
+        align-self: flex-start;
+      }
+      .content-bottom {
+        align-self: flex-end;
       }
       .content-left {
-        width: 40%;
-        position: absolute;
-        top: 20%;
-        left: 20px;
         text-align: left;
+        align-self: center;
+        left: 20px;
+        width: 40%;
       }
       .content-right {
-        width: 40%;
-        position: absolute;
-        top: 20%;
-        right: 20px;
         text-align: right;
+        align-self: center;
+        right: 20px;
+        max-width: 40%;
+      }
+      .content-center {
+        justify-content: center;
+        align-self: center;
       }
     }
 

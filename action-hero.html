@@ -1,6 +1,5 @@
 
 <link rel="import" href="../polymer/polymer.html">
-<link href="https://fonts.googleapis.com/css?family=Cairo:400,700" rel="stylesheet">
 
 <!--
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -37,19 +36,12 @@ Custom property                  | Description                            | Defa
   <template>
 
     <style include="action-hero-styles"></style>
-    
+
     <div class="background">
-      <slot></slot>
+      <slot name="background"></slot>
     </div>
     <div class$="content content-[[contentPosition]]">
-      <div class="headline">
-        <h2>[[headline]]</h2>
-      </div>
-      <template is="dom-if" if="[[ctaText]]">
-        <div class="button">
-          <a href="[[ctaLink]]">[[ctaText]]</a>
-        </div>
-      </template>
+      <slot></slot>
     </div>
 
   </template>
