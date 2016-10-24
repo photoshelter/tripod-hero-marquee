@@ -11,7 +11,7 @@ If you would like to create a git hub pages demo for project make sure you are o
 
 **Demo**
 
-https://gh.corp.bitshelter.com/action-hero
+https://gh.corp.bitshelter.com/pages/Components/action-hero
 
 #### TESTING
 

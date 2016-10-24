@@ -1,23 +1,25 @@
 <dom-module id="action-hero-styles">
+  <link rel="import" href="/bower_components/iron-flex-layout/iron-flex-layout-classes.html">
   <template>
     <style>
     :host {
+      display: block;
       position: relative;
-      display: flex;
+      height: auto;
+      width: auto;
       box-sizing: border-box;
       background-color: var(--action-hero-background-color, gray);
     }
     .background,
     .background ::slotted(*) {
       width: 100%;
-      height: 500px;
+      height: 100%;
+      position: absolute;
     }
 
     /* Smartphones (portrait and landscape) ----------- */
     @media only screen and (min-width : 320px) and (max-width : 480px) {
       :host {
-        -webkit-flex-direction: column;
-        flex-direction: column;
       }
       .background {
         height: 300px;
@@ -30,33 +32,39 @@
     }
     @media only screen and (min-width : 480px) {
       .content {
+        @apply(--layout-vertical);
+        height: calc(100% - 40px);
         width: calc(100% - 40px);
-        text-align: center;
         overflow: hidden;
         position: absolute;
         padding: 20px;
       }
-      .content-top {
-        align-self: flex-start;
-      }
+      .content-center,
+      .content-top,
       .content-bottom {
-        align-self: flex-end;
-      }
-      .content-left {
-        text-align: left;
-        align-self: center;
-        left: 20px;
-        width: 40%;
-      }
-      .content-right {
-        text-align: right;
-        align-self: center;
-        right: 20px;
-        max-width: 40%;
+        @apply(--layout-center);
       }
       .content-center {
-        justify-content: center;
-        align-self: center;
+        @apply(--layout-center-justified);
+      }
+      .content-top {
+        @apply(--layout-start-justified);
+      }
+      .content-bottom {
+        @apply(--layout-end-justified);
+      }
+      .content-left,
+      .content-right {
+        @apply(--layout-center-justified);
+        width: 40%;
+      }
+      .content-left {
+        @apply(--layout-start);
+      }
+      .content-right {
+        @apply(--layout-end);
+        text-align: right;
+        right: 0px;
       }
     }
 

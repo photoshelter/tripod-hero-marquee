@@ -9,6 +9,24 @@
 	<link rel="import" href="../bower_components/ps-image/ps-image.html">
 	<link rel="import" href="../bower_components/iron-demo-helpers/demo-pages-shared-styles.html">
 	<link rel="import" href="../bower_components/iron-demo-helpers/demo-snippet.html">
+	<style is="custom-style">
+		action-hero {
+			height: 500px;
+			width: 100vw;
+			color: white;
+			font-family: sans-serif;
+		}
+		h2 {
+		}
+		a.button {
+			color: black;
+			font-size: 1.2em;
+			font-weight: 800;
+			text-decoration: none;
+			padding: 14px 21px;
+			background: yellow;
+		}
+	</style>
 </head>
 <body unresolved>
 
@@ -21,35 +39,33 @@
 
 	<demo-snippet class="centered-demo">
 		<template>
-			<action-hero 
-				headline="Where photographers get work done."
-				cta-text="Sign up now"
-				cta-link="/demo">
+			<action-hero>
 				<img src="https://drscdn.500px.org/photo/155248825/m%3D2048/3042e5460f7c5fb15e5b327da90e082a"></img>
+				<h2>Your images work here.</h2>
+				<h3>Where Photographers get work done.</h3>
+				<a href="/demo">Sign up now</a>
 			</action-hero>
 		</template>
 	</demo-snippet>
 
 	<demo-snippet class="centered-demo">
 		<template>
-			<action-hero 
-					content-position="left"
-					headline="Your images work here."
-					cta-text="Sign up now"
-					cta-link="/demo">
+			<action-hero content-position="left">
 				<ps-image api-key="PS631731c7" api-root="https://ps.dev.bitshelter.com/psapi" iid="I00007PMVmOqiyaE" sizing="cover" position="right bottom"></ps-image>
+				<h2>Your images work here.</h2>
+				<h3>Where Photographers get work done.</h3>
+				<a href="/demo">Sign up now</a>
 			</action-hero>
 		</template>
 	</demo-snippet>
 
 	<demo-snippet class="centered-demo">
 		<template>
-			<action-hero 
-				content-position="top"
-				headline="Your images work here."
-				cta-text="Sign up now"
-				cta-link="/demo">>
+			<action-hero content-position="top">
 				<iron-image src="https://drscdn.500px.org/photo/155248825/m%3D2048/3042e5460f7c5fb15e5b327da90e082a" sizing="cover"></iron-image>
+				<h2>Your images work here.</h2>
+				<h3>Where Photographers get work done.</h3>
+				<a href="/demo">Sign up now</a>
 			</action-hero>
 		</template>
 	</demo-snippet>
