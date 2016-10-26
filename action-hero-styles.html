@@ -1,5 +1,5 @@
 <dom-module id="action-hero-styles">
-  <link rel="import" href="/bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+  <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
   <template>
     <style>
     :host {
@@ -39,29 +39,27 @@
         position: absolute;
         padding: 20px;
       }
-      .content-center,
-      .content-top,
-      .content-bottom {
-        @apply(--layout-center);
-      }
-      .content-center {
-        @apply(--layout-center-justified);
-      }
-      .content-top {
+      .top {
         @apply(--layout-start-justified);
       }
-      .content-bottom {
+      .middle {
+        @apply(--layout-center-justified);
+      }
+      .bottom {
         @apply(--layout-end-justified);
       }
-      .content-left,
-      .content-right {
-        @apply(--layout-center-justified);
+      .left,
+      .right {
         width: 40%;
       }
-      .content-left {
+      .left {
         @apply(--layout-start);
       }
-      .content-right {
+      .center {
+        @apply(--layout-center);
+        text-align: center;
+      }
+      .right {
         @apply(--layout-end);
         text-align: right;
         right: 0px;

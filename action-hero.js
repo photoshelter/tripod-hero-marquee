@@ -3,11 +3,11 @@ Polymer({
 
 	properties: {
 		/**
-		 * The position of the content. Permitted values are `top`, `right`, `bottom`, and `left`
+		 * The position of the content, separated by a space. Permitted values are "top", "middle", "bottom" for vertical position, "left", "center" and "right" for the horizontal.
 		 */
 		contentPosition: {
 			type: String,
-			value: 'center'
+			value: 'center middle'
 		},
 	},
 
@@ -18,21 +18,11 @@ Polymer({
 	* first attached to the DOM
 	*/
 	attached: function attached() {
-		const allowedPositions = ['top', 'bottom', 'left', 'right', 'center'];
-		if (!allowedPositions.includes(this.contentPosition)) {
-			this.contentPosition = 'center';
-		} else {
-			return;
+		var heroContent = this.shadowRoot ? this.shadowRoot.querySelector('.content') :	this.querySelector('.content');
+		var positions = this.contentPosition.split(' ')
+		for ( i = 0; i < positions.length; i++ ) {
+			heroContent.classList.add(positions[i]);
 		}
-	},
-	/**
- * ### Events
- */
-
-	/**
- * Fired when action-hero does something
- *
- * @event action-hero-action
- */
+	}
 
 });
