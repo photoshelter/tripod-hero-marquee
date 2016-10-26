@@ -18,7 +18,7 @@ Polymer({
 	* first attached to the DOM
 	*/
 	attached: function attached() {
-		var heroContent = this.shadowRoot ? this.shadowRoot.querySelector('.content') :	this.querySelector('.content');
+		var heroContent = this.shadowRoot ? this.shadowRoot.querySelector('.hero-content') :	this.querySelector('.hero-content');
 		var positions = this.contentPosition.split(' ')
 		for ( i = 0; i < positions.length; i++ ) {
 			heroContent.classList.add(positions[i]);
