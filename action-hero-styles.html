@@ -8,7 +8,6 @@
       height: auto;
       width: auto;
       box-sizing: border-box;
-      background-color: var(--action-hero-background-color, gray);
     }
     .background,
     .background ::slotted(*) {
@@ -20,14 +19,14 @@
     /* Smartphones (portrait and landscape) ----------- */
     @media only screen and (min-width : 320px) and (max-width : 480px) {
       :host {
+        display: block;
       }
       .background {
         height: 300px;
-        width: 100%;
+        position: relative;
       }
       .hero-content {
         text-align: center;
-        width: 100%;
       }
     }
     @media only screen and (min-width : 480px) {
