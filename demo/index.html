@@ -9,23 +9,80 @@
 	<link rel="import" href="../bower_components/ps-image/ps-image.html">
 	<link rel="import" href="../bower_components/iron-demo-helpers/demo-pages-shared-styles.html">
 	<link rel="import" href="../bower_components/iron-demo-helpers/demo-snippet.html">
-	<style is="custom-style">
+	<link href="https://fonts.googleapis.com/css?family=Cairo:400,700" rel="stylesheet">
+	<style>
+	action-hero {
+		width: 100%;
+		height: 60vw;
+	}
+	.hero-content h2 {
+		font-family: "Cairo", sans-serif;
+	}
+	.hero-content h3 {
+		font-family: "Roboto", sans-serif;
+	}
+	.hero-content a.button {
+		display: block;
+		font-family: "Cairo", sans-serif;
+		color: black;
+		font-size: 1em;
+		font-weight: 700;
+		text-decoration: none;
+		background: #f4d80d;
+	}
+	@media only screen and (max-width: 480px) {
 		action-hero {
-			height: 500px;
-			width: 100vw;
-			color: white;
-			font-family: sans-serif;
+			height: 100%;
 		}
-		h2 {
+		action-hero .background,
+		ps-image {
+			height: 300px;
+			width: 100vw;
+			position: relative;
+		}
+		h2,
+		h3 {
+			color: black;
 		}
 		a.button {
-			color: black;
-			font-size: 1.2em;
-			font-weight: 800;
-			text-decoration: none;
-			padding: 14px 21px;
-			background: yellow;
+			display: block;
 		}
+		ps-image {
+			height: 300px;
+		}
+	}
+
+	@media only screen and (min-width: 480px) {
+		.background,
+		ps-image {
+			height: 60vw;
+			width: calc(100vw - 40px);
+		}
+		.hero-content {
+			padding: 20px;
+		}
+		h2 {
+			color: white;
+			font-size: 2.5em;
+			font-size: 5vw;
+			font-weight: 400;
+			line-height: 1;
+			-webkit-margin-before:0.1em;
+			-webkit-margin-after:0.1em;
+		}
+		h3 {
+			color: white;
+			font-size: 1.8em;
+			font-size: 3vw;
+			font-weight: 400;
+			-webkit-margin-before:1em;
+			-webkit-margin-after:1em;
+		}
+		a.button {
+			padding: 14px 21px;
+		}
+
+	}
 	</style>
 </head>
 <body unresolved>
@@ -33,33 +90,16 @@
 	<p>An example of <code>&lt;action-hero&gt;</code>:</p>
 	<demo-snippet class="centered-demo">
 		<template>
-			<action-hero></action-hero>
-		</template>
-	</demo-snippet>
-
-	<demo-snippet class="centered-demo">
-		<template>
-			<action-hero>
-				<img src="https://drscdn.500px.org/photo/155248825/m%3D2048/3042e5460f7c5fb15e5b327da90e082a"></img>
+			<action-hero id="standard-example" content-position="center-left">
+				<ps-image slot="background" id="background" api-key="PS631731c7" api-root="https://ps.dev.bitshelter.com/psapi" iid="I00007PMVmOqiyaE" sizing="cover" position="right bottom"></ps-image>
 				<h2>Your images work here.</h2>
 				<h3>Where Photographers get work done.</h3>
-				<a href="/demo">Sign up now</a>
+				<a href="/demo" class="button">Sign up now</a>
 			</action-hero>
 		</template>
 	</demo-snippet>
 
-	<demo-snippet class="centered-demo">
-		<template>
-			<action-hero content-position="left">
-				<ps-image api-key="PS631731c7" api-root="https://ps.dev.bitshelter.com/psapi" iid="I00007PMVmOqiyaE" sizing="cover" position="right bottom"></ps-image>
-				<h2>Your images work here.</h2>
-				<h3>Where Photographers get work done.</h3>
-				<a href="/demo">Sign up now</a>
-			</action-hero>
-		</template>
-	</demo-snippet>
-
-	<demo-snippet class="centered-demo">
+	<!-- <demo-snippet class="centered-demo">
 		<template>
 			<action-hero content-position="top">
 				<iron-image src="https://drscdn.500px.org/photo/155248825/m%3D2048/3042e5460f7c5fb15e5b327da90e082a" sizing="cover"></iron-image>
@@ -68,6 +108,6 @@
 				<a href="/demo">Sign up now</a>
 			</action-hero>
 		</template>
-	</demo-snippet>
+	</demo-snippet> -->
 </body>
 </html>

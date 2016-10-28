@@ -1,5 +1,5 @@
 <dom-module id="action-hero-styles">
-  <link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
+  <link rel="import" href="action-hero-flex-mixin.html">
   <template>
     <style>
     :host {
@@ -26,30 +26,35 @@
         overflow: hidden;
         position: absolute;
       }
-      .top {
-        @apply(--layout-start-justified);
-      }
-      .middle {
-        @apply(--layout-center-justified);
-      }
-      .bottom {
-        @apply(--layout-end-justified);
-      }
-      .left,
-      .right {
+      .top-left{
+        @apply(--hero-content-top-left);
         width: var(--side-content-width, 40%);
       }
-      .left {
-        @apply(--layout-start);
+      .top-center {
+        @apply(--hero-content-top-center);
       }
-      .center {
-        @apply(--layout-center);
-        text-align: center;
+      .top-right {
+        @apply(--hero-content-top-right);
       }
-      .right {
-        @apply(--layout-end);
-        text-align: right;
-        right: 0px;
+      .center-left{
+        @apply(--hero-content-center-left);
+        width: var(--side-content-width, 40%);
+      }
+      .center-center {
+        @apply(--hero-content-center-center);
+      }
+      .center-right {
+        @apply(--hero-content-center-right);
+      }
+      .top-left{
+        @apply(--hero-content-top-left);
+        width: var(--side-content-width, 40%);
+      }
+      .top-center {
+        @apply(--hero-content-top-center);
+      }
+      .top-right {
+        @apply(--hero-content-top-right);
       }
     }
 
