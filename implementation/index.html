@@ -54,22 +54,18 @@
       body {
         margin: 0;
       }
-      action-hero {
-        --side-content-width: 50%;
-      }
-      action-hero > h2 {
+      h2 {
         font-family: "Cairo", sans-serif;
         font-size: 2.25em;
         -webkit-margin-before:0.1em;
         -webkit-margin-after:0.1em;
       }
-      action-hero > h3 {
+      h3 {
         font-family: "Roboto", sans-serif;
         -webkit-margin-before:0.5em;
         -webkit-margin-after:0.5em;
       }
-      action-hero > a.button {
-        display: block;
+      a.button {
         font-family: "Cairo", sans-serif;
         color: black;
         font-size: 1em;
@@ -81,7 +77,7 @@
       @media only screen and (max-width: 480px) {
         action-hero .background,
         ps-image {
-          height: 300px;
+          height: 100vw;
           width: 100vw;
           position: relative;
         }
@@ -91,9 +87,6 @@
         }
         a.button {
           display: block;
-        }
-        ps-image {
-          height: 300px;
         }
       }
       @media only screen and (min-width: 480px) {
@@ -106,7 +99,7 @@
         .hero-content {
           padding: 20px;
         }
-        action-hero > h2 {
+        h2 {
           color: white;
           font-size: 2.5em;
           font-size: 7vw;
@@ -115,7 +108,7 @@
           -webkit-margin-before:0.1em;
           -webkit-margin-after:0.1em;
         }
-        action-hero > h3 {
+        h3 {
           color: white;
           font-size: 1.8em;
           font-size: 4vw;
@@ -123,8 +116,38 @@
           -webkit-margin-before:1em;
           -webkit-margin-after:1em;
         }
-        action-hero > a.button {
+        a.button {
           padding: 14px 21px;
+        }
+        #grid {
+          --hero-content-grid-rows: 1fr 1fr 1fr ;
+          --hero-content-grid-columns: 1fr 1fr 160px;
+        }
+        #grid h2 {
+          text-align: left;
+          grid-column-start: 1;
+          grid-column-end: 2;
+          grid-row-start: 1;
+        }
+        #grid h3 {
+          text-align: center;
+          grid-column-start: 1;
+          grid-column-end: 4;
+          grid-row-start: 2;
+        }
+        #grid a.button {
+          grid-column-start: 3;
+          grid-column-end: 4;
+          grid-row-start: 3;
+          text-align: center;
+          margin: auto;
+        }
+        #grid p {
+          font-family: "Cairo", sans-serif;
+          font-size: 20px;
+          grid-column-start: 1;
+          grid-column-end: 2;
+          grid-row-start: 3;
         }
       }
     </style>
@@ -138,10 +161,19 @@
     <br/>
     <h1 style="font-family:sans-serif;text-align:center">This is what an <code>action-hero</code> looks like</h1>
       <action-hero>
-        <h2>Your photos work here.</h2>
-        <h3>Where photographers get work done.</h3>
-        <a href="/implementation" class="button">Sign up now</a>
-        <ps-image slot="background" api-key="PS631731c7" api-root="http://ps.dev.bitshelter.com:8170/psapi" iid="I00007PMVmOqiyaE" sizing="cover" position="right bottom"></ps-image>
+          <h2>Your photos work here.</h2>
+          <h3>Where photographers get work done.</h3>
+          <a href="/implementation" class="button">Sign up now</a>
+          <ps-image slot="background" api-key="PS631731c7" api-root="http://ps.dev.bitshelter.com:8170/psapi" iid="I00007PMVmOqiyaE" sizing="cover" position="right bottom"></ps-image>
+      </action-hero>
+      <action-hero content-style="grid" id="grid">
+          <h2>Grid grid grid grid grid.</h2>
+          <h3>This content is positioned by css grid.</h3>
+          <p>
+            And you can have whatever you want in here
+          </p>
+          <a href="/implementation" class="button">Sign up now</a>
+          <ps-image slot="background" api-key="PS631731c7" api-root="http://ps.dev.bitshelter.com:8170/psapi" iid="I00007PMVmOqiyaE" sizing="cover" position="right bottom"></ps-image>
       </action-hero>
       <action-hero content-position="top-center">
         <h2>Top top top top top top.</h2>

@@ -1,0 +1,14 @@
+<dom-module id="hero-grid-content">
+  <template>
+    <style>
+      @media only screen and (min-width : 480px) {
+        .grid.hero-content {
+          display: grid;
+          grid-template-columns: var(--hero-content-grid-columns, 1fr 1fr 1fr);
+          grid-template-rows: var(--hero-content-grid-rows, 1fr 1fr 1fr);
+          grid-gap: var(--hero-content-grid-gap, 10px);
+        }
+      }
+    </style>
+  </template>
+</dom-module>
