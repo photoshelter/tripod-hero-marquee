@@ -1,63 +1,34 @@
 <dom-module id="action-hero-styles">
-  <link rel="import" href="action-hero-flex-mixin.html">
+  <link rel="import" href="action-hero-flex-classes.html">
+  <link rel="import" href="action-hero-grid-classes.html">
   <template>
-    <style>
-    :host {
-      display: flex;
-      position: relative;
-      box-sizing: border-box;
-    }
-    /* Smartphones (portrait and landscape) ----------- */
-    @media only screen and (min-width : 320px) and (max-width : 480px) {
-      :host {
-        display: block;
+    <style media="screen">
+      /* Smartphones (portrait and landscape) ----------- */
+      @media only screen and (min-width : 320px) and (max-width : 480px) {
+        :host {
+          display: block;
+        }
+        .hero-content {
+          text-align: center;
+        }
       }
-      .hero-content {
-        display: block;
-        text-align: center;
+      @media only screen and (min-width: 480px) {
+        :host {
+          position: relative;
+          box-sizing: border-box;
+        }
+        .hero-content {
+          text-align: center;
+          height: calc(100% - 40px);
+          width: calc(100% - 40px);
+          overflow: hidden;
+          position: absolute;
+          padding: var(--hero-content-padding, 20px);
+        }
       }
-    }
-    @media only screen and (min-width : 480px) {
-      .hero-content {
-        @apply(--layout-vertical);
-        height: 100%;
-        width: 100%;
-        padding: var(--hero-content-padding, 20px);
-        overflow: hidden;
-        position: absolute;
-      }
-      .top-left{
-        @apply(--hero-content-top-left);
-        width: var(--side-content-width, 40%);
-      }
-      .top-center {
-        @apply(--hero-content-top-center);
-      }
-      .top-right {
-        @apply(--hero-content-top-right);
-      }
-      .center-left{
-        @apply(--hero-content-center-left);
-        width: var(--side-content-width, 40%);
-      }
-      .center-center {
-        @apply(--hero-content-center-center);
-      }
-      .center-right {
-        @apply(--hero-content-center-right);
-      }
-      .bottom-left{
-        @apply(--hero-content-bottom-left);
-        width: var(--side-content-width, 40%);
-      }
-      .bottom-center {
-        @apply(--hero-content-bottom-center);
-      }
-      .bottom-right {
-        @apply(--hero-content-bottom-right);
-      }
-    }
-
     </style>
+    <style include="hero-flex-content"></style>
+
+    <style include="hero-grid-content"></style>
   </template>
 </dom-module>

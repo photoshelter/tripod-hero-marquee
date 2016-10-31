@@ -9,6 +9,10 @@ Polymer({
 			type: String,
 			value: 'center-center'
 		},
+		contentStyle: {
+			type: String,
+			value: 'flex'
+		}
 	},
 
 	ready: function ready() {},
@@ -17,7 +21,6 @@ Polymer({
 	* Life cycle function that gets called when the element is
 	* first attached to the DOM
 	*/
-	attached: function attached() {}
-
+	attached: function attached() {},
 
 });

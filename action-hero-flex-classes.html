@@ -1,0 +1,50 @@
+<dom-module id="hero-flex-content">
+  <link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
+  <template>
+    <style>
+      @media only screen and (min-width : 480px) {
+        :host {
+          display: flex;
+        }
+        .flex.hero-content {
+          @apply(--layout-vertical);
+        }
+        .flex.top-left,
+        .flex.center-left,
+        .flex.bottom-left {
+          @apply(--layout-start);
+          width: var(--side-content-width, 40%);
+          text-align: left;
+        }
+        .flex.top-center,
+        .flex.center-center,
+        .flex.bottom-center {
+          @apply(--layout-center);
+        }
+        .flex.top-right,
+        .flex.center-right,
+        .flex.bottom-right {
+          @apply(--layout-end);
+          width: var(--side-content-width, 40%);
+          right: 0px;
+          text-align: right;
+        }
+        .flex.top-left,
+        .flex.top-center,
+        .flex.top-right {
+          @apply(--layout-start-justified);
+        }
+        .flex.center-left,
+        .flex.center-center,
+        .flex.center-right {
+          @apply(--layout-center-justified);
+        }
+        .flex.bottom-left,
+        .flex.bottom-center,
+        .flex.bottom-right {
+          @apply(--layout-end-justified);
+        }
+      }
+    </style>
+  </template>
+</dom-module>

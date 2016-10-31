@@ -36,9 +36,8 @@ Custom property                  | Description                            | Defa
   <template>
 
     <style include="action-hero-styles"></style>
-    
     <slot name="background"></slot>
-    <div class$="hero-content [[contentPosition]]">
+    <div class$="hero-content [[contentStyle]] [[contentPosition]]">
       <slot></slot>
     </div>
 
