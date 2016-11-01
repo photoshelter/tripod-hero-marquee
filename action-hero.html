@@ -31,13 +31,17 @@ Custom property                  | Description                            | Defa
 
 <link rel="import" href="action-hero-styles.html">
 
+
 <dom-module id="action-hero">
 
   <template>
 
     <style include="action-hero-styles"></style>
+    <style include="hero-flex-content"></style>
+    <style include="hero-grid-content"></style>
+
     <slot name="background"></slot>
-    <div class$="hero-content [[contentStyle]] [[contentPosition]]">
+    <div class$="hero-content [[contentPosition]] [[contentLayout]]">
       <slot></slot>
     </div>
 

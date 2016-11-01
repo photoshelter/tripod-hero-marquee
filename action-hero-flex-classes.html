@@ -8,10 +8,12 @@
         }
         .flex.hero-content {
           @apply(--layout-vertical);
+          top: 0;
         }
         .flex.top-left,
         .flex.center-left,
         .flex.bottom-left {
+          left: 0;
           @apply(--layout-start);
           width: var(--side-content-width, 40%);
           text-align: left;
@@ -19,6 +21,7 @@
         .flex.top-center,
         .flex.center-center,
         .flex.bottom-center {
+          left: 0;
           @apply(--layout-center);
         }
         .flex.top-right,
@@ -26,7 +29,7 @@
         .flex.bottom-right {
           @apply(--layout-end);
           width: var(--side-content-width, 40%);
-          right: 0px;
+          right: 0;
           text-align: right;
         }
         .flex.top-left,
