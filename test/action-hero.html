@@ -1,0 +1,182 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+    <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../bower_components/web-component-tester/browser.js"></script>
+    <script src="../bower_components/test-fixture/test-fixture-mocha.js"></script>
+
+    <!-- Step 1: import the element to test -->
+    <link rel="import" href="../bower_components/action-hero/action-hero.html">
+    <link rel="import" href="../bower_components/test-fixture/test-fixture.html">
+    <style is="custom-style">
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      action-hero {
+        width: 100vw;
+        height: 60vw;
+      }
+      action-hero #background {
+        height: 100%;
+        width: 100%;
+      }
+      action-hero h2 {
+        color: rgb(255, 255, 255);
+        font-family: sans-serif;
+      }
+    </style>
+</head>
+<body>
+
+  <!-- You can use the document as a place to set up your fixtures. -->
+  <test-fixture id="baseActionHero">
+      <template>
+          <action-hero></action-hero>
+      </template>
+  </test-fixture>
+
+  <test-fixture id="imgActionHero">
+    <template>
+      <action-hero>
+        <h2 id="hero-header">Here's a slotted-in headline.</h2>
+        <img slot="background" id="background" src="https://drscdn.500px.org/photo/118771829/m%3D2048/420d2f6430f878b8a0db28195b1ff8a3"></img>
+      </action-hero>
+    </template>
+  <test-fixture>
+
+  <script>
+  var actionHero
+
+    function setHeroStubs(actionHero) {
+      var heroContent = Polymer.dom(actionHero.root).querySelector('.hero-content');
+      var heroContentStyles = window.getComputedStyle(heroContent, null);
+      return [heroContent, heroContentStyles];
+    }
+
+    suite('has properties with defaults', function() {
+      setup(function() {
+        actionHero = fixture('baseActionHero')
+      });
+
+      test('has a content position of center-center', function() {
+        assert.equal(actionHero.contentPosition, 'center-center');
+      });
+      test('has a content layout of flex', function() {
+        assert.equal(actionHero.contentLayout, 'flex');
+      });
+    });
+
+
+    suite('<action-hero content-position="top-left">', function() {
+      setup(function() {
+          actionHero = fixture('baseActionHero');
+          actionHero.set('contentPosition', 'top-left');
+          [heroContent, heroContentStyles] = setHeroStubs(actionHero)
+      });
+
+      test('The element property reflects the passed value', function() {
+          assert.equal(actionHero.contentPosition, 'top-left');
+      });
+      test('The .hero-content element has a class of content `${contentPosition}`', function() {
+          assert.isTrue(heroContent.classList.contains('hero-content', 'top-left'));
+      });
+      test('The .hero-content element is positioned by flexbox', function() {
+          assert.equal(heroContentStyles.display, 'flex');
+          assert.equal(heroContentStyles.justifyContent, 'flex-start')
+          assert.equal(heroContentStyles.alignItems, 'flex-start')
+      })
+    });
+
+    suite('<action-hero content-layout="grid">', function() {
+
+      setup(function() {
+        actionHero = fixture('baseActionHero');
+        actionHero.set('contentLayout', 'grid');
+        [heroContent, heroContentStyles] = setHeroStubs(actionHero)
+      });
+
+      test('The element property reflects the passed value', function() {
+        assert.equal(actionHero.contentLayout, 'grid');
+      })
+      test('The .hero-content element has a class of `grid`', function() {
+        assert.isTrue(heroContent.classList.contains('hero-content', 'grid'));
+      })
+      /**
+       * Currently this will fail in WCT, as css grid needs a flag turned on almost everywhere to work.
+       */
+      test('content is positioned by css grid', function() {
+        assert.equal(heroContentStyles.display, 'grid');
+      })
+    })
+
+    suite('can be styled by light DOM CSS', function() {
+
+      setup(function() {
+        actionHero = fixture('imgActionHero');
+      });
+
+      test('action-hero can have its width set by external styles', function() {
+        assert.equal(actionHero.offsetWidth, window.innerWidth);
+      });
+      test('action-hero can have its height set by external styles', function() {
+        assert.equal(actionHero.offsetHeight, (window.innerWidth * .6))
+      });
+      test('slotted content is styled by external styles', function() {
+        var headlineStyles = window.getComputedStyle(document.querySelector('h2'));
+        assert.equal(headlineStyles.color, 'rgb(255, 255, 255)');
+      });
+    });
+
+
+    suite('*-right and *-left layouts have default widths defined in ShadowDOM', function() {
+      var rightActionHero,
+          leftActionHero
+
+      setup(function() {
+        rightActionHero = fixture('imgActionHero');
+        rightActionHero.set('contentPosition', 'center-right');
+        leftActionHero = fixture('imgActionHero');
+        leftActionHero.set('contentPosition', 'center-left');
+      });
+
+      test('right content is 40% of action-hero width by default', function() {
+        // getComputedStyle to ignore padding
+        assert.equal(heroContentStyles.width.slice(0,-2), (rightActionHero.offsetWidth * .4))
+      })
+      test('left content is 40% of action-hero width by default', function() {
+        var heroContentStyle = window.getComputedStyle(Polymer.dom(leftActionHero.root).querySelector('.hero-content'), null);
+        assert.equal(heroContentStyle.width.slice(0,-2), (leftActionHero.offsetWidth * .4))
+      })
+      test('background width is not affected by content width', function() {
+          // image doesn't resize fast enough in Safari to pass without timeout.
+          window.setTimeout(function() {
+            var background = document.querySelector('#background');
+            assert.equal(background.width, leftActionHero.offsetWidth);
+          }, 100)
+      });
+    });
+
+    suite('protects the user from the dangers of invalid attribute assignments', function() {
+      var actionVillain
+      setup(function() {
+        actionVillain = fixture('baseActionHero');
+        actionVillain.set('contentPosition', 'right bottom');
+        actionVillain.set('contentLayout', 'foo');
+      });
+
+      test('action-hero fights off bad values passed into it', function() {
+        var villainContent = Polymer.dom(actionVillain.root).querySelector('.hero-content');
+        assert.isFalse(villainContent.classList.contains('right'));
+        assert.isFalse(villainContent.classList.contains('bottom'));
+        assert.isFalse(villainContent.classList.contains('foo'));
+      })
+    })
+
+  </script>
+
+</body>
+</html>
