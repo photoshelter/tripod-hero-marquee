@@ -49,11 +49,11 @@
   <test-fixture>
 
   <script>
-  var actionHero
+  let actionHero
 
     function setHeroStubs(actionHero) {
-      var heroContent = Polymer.dom(actionHero.root).querySelector('.hero-content');
-      var heroContentStyles = window.getComputedStyle(heroContent, null);
+      let heroContent = Polymer.dom(actionHero.root).querySelector('.hero-content');
+      let heroContentStyles = window.getComputedStyle(heroContent, null);
       return [heroContent, heroContentStyles];
     }
 
@@ -106,7 +106,7 @@
         assert.isTrue(heroContent.classList.contains('hero-content', 'grid'));
       })
       /**
-       * Currently this will fail in WCT, as css grid needs a flag turned on almost everywhere to work.
+       * Currently this will fail in WCT and browsers without a flag turned on for the new CSS Grid Layout.
        */
       test('content is positioned by css grid', function() {
         assert.equal(heroContentStyles.display, 'grid');
@@ -126,14 +126,14 @@
         assert.equal(actionHero.offsetHeight, (window.innerWidth * .6))
       });
       test('slotted content is styled by external styles', function() {
-        var headlineStyles = window.getComputedStyle(document.querySelector('h2'));
+        let headlineStyles = window.getComputedStyle(document.querySelector('h2'));
         assert.equal(headlineStyles.color, 'rgb(255, 255, 255)');
       });
     });
 
 
     suite('*-right and *-left layouts have default widths defined in ShadowDOM', function() {
-      var rightActionHero,
+      let rightActionHero,
           leftActionHero
 
       setup(function() {
@@ -144,38 +144,20 @@
       });
 
       test('right content is 40% of action-hero width by default', function() {
-        // getComputedStyle to ignore padding
         assert.equal(heroContentStyles.width.slice(0,-2), (rightActionHero.offsetWidth * .4))
       })
       test('left content is 40% of action-hero width by default', function() {
-        var heroContentStyle = window.getComputedStyle(Polymer.dom(leftActionHero.root).querySelector('.hero-content'), null);
+        let heroContentStyle = window.getComputedStyle(Polymer.dom(leftActionHero.root).querySelector('.hero-content'), null);
         assert.equal(heroContentStyle.width.slice(0,-2), (leftActionHero.offsetWidth * .4))
       })
       test('background width is not affected by content width', function() {
           // image doesn't resize fast enough in Safari to pass without timeout.
-          window.setTimeout(function() {
-            var background = document.querySelector('#background');
+          window.setTimeout(() => {
+            let background = document.querySelector('#background');
             assert.equal(background.width, leftActionHero.offsetWidth);
           }, 100)
       });
     });
-
-    suite('protects the user from the dangers of invalid attribute assignments', function() {
-      var actionVillain
-      setup(function() {
-        actionVillain = fixture('baseActionHero');
-        actionVillain.set('contentPosition', 'right bottom');
-        actionVillain.set('contentLayout', 'foo');
-      });
-
-      test('action-hero fights off bad values passed into it', function() {
-        var villainContent = Polymer.dom(actionVillain.root).querySelector('.hero-content');
-        assert.isFalse(villainContent.classList.contains('right'));
-        assert.isFalse(villainContent.classList.contains('bottom'));
-        assert.isFalse(villainContent.classList.contains('foo'));
-      })
-    })
-
   </script>
 
 </body>
