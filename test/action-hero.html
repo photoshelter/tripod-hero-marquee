@@ -62,10 +62,10 @@
         actionHero = fixture('baseActionHero')
       });
 
-      test('has a content position of center-center', function() {
+      test(`has a default 'content-position'`, function() {
         assert.equal(actionHero.contentPosition, 'center-center');
       });
-      test('has a content layout of flex', function() {
+      test(`has a default 'content-layout'`, function() {
         assert.equal(actionHero.contentLayout, 'flex');
       });
     });
@@ -81,10 +81,10 @@
       test('The element property reflects the passed value', function() {
           assert.equal(actionHero.contentPosition, 'top-left');
       });
-      test('The .hero-content element has a class of content `${contentPosition}`', function() {
+      test('The hero content element has a class of `hero-content ${contentPosition}`', function() {
           assert.isTrue(heroContent.classList.contains('hero-content', 'top-left'));
       });
-      test('The .hero-content element is positioned by flexbox', function() {
+      test('The hero content element is positioned by flexbox', function() {
           assert.equal(heroContentStyles.display, 'flex');
           assert.equal(heroContentStyles.justifyContent, 'flex-start')
           assert.equal(heroContentStyles.alignItems, 'flex-start')
@@ -106,7 +106,7 @@
         assert.isTrue(heroContent.classList.contains('hero-content', 'grid'));
       })
       /**
-       * Currently this will fail in WCT and browsers without a flag turned on for the new CSS Grid Layout.
+       * Currently this will fail in WCT, since browser support is not good for CSS Grid Positioning
        */
       test('content is positioned by css grid', function() {
         assert.equal(heroContentStyles.display, 'grid');
