@@ -15,7 +15,7 @@
         .flex.bottom-left {
           left: 0;
           @apply(--layout-start);
-          width: var(--side-content-width, 40%);
+          width: var(--hero-content-width, 40%);
           text-align: left;
         }
         .flex.top-center,
@@ -23,12 +23,13 @@
         .flex.bottom-center {
           left: 0;
           @apply(--layout-center);
+          text-align: center;
         }
         .flex.top-right,
         .flex.center-right,
         .flex.bottom-right {
           @apply(--layout-end);
-          width: var(--side-content-width, 40%);
+          width: var(--hero-content-width, 40%);
           right: 0;
           text-align: right;
         }
