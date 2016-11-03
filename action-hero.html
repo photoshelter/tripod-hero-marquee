@@ -2,24 +2,39 @@
 <link rel="import" href="../polymer/polymer.html">
 
 <!--
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
--->
+`action-hero` is an element for displaying a hero image/video/graphic/color overlaid with text.
 
-<!--
-Example: Use the action-hero
+It leaves the styling of the element and any contents to external
+styles, and provides a collection of classes to position the content you
+pass in using flexbox (with support also included for CSS Grid Positioning as
+it gains more browser support!).
+
+The component uses Shadow DOM v1 `slot` elements as a sort of placeholder for you
+to add your own markup to be rendered within the element.
+
+A background is specified by assigning it `slot="background"`.
+
+All other content is distributed in a `.hero-content` container in the Shadow DOM.
+
+With this approach, `action-hero` does the work of placing your content in the element,
+while external or custom styles can be used to match style with the rest of your site.
+
+Example: Use the `action-hero`
 ```html
-<action-hero></action-hero>
+<action-hero>
+  <div slot="background" style="background-image:url(/image.jpg);background-size:cover;"></div>
+  <h2>Headers, button, and backbround all slotted in from light DOM.</h2>
+</action-hero>
 ```
 
 ### Styling
 
 Custom property                  | Description                            | Default
 ---------------------------------|----------------------------------------|--------------------
-`--action-hero-width`     | Width of the element                   | 100vw
-`--action-hero-height`    | Height of the element                  | 500px
+`--hero-content-padding`     | Padding around the slotted in content                   | 20px
+`--hero-content-width`    | The width of the content container when content-position is `left` or `right`                  | 40%
+`--hero-content-grid-rows`    | Defines the CSS Grid rows for use with grid layout                  | 1fr 1fr 1fr
+`--hero-content-grid-columns`    | Defines the CSS Grid columns for use with grid layout                  | 1fr 1fr 1fr
 
 
 @group action
