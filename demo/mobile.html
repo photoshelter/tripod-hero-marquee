@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>action-hero Seed</title>
+
+    <script>
+      // Setup Polymer options
+      window.Polymer = {
+        dom: 'shadow',
+        lazyRegister: true
+      };
+
+      // Load webcomponentsjs polyfill if browser does not support native Web Components
+      (function() {
+        'use strict';
+
+        var onload = function() {
+          // For native Imports, manually fire WebComponentsReady so user code
+          // can use the same code path for native and polyfill'd imports.
+          if (!window.HTMLImports) {
+            document.dispatchEvent(
+              new CustomEvent('WebComponentsReady', {bubbles: true})
+            );
+          }
+        };
+
+        var webComponentsSupported = (
+          'registerElement' in document
+          && 'import' in document.createElement('link')
+          && 'content' in document.createElement('template')
+        );
+
+        if (!webComponentsSupported) {
+          var script = document.createElement('script');
+          script.async = true;
+          script.src = '../bower_components/webcomponentsjs/webcomponents-lite.min.js';
+          script.onload = onload;
+          document.head.appendChild(script);
+        } else {
+          onload();
+        }
+      })();
+    </script>
+
+    <link rel="import" href="../bower_components/action-hero/action-hero.html">
+    <link rel="import" href="../bower_components/ps-image/ps-image.html">
+    <link rel="import" href="../bower_components/iron-image/iron-image.html">
+    <link href="https://fonts.googleapis.com/css?family=Cairo:400,700" rel="stylesheet">
+
+    <style is="custom-style">
+      #mobile {
+        width: 375px;
+        height: 667px;
+      }
+      body {
+        margin: 0;
+      }
+      h2 {
+        font-family: "Cairo", sans-serif;
+        font-size: 2.25em;
+        -webkit-margin-before:0.1em;
+        -webkit-margin-after:0.1em;
+      }
+      h3 {
+        font-family: "Roboto", sans-serif;
+        -webkit-margin-before:0.5em;
+        -webkit-margin-after:0.5em;
+      }
+      a.button {
+        display: block;
+        font-family: "Cairo", sans-serif;
+        color: black;
+        font-size: 1em;
+        font-weight: 700;
+        text-decoration: none;
+        background: #f4d80d;
+        padding: 7px 0px;
+      }
+      @media only screen and (max-width: 480px) {
+        h2,
+        h3 {
+          color: black;
+        }
+        a.button {
+          display: block;
+        }
+        #background {
+          width: 100vw;
+          height: 70.67vw;
+        }
+      }
+      @media only screen and (min-width: 480px) {
+        action-hero,
+        ps-image {
+          margin: 0;
+          height: 60vw;
+          width: 100vw;
+        }
+        h2 {
+          color: white;
+          font-size: 2.5em;
+          font-size: 7vw;
+          font-weight: 400;
+          line-height: 1;
+          -webkit-margin-before:0.1em;
+          -webkit-margin-after:0.1em;
+        }
+        h3 {
+          color: white;
+          font-size: 1.8em;
+          font-size: 4vw;
+          font-weight: 400;
+          -webkit-margin-before:.5em;
+          -webkit-margin-after:.5em;
+        }
+        a.button {
+          padding: 14px 21px;
+        }
+
+      }
+    </style>
+
+  </head>
+  <body>
+        <action-hero content-position="top center">
+          <h2>Mobile demo.</h2>
+          <h3>Embedded in an iframe to show mobile responsive layout.</h3>
+          <a href="/implementation" class="button">Sign up now</a>
+          <ps-image slot="background" id="background" api-key="PS631731c7" api-root="http://ps.dev.bitshelter.com:8170/psapi" iid="I00007PMVmOqiyaE" sizing="cover" position="right bottom"></ps-image>
+        </action-hero>
+  </body>
+</html>

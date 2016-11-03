@@ -9,85 +9,93 @@
 	<link rel="import" href="../bower_components/ps-image/ps-image.html">
 	<link rel="import" href="../bower_components/iron-demo-helpers/demo-pages-shared-styles.html">
 	<link rel="import" href="../bower_components/iron-demo-helpers/demo-snippet.html">
-	<link href="https://fonts.googleapis.com/css?family=Cairo:400,700" rel="stylesheet">
-	<style>
-	action-hero {
+	<style is="custom-style">
+	action-hero,
+	#background {
 		width: 100%;
-		height: 60vw;
+		height: 500px;
 	}
-	.hero-content h2 {
-		font-family: "Cairo", sans-serif;
+	.hero-content {
+		padding: 20px;
 	}
-	.hero-content h3 {
-		font-family: "Roboto", sans-serif;
+	.hero-content h2,
+	.hero-content h3,
+	.hero-content a.button {
+		font-family: sans-serif;
+		font-weight: 400;
+		color: #fff;
+		line-height: 1;
+		-webkit-margin-before:0.5em;
+		-webkit-margin-after:0.5em;
 	}
 	.hero-content a.button {
 		display: block;
-		font-family: "Cairo", sans-serif;
 		color: black;
-		font-size: 1em;
-		font-weight: 700;
 		text-decoration: none;
 		background: #f4d80d;
+		padding: 14px 21px;
 	}
-	@media only screen and (max-width: 480px) {
-		action-hero {
-			height: 100%;
-		}
-		action-hero .background,
-		ps-image {
-			height: 300px;
-			width: 100vw;
-			position: relative;
-		}
-		h2,
-		h3 {
-			color: black;
-		}
-		a.button {
-			display: block;
-		}
-		ps-image {
-			height: 300px;
-		}
+	h2 {
+		font-size: 2.5em;
 	}
-
-	@media only screen and (min-width: 480px) {
-		.background,
-		ps-image {
-			height: 60vw;
-			width: calc(100vw - 40px);
-		}
-		.hero-content {
-			padding: 20px;
-		}
-		h2 {
-			color: white;
-			font-size: 2.5em;
-			font-size: 5vw;
-			font-weight: 400;
-			line-height: 1;
-			-webkit-margin-before:0.1em;
-			-webkit-margin-after:0.1em;
-		}
-		h3 {
-			color: white;
-			font-size: 1.8em;
-			font-size: 3vw;
-			font-weight: 400;
-			-webkit-margin-before:1em;
-			-webkit-margin-after:1em;
-		}
-		a.button {
-			padding: 14px 21px;
-		}
-
+	h3 {
+		font-size: 1.8em;
+	}
+	#grid {
+		--hero-content-grid-rows: 1fr 1fr 1fr ;
+		--hero-content-grid-columns: 1fr 1fr 160px;
+	}
+	#grid h2 {
+		text-align: left;
+		grid-column-start: 1;
+		grid-column-end: 2;
+		grid-row-start: 1;
+	}
+	#grid h3 {
+		text-align: center;
+		grid-column-start: 1;
+		grid-column-end: 4;
+		grid-row-start: 2;
+	}
+	#grid a.button {
+		grid-column-start: 3;
+		grid-column-end: 4;
+		grid-row-start: 3;
+		text-align: center;
+		margin: auto;
+	}
+	#grid p {
+		font-size: 20px;
+		grid-column-start: 1;
+		grid-column-end: 2;
+		grid-row-start: 3;
 	}
 	</style>
 </head>
 <body unresolved>
 
 	<p>An example of <code>&lt;action-hero&gt;</code>:</p>
+	<demo-snippet class="centered-demo">
+		<template>
+			<action-hero>
+				<p>
+					This paragraph element is slotted in from the light DOM.
+				</p>
+			</action-hero>
+		</template>
+	</demo-snippet>
+
+	<demo-snippet class="centered-demo">
+		<template>
+			<action-hero>
+				<iron-image slot="background" id="background" src="https://drscdn.500px.org/photo/155248825/m%3D2048/3042e5460f7c5fb15e5b327da90e082a" sizing="cover"></iron-image>
+				<h2>This stuff is slotted in from the light DOM.</h2>
+				<h3>You can slot in all kinds of things, and they are styled from the outside.</h3>
+				<a href="/" class="button">More info in the docs</a>
+			</action-hero>
+		</template>
+	</demo-snippet>
+
 	<demo-snippet class="centered-demo">
 		<template>
 			<action-hero id="standard-example" content-position="center-left">
@@ -99,15 +107,24 @@
 		</template>
 	</demo-snippet>
 
-	<!-- <demo-snippet class="centered-demo">
+	<demo-snippet class="centered-demo">
 		<template>
-			<action-hero content-position="top">
-				<iron-image src="https://drscdn.500px.org/photo/155248825/m%3D2048/3042e5460f7c5fb15e5b327da90e082a" sizing="cover"></iron-image>
+			<action-hero id="grid" content-layout="grid">
+				<ps-image slot="background" id="background" api-key="PS631731c7" api-root="https://ps.dev.bitshelter.com/psapi" iid="I00007PMVmOqiyaE" sizing="cover" position="right bottom"></ps-image>
 				<h2>Your images work here.</h2>
 				<h3>Where Photographers get work done.</h3>
-				<a href="/demo">Sign up now</a>
+				<a href="/demo" class="button">Sign up now</a>
+				<p>
+					You can slot whatever you want into the component, like this paragraph element, and position it with CSS Grid.
+				</p>
 			</action-hero>
 		</template>
-	</demo-snippet> -->
+	</demo-snippet>
+
+	<demo-snippet class="centered-demo">
+		<template>
+			<iframe src="mobile.html" width="375px" height="667px"></iframe>
+		</template>
+	</demo-snippet>
 </body>
 </html>
