@@ -87,9 +87,9 @@
         a.button {
           display: block;
         }
-        #background {
-          width: 100vw;
-          height: 70.67vw;
+        #video {
+          width: 100%;
+          height: 56.27%;
         }
       }
       @media only screen and (min-width: 480px) {
@@ -125,11 +125,11 @@
 
   </head>
   <body>
-    <action-hero content-position="top center">
-      <h2>Mobile demo.</h2>
-      <h3>Embedded in an iframe to show mobile responsive layout.</h3>
-      <a href="/implementation" class="button">Sign up now</a>
-      <ps-image slot="background" id="background" api-key="PS631731c7" api-root="http://ps.dev.bitshelter.com:8170/psapi" iid="I00007PMVmOqiyaE" sizing="cover" position="right bottom"></ps-image>
-    </action-hero>
+        <action-hero content-position="top center">
+          <h2>Mobile video demo.</h2>
+          <h3>Embedded in an iframe to show mobile responsive layout.</h3>
+          <a href="/implementation" class="button">Sign up now</a>
+          <video class="backround" slot="background" id="video" src="http://mazwai.com/system/posts/videos/000/000/221/original/discovery_part_II-jonathan_mitchell.mp4?1461020357" autoplay loop muted></video>
+        </action-hero>
   </body>
 </html>
