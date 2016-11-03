@@ -70,6 +70,37 @@
 		grid-column-end: 2;
 		grid-row-start: 3;
 	}
+	#video {
+		position: absolute;
+		left: 0;
+		top: 0;
+		min-width: 100% !important;
+		min-height: 100% !important;
+		width: 100%;
+		height: auto !important;
+		overflow: hidden;
+	}
+	#video-example {
+		overflow: hidden;
+	}
+	@media only screen and (max-width: 480px) {
+		action-hero .background,
+		#background {
+			height: 100vw;
+			width: 100vw;
+			position: relative;
+		}
+		#video {
+			position: relative;
+		}
+		h2,
+		h3 {
+			color: black;
+		}
+		a.button {
+			display: block;
+		}
+	}
 	</style>
 </head>
 <body unresolved>
@@ -109,13 +140,22 @@
 
 	<demo-snippet class="centered-demo">
 		<template>
+			<action-hero id="video-example" content-position="bottom-center">
+				<video width="" slot="background" id="video" src="http://mazwai.com/system/posts/videos/000/000/221/original/discovery_part_II-jonathan_mitchell.mp4?1461020357" autoplay loop muted></video>
+				<h2 class="video">Video can be used as a background</h2>
+			</action-hero>
+		</template>
+	</demo-snippet>
+
+	<demo-snippet class="centered-demo">
+		<template>
 			<action-hero id="grid" content-layout="grid">
 				<ps-image slot="background" id="background" api-key="PS631731c7" api-root="https://ps.dev.bitshelter.com/psapi" iid="I00007PMVmOqiyaE" sizing="cover" position="right bottom"></ps-image>
-				<h2>Your images work here.</h2>
-				<h3>Where Photographers get work done.</h3>
+				<h2>Content positioned by CSS grid.</h2>
+				<h3>This demo has a css grid layout.</h3>
 				<a href="/demo" class="button">Sign up now</a>
 				<p>
-					You can slot whatever you want into the component, like this paragraph element, and position it with CSS Grid.
+					Anything can be slotted into the component, like this paragraph element, and positioned with CSS Grid once browser support becomes better.
 				</p>
 			</action-hero>
 		</template>
