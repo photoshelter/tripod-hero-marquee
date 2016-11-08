@@ -65,11 +65,7 @@
 	<h3>An example of <code>&lt;action-hero&gt;</code>.</h3>
 	<demo-snippet class="centered-demo">
 		<template>
-			<action-hero>
-				<p>
-					This paragraph element is a distrubted node, slotted in from the light DOM.
-				</p>
-			</action-hero>
+			<action-hero style="background:linear-gradient(lightgray, gray);"></action-hero>
 		</template>
 	</demo-snippet>
 
@@ -184,13 +180,15 @@
 	<demo-snippet class="centered-demo">
 		<template>
 			<iframe src="mobile.html" width="375px" height="667px"></iframe>
-			<!--
-			<action-hero content-position="top center">
-				<h2>Mobile demo.</h2>
-				<h3>Embedded in an iframe to show mobile responsive layout.</h3>
-				<a href="/implementation" class="button">Sign up now</a>
-				<ps-image slot="background" id="background" api-key="PS631731c7" api-root="http://ps.dev.bitshelter.com:8170/psapi" iid="I00007PMVmOqiyaE" sizing="cover" position="right bottom"></ps-image>
-			</action-hero>
+			<!-- The following is embedded in the iframe:
+			
+				<action-hero content-position="top center">
+					<h2>Mobile demo.</h2>
+					<h3>Embedded in an iframe to show mobile responsive layout.</h3>
+					<a href="/implementation" class="button">Sign up now</a>
+					<ps-image slot="background" id="background" api-key="PS631731c7" api-root="http://ps.dev.bitshelter.com:8170/psapi" iid="I00007PMVmOqiyaE" sizing="cover" position="right bottom"></ps-image>
+				</action-hero>
+
 			-->
 		</template>
 	</demo-snippet>
