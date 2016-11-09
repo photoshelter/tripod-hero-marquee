@@ -103,6 +103,24 @@
 		</template>
 	</demo-snippet>
 
+	<h3><code>&lt;action-hero&gt;</code> as above, with taller aspect ratio.</h3>
+	<demo-snippet class="centered-demo">
+		<template>
+			<style is="custom-style">
+				#taller-example,
+				#taller-example > .background {
+					height: 750px;
+				}
+			</style>
+			<action-hero id="taller-example" content-position="center-left">
+				<ps-image slot="background" class="background" api-key="PS631731c7" api-root="https://ps.dev.bitshelter.com/psapi" iid="I00007PMVmOqiyaE" sizing="cover" position="right bottom"></ps-image>
+				<h2>Your images work here.</h2>
+				<h3>Where Photographers get work done.</h3>
+				<a href="/demo" class="button">Sign up now</a>
+			</action-hero>
+		</template>
+	</demo-snippet>
+
 	<h3><code>&lt;action-hero&gt;</code> with a distributed <code>&lt;video&gt;</code> background.</h3>
 	<demo-snippet class="centered-demo">
 		<template>
