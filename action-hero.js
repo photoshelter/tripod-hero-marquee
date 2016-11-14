@@ -8,7 +8,7 @@ Polymer({
 		contentPosition: {
 			type: String,
 			value: 'center-center',
-			observer: 'validateContentPosition'
+			observer: '_validateContentPosition'
 		},
 		/**
 		 * The CSS Layout for the hero content. Defaults to Flexbox, and can be set to "grid" for CSS Grid Layout.
@@ -16,7 +16,7 @@ Polymer({
 		contentLayout: {
 			type: String,
 			value: 'flex',
-			observer: 'validateContentLayout'
+			observer: '_validateContentLayout'
 		}
 	},
 
@@ -28,11 +28,11 @@ Polymer({
 	*/
 	attached: function attached() {},
 
-	validateContentPosition: function() {
+	_validateContentPosition: function() {
 		const allowedPositions = ['top-left', 'top-center', 'top-right', 'center-left', 'center-center', 'center-right', 'bottom-left', 'bottom-center', 'bottom-right'];
 		this._validate(allowedPositions, this.contentPosition, 'content-position');
 	},
-	validateContentLayout: function() {
+	_validateContentLayout: function() {
 		const allowedLayouts = ['flex', 'grid']
 		this._validate(allowedLayouts, this.contentLayout, 'content-layout');
 		
