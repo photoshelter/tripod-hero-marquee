@@ -158,6 +158,22 @@
           }, 100)
       });
     });
+
+    suite('checks for valid content-position and content-layout values', function() {
+      let errorActionHero
+
+      setup(function() {
+        errorActionHero = fixture('imgActionHero');
+        sinon.spy(console, 'warn');
+      });
+
+      test('invalid content-position and content-layout throw errors', function() {
+        errorActionHero.contentPosition = '💩';
+        errorActionHero.contentLayout = '☠️';
+        expect(console.warn.calledTwice).to.be.true;
+      });
+
+    });
   </script>
 
 </body>
