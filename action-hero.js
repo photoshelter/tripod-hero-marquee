@@ -7,14 +7,16 @@ Polymer({
 		 */
 		contentPosition: {
 			type: String,
-			value: 'center-center'
+			value: 'center-center',
+			observer: 'validateContentPosition'
 		},
 		/**
 		 * The CSS Layout for the hero content. Defaults to Flexbox, and can be set to "grid" for CSS Grid Layout.
 		 */
 		contentLayout: {
 			type: String,
-			value: 'flex'
+			value: 'flex',
+			observer: 'validateContentLayout'
 		}
 	},
 
@@ -25,5 +27,20 @@ Polymer({
 	* first attached to the DOM
 	*/
 	attached: function attached() {},
+
+	validateContentPosition: function() {
+		const allowedPositions = ['top-left', 'top-center', 'top-right', 'center-left', 'center-center', 'center-right', 'bottom-left', 'bottom-center', 'bottom-right'];
+		this._validate(allowedPositions, this.contentPosition, 'content-position');
+	},
+	validateContentLayout: function() {
+		const allowedLayouts = ['flex', 'grid']
+		this._validate(allowedLayouts, this.contentLayout, 'content-layout');
+		
+	},
+	_validate: function(allowedValues, inputValue, validateWhat) {
+		if(!allowedValues.includes(inputValue)) {
+			console.warn(`${inputValue} is not a valid input for ${validateWhat}`);
+		}
+	}
 
 });
