@@ -47,26 +47,22 @@
 
     <link rel="import" href="../bower_components/action-hero/action-hero.html">
     <link rel="import" href="../bower_components/ps-image/ps-image.html">
-    <link rel="import" href="../bower_components/iron-image/iron-image.html">
-    <link href="https://fonts.googleapis.com/css?family=Cairo:400,700" rel="stylesheet">
 
     <style is="custom-style">
       body {
         margin: 0;
+        font-family: "Cairo", sans-serif;
       }
       h2 {
-        font-family: "Cairo", sans-serif;
         font-size: 2.25em;
         -webkit-margin-before:0.1em;
         -webkit-margin-after:0.1em;
       }
       h3 {
-        font-family: "Roboto", sans-serif;
         -webkit-margin-before:0.5em;
         -webkit-margin-after:0.5em;
       }
       a.button {
-        font-family: "Cairo", sans-serif;
         color: black;
         font-size: 1em;
         font-weight: 700;
@@ -119,36 +115,6 @@
         a.button {
           padding: 14px 21px;
         }
-        #grid {
-          --hero-content-grid-rows: 1fr 1fr 1fr ;
-          --hero-content-grid-columns: 1fr 1fr 160px;
-        }
-        #grid h2 {
-          text-align: left;
-          grid-column-start: 1;
-          grid-column-end: 2;
-          grid-row-start: 1;
-        }
-        #grid h3 {
-          text-align: center;
-          grid-column-start: 1;
-          grid-column-end: 4;
-          grid-row-start: 2;
-        }
-        #grid a.button {
-          grid-column-start: 3;
-          grid-column-end: 4;
-          grid-row-start: 3;
-          text-align: center;
-          margin: auto;
-        }
-        #grid p {
-          font-family: "Cairo", sans-serif;
-          font-size: 20px;
-          grid-column-start: 1;
-          grid-column-end: 2;
-          grid-row-start: 3;
-        }
       }
     </style>
 
@@ -166,39 +132,24 @@
           <a href="/implementation" class="button">Sign up now</a>
           <ps-image slot="background" api-key="PS631731c7" api-root="http://ps.dev.bitshelter.com:8170/psapi" iid="I00007PMVmOqiyaE" sizing="cover" position="right bottom"></ps-image>
       </action-hero>
-      <action-hero content-layout="grid" id="grid">
-          <h2>Grid grid grid grid grid.</h2>
-          <h3>This content is positioned by css grid.</h3>
-          <p>
-            And you can have whatever you want in here
-          </p>
-          <a href="/implementation" class="button">Sign up now</a>
-          <ps-image slot="background" api-key="PS631731c7" api-root="http://ps.dev.bitshelter.com:8170/psapi" iid="I00007PMVmOqiyaE" sizing="cover" position="right bottom"></ps-image>
-      </action-hero>
-      <action-hero content-position="top-center">
-        <h2>Top top top top top top.</h2>
-        <h3>Where photographers get work done.</h3>
-        <a href="/implementation" class="button">Sign up now</a>
-        <ps-image slot="background" api-key="PS631731c7" api-root="http://ps.dev.bitshelter.com:8170/psapi" iid="I00007PMVmOqiyaE" sizing="cover" position="right bottom"></ps-image>
-      </action-hero>
-      <action-hero content-position="center-right">
-        <h2>Right right right right right.</h2>
-        <h3>Where photographers get work done.</h3>
-        <a href="/implementation" class="button">Sign up now</a>
-        <ps-image slot="background" api-key="PS631731c7" api-root="http://ps.dev.bitshelter.com:8170/psapi" iid="I00007PMVmOqiyaE" sizing="cover" position="right bottom"></ps-image>
-      </action-hero>
-      <action-hero content-position="bottom-center">
-        <h2>Bottom bottom bottom bottom.</h2>
-        <h3>Where photographers get work done.</h3>
-        <a href="/implementation" class="button">Sign up now</a>
-        <ps-image slot="background" api-key="PS631731c7" api-root="http://ps.dev.bitshelter.com:8170/psapi" iid="I00007PMVmOqiyaE" sizing="cover" position="right bottom"></ps-image>
-      </action-hero>
-      <action-hero content-position="center-left">
-        <h2>Left left left left left.</h2>
-        <h3>Where photographers get work done.</h3>
-        <a href="/implementation" class="button">Sign up now</a>
-        <ps-image slot="background" api-key="PS631731c7" api-root="http://ps.dev.bitshelter.com:8170/psapi" iid="I00007PMVmOqiyaE" sizing="cover" position="right bottom"></ps-image>
-      </action-hero>
-
   </body>
+  <script>
+    document.body.onload = function() {
+      let url = "https://fonts.googleapis.com/css?family=Cairo:400,700"
+      loadFont(url);
+
+      function loadFont(url) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', url, true);
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState == 4 && xhr.status == 200) {
+            let style = document.createElement('style');
+            style.innerHTML = xhr.responseText;
+            document.head.appendChild(style);
+          }
+        };
+        xhr.send();
+      }
+    }
+  </script>
 </html>
