@@ -164,12 +164,34 @@
 
       setup(function() {
         errorActionHero = fixture('imgActionHero');
-        sinon.spy(console, 'warn');
+        this.spied = sinon.spy(console, 'warn');
       });
 
-      test('invalid content-position and content-layout throw errors', function() {
+      teardown(function() {
+        this.spied.restore();
+      })
+
+      test('total junk, like emoji, entered into content-position and content-layout throw console warnings', function() {
         errorActionHero.contentPosition = '💩';
         errorActionHero.contentLayout = '☠️';
+        expect(console.warn.calledTwice).to.be.true;
+      });
+
+       test('incorrect values, like numbers, entered in to content-position and content-layout throws console warnings', function() {
+        errorActionHero.contentPosition = 12345;
+        errorActionHero.contentLayout = 09876;
+        expect(console.warn.calledTwice).to.be.true;
+      });
+
+       test('nearly correct values throw console warnings', function() {
+        errorActionHero.contentPosition = 'left-top';
+        errorActionHero.contentLayout = 'block';
+        expect(console.warn.calledTwice).to.be.true;
+      });
+
+       test('correct values that are improperly formatted throw console warnings', function() {
+        errorActionHero.contentPosition = 'center center';
+        errorActionHero.contentLayout = 'Flex';
         expect(console.warn.calledTwice).to.be.true;
       });
 
