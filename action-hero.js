@@ -30,17 +30,23 @@ Polymer({
 
 	_validateContentPosition: function() {
 		const allowedPositions = ['top-left', 'top-center', 'top-right', 'center-left', 'center-center', 'center-right', 'bottom-left', 'bottom-center', 'bottom-right'];
-		this._validate(allowedPositions, this.contentPosition, 'content-position');
+		if (!this._validate(allowedPositions, this.contentPosition, 'content-position')){
+			this.contentPosition = 'center-center'
+		};
 	},
 	_validateContentLayout: function() {
 		const allowedLayouts = ['flex', 'grid']
-		this._validate(allowedLayouts, this.contentLayout, 'content-layout');
-		
+		if (!this._validate(allowedLayouts, this.contentLayout, 'content-layout')) {
+			this.contentLayout = 'flex'
+		};
 	},
 	_validate: function(allowedValues, inputValue, validateWhat) {
 		if(!allowedValues.includes(inputValue)) {
-			console.warn(`${inputValue} is not a valid input for ${validateWhat}`);
-		}
+			console.warn(inputValue + ' is not a valid input for ' + validateWhat);
+			return false;
+		} else {
+			return true;
+		};
 	}
 
 });

@@ -195,6 +195,13 @@
         expect(console.warn.calledTwice).to.be.true;
       });
 
+      test('reverts to default values when bad values are passed in', function() {
+        errorActionHero.contentPosition = 'center center'
+        errorActionHero.contentLayout = 'Flex'
+        assert.equal(errorActionHero.contentPosition, 'center-center');
+        assert.equal(errorActionHero.contentLayout, 'flex');
+      });
+
     });
   </script>
 
