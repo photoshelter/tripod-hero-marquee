@@ -183,6 +183,12 @@
         expect(console.warn.calledTwice).to.be.true;
       });
 
+       test('seemingly possible values throw console warnings', function() {
+        errorActionHero.contentPosition = 'front';
+        errorActionHero.contentLayout = 'corner';
+        expect(console.warn.calledTwice).to.be.true;
+      });
+
        test('nearly correct values throw console warnings', function() {
         errorActionHero.contentPosition = 'left-top';
         errorActionHero.contentLayout = 'block';
