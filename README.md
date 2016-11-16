@@ -1,8 +1,8 @@
-## &lt;action-hero&gt;
+## &lt;tripod-hero-marquee&gt;
 
-*[Demo and API Docs](https://gh.corp.bitshelter.com/pages/Components/action-hero)*
+*[Demo and API Docs](https://gh.corp.bitshelter.com/pages/Components/tripod-hero-marquee)*
 
-`action-hero` is an element for displaying a hero image/video/graphic/color overlaid with text.
+`tripod-hero-marquee` is an element for displaying a hero image/video/graphic/color overlaid with text.
 
 It leaves the styling of the element and any contents to external
 styles, and provides a collection of classes to position the content you
@@ -16,15 +16,15 @@ A background is specified by assigning it `slot="background"`.
 
 All other content is distributed in a `.hero-content` container in the Shadow DOM.
 
-With this approach, `action-hero` does the work of placing your content in the element,
+With this approach, `tripod-hero-marquee` does the work of placing your content in the element,
 while external or custom styles can be used to match style with the rest of your site.
 
-Example: Use the `action-hero`
+Example: Use the `tripod-hero-marquee`
 ```html
-<action-hero>
+<tripod-hero-marquee>
   <div slot="background" style="background-image:url(/image.jpg);background-size:cover;"></div>
   <h2>Headers, button, and backbround all slotted in from light DOM.</h2>
-</action-hero>
+</tripod-hero-marquee>
 ```
 
 ### Styling
