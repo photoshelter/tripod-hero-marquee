@@ -28,6 +28,9 @@ Polymer({
 	*/
 	attached: function attached() {},
 
+	/**
+	 * TODO: When we're ready to move to Polymer 2.0 these would make sense in a setter() function
+	 */
 	_validateContentPosition: function() {
 		const allowedPositions = ['top-left', 'top-center', 'top-right', 'center-left', 'center-center', 'center-right', 'bottom-left', 'bottom-center', 'bottom-right'];
 		if (!this._validate(allowedPositions, this.contentPosition, 'content-position')){
