@@ -33,13 +33,13 @@
 <body>
 
   <!-- You can use the document as a place to set up your fixtures. -->
-  <test-fixture id="basetripodHeroMarquee">
+  <test-fixture id="baseTripodHeroMarquee">
       <template>
           <tripod-hero-marquee></tripod-hero-marquee>
       </template>
   </test-fixture>
 
-  <test-fixture id="imgtripodHeroMarquee">
+  <test-fixture id="imgTripodHeroMarquee">
     <template>
       <tripod-hero-marquee>
         <h2 id="hero-header">Here's a slotted-in headline.</h2>
@@ -59,7 +59,7 @@
 
     suite('has properties with defaults', function() {
       setup(function() {
-        tripodHeroMarquee = fixture('basetripodHeroMarquee')
+        tripodHeroMarquee = fixture('baseTripodHeroMarquee')
       });
 
       test(`has a default 'content-position'`, function() {
@@ -73,7 +73,7 @@
 
     suite('<tripod-hero-marquee content-position="top-left">', function() {
       setup(function() {
-          tripodHeroMarquee = fixture('basetripodHeroMarquee');
+          tripodHeroMarquee = fixture('baseTripodHeroMarquee');
           tripodHeroMarquee.set('contentPosition', 'top-left');
           [heroContent, heroContentStyles] = setHeroStubs(tripodHeroMarquee)
       });
@@ -94,7 +94,7 @@
     suite('<tripod-hero-marquee content-layout="grid">', function() {
 
       setup(function() {
-        tripodHeroMarquee = fixture('basetripodHeroMarquee');
+        tripodHeroMarquee = fixture('baseTripodHeroMarquee');
         tripodHeroMarquee.set('contentLayout', 'grid');
         [heroContent, heroContentStyles] = setHeroStubs(tripodHeroMarquee)
       });
@@ -116,7 +116,7 @@
     suite('can be styled by light DOM CSS', function() {
 
       setup(function() {
-        tripodHeroMarquee = fixture('imgtripodHeroMarquee');
+        tripodHeroMarquee = fixture('imgTripodHeroMarquee');
       });
 
       test('tripod-hero-marquee can have its width set by external styles', function() {
@@ -133,37 +133,37 @@
 
 
     suite('*-right and *-left layouts have default widths defined in ShadowDOM', function() {
-      let righttripodHeroMarquee,
-          lefttripodHeroMarquee
+      let rightTripodHeroMarquee,
+          leftTripodHeroMarquee
 
       setup(function() {
-        righttripodHeroMarquee = fixture('imgtripodHeroMarquee');
-        righttripodHeroMarquee.set('contentPosition', 'center-right');
-        lefttripodHeroMarquee = fixture('imgtripodHeroMarquee');
-        lefttripodHeroMarquee.set('contentPosition', 'center-left');
+        rightTripodHeroMarquee = fixture('imgTripodHeroMarquee');
+        rightTripodHeroMarquee.set('contentPosition', 'center-right');
+        leftTripodHeroMarquee = fixture('imgTripodHeroMarquee');
+        leftTripodHeroMarquee.set('contentPosition', 'center-left');
       });
 
       test('right content is 40% of tripod-hero-marquee width by default', function() {
-        assert.equal(heroContentStyles.width.slice(0,-2), (righttripodHeroMarquee.offsetWidth * .4))
+        assert.equal(heroContentStyles.width.slice(0,-2), (rightTripodHeroMarquee.offsetWidth * .4))
       })
       test('left content is 40% of tripod-hero-marquee width by default', function() {
-        let heroContentStyle = window.getComputedStyle(Polymer.dom(lefttripodHeroMarquee.root).querySelector('.hero-content'), null);
-        assert.equal(heroContentStyle.width.slice(0,-2), (lefttripodHeroMarquee.offsetWidth * .4))
+        let heroContentStyle = window.getComputedStyle(Polymer.dom(leftTripodHeroMarquee.root).querySelector('.hero-content'), null);
+        assert.equal(heroContentStyle.width.slice(0,-2), (leftTripodHeroMarquee.offsetWidth * .4))
       })
       test('background width is not affected by content width', function() {
           // image doesn't resize fast enough in Safari to pass without timeout.
           window.setTimeout(() => {
             let background = document.querySelector('#background');
-            assert.equal(background.width, lefttripodHeroMarquee.offsetWidth);
+            assert.equal(background.width, leftTripodHeroMarquee.offsetWidth);
           }, 100)
       });
     });
 
     suite('checks for valid content-position and content-layout values', function() {
-      let errortripodHeroMarquee
+      let errorTripodHeroMarquee
 
       setup(function() {
-        errortripodHeroMarquee = fixture('imgtripodHeroMarquee');
+        errorTripodHeroMarquee = fixture('imgTripodHeroMarquee');
         this.spied = sinon.spy(console, 'warn');
       });
 
@@ -172,40 +172,40 @@
       })
 
       test('total junk, like emoji, entered into content-position and content-layout throw console warnings', function() {
-        errortripodHeroMarquee.contentPosition = '💩';
-        errortripodHeroMarquee.contentLayout = '☠️';
+        errorTripodHeroMarquee.contentPosition = '💩';
+        errorTripodHeroMarquee.contentLayout = '☠️';
         expect(console.warn.calledTwice).to.be.true;
       });
 
        test('incorrect values, like numbers, entered in to content-position and content-layout throws console warnings', function() {
-        errortripodHeroMarquee.contentPosition = 12345;
-        errortripodHeroMarquee.contentLayout = 09876;
+        errorTripodHeroMarquee.contentPosition = 12345;
+        errorTripodHeroMarquee.contentLayout = 09876;
         expect(console.warn.calledTwice).to.be.true;
       });
 
        test('seemingly possible values throw console warnings', function() {
-        errortripodHeroMarquee.contentPosition = 'front';
-        errortripodHeroMarquee.contentLayout = 'corner';
+        errorTripodHeroMarquee.contentPosition = 'front';
+        errorTripodHeroMarquee.contentLayout = 'corner';
         expect(console.warn.calledTwice).to.be.true;
       });
 
        test('nearly correct values throw console warnings', function() {
-        errortripodHeroMarquee.contentPosition = 'left-top';
-        errortripodHeroMarquee.contentLayout = 'block';
+        errorTripodHeroMarquee.contentPosition = 'left-top';
+        errorTripodHeroMarquee.contentLayout = 'block';
         expect(console.warn.calledTwice).to.be.true;
       });
 
        test('correct values that are improperly formatted throw console warnings', function() {
-        errortripodHeroMarquee.contentPosition = 'center center';
-        errortripodHeroMarquee.contentLayout = 'Flex';
+        errorTripodHeroMarquee.contentPosition = 'center center';
+        errorTripodHeroMarquee.contentLayout = 'Flex';
         expect(console.warn.calledTwice).to.be.true;
       });
 
       test('reverts to default values when bad values are passed in', function() {
-        errortripodHeroMarquee.contentPosition = 'center center'
-        errortripodHeroMarquee.contentLayout = 'Flex'
-        assert.equal(errortripodHeroMarquee.contentPosition, 'center-center');
-        assert.equal(errortripodHeroMarquee.contentLayout, 'flex');
+        errorTripodHeroMarquee.contentPosition = 'center center'
+        errorTripodHeroMarquee.contentLayout = 'Flex'
+        assert.equal(errorTripodHeroMarquee.contentPosition, 'center-center');
+        assert.equal(errorTripodHeroMarquee.contentLayout, 'flex');
       });
 
     });
