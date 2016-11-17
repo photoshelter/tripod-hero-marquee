@@ -1,14 +1,14 @@
 {
-  "name": "action-hero",
-  "author":"Will Schneekloth",
+  "name": "tripod-hero-marquee",
+  "author":"PhotoShelter Developers",
   "version": "1.0.0",
   "description": "Displays a flexible hero banner with text and a button overlaying an image or video",
   "private": true,
-  "license": "https://github.com/PhotoShelter/action-hero/LICENSE.txt",
-  "homepage": "https://github.com/PhotoShelter/action-hero",
+  "license": "https://github.com/PhotoShelter/tripod-hero-marquee/LICENSE.txt",
+  "homepage": "https://github.com/PhotoShelter/tripod-hero-marquee",
   "repository": {
     "type": "git",
-    "url": "git://github.com/PhotoShelter/action-hero.git"
+    "url": "git://github.com/PhotoShelter/tripod-hero-marquee.git"
   },
   "keywords": [
     "web-components",

@@ -2,7 +2,7 @@
 <link rel="import" href="../polymer/polymer.html">
 
 <!--
-`action-hero` is an element for displaying a hero image/video/graphic/color overlaid with text.
+`tripod-hero-marquee` is an element for displaying a hero image/video/graphic/color overlaid with text.
 
 It leaves the styling of the element and any contents to external
 styles, and provides a collection of classes to position the content you
@@ -16,15 +16,15 @@ A background is specified by assigning it `slot="background"`.
 
 All other content is distributed in a `.hero-content` container in the Shadow DOM.
 
-With this approach, `action-hero` does the work of placing your content in the element,
+With this approach, `tripod-hero-marquee` does the work of placing your content in the element,
 while external or custom styles can be used to match style with the rest of your site.
 
-Example: Use the `action-hero`
+Example: Use the `tripod-hero-marquee`
 ```html
-<action-hero>
+<tripod-hero-marquee>
   <div slot="background" style="background-image:url(/image.jpg);background-size:cover;"></div>
   <h2>Headers, button, and backbround all slotted in from light DOM.</h2>
-</action-hero>
+</tripod-hero-marquee>
 ```
 
 ### Styling
@@ -37,22 +37,22 @@ Custom property                  | Description                            | Defa
 `--hero-content-grid-columns`    | Defines the CSS Grid columns for use with grid layout                  | 1fr 1fr 1fr
 
 
-@group action
-@element action-hero
+@group tripod
+@element tripod-hero-marquee
 @demo
 @test test/index.html
 -->
 
 
-<link rel="import" href="action-hero-styles.html">
+<link rel="import" href="tripod-hero-marquee-styles.html">
 
-<dom-module id="action-hero">
+<dom-module id="tripod-hero-marquee">
 
   <template>
 
-    <style include="action-hero-styles"></style>
-    <style include="hero-flex-content"></style>
-    <style include="hero-grid-content"></style>
+    <style include="tripod-hero-marquee-styles"></style>
+    <style include="tripod-hero-marquee-flex-content"></style>
+    <style include="tripod-hero-marquee-grid-content"></style>
 
     <slot name="background"></slot>
     <div class$="hero-content [[contentPosition]] [[contentLayout]]">
@@ -61,5 +61,5 @@ Custom property                  | Description                            | Defa
 
   </template>
 
-  <script src="action-hero.js"></script>
+  <script src="tripod-hero-marquee.js"></script>
 </dom-module>

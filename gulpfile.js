@@ -4,8 +4,8 @@ const ghPages  = require('gulp-gh-pages');
 const browserSync = require('browser-sync').create();
 
 gulp.task('copy',() =>
-  gulp.src('action-hero*')
-  .pipe(gulp.dest('./bower_components/action-hero'))
+  gulp.src('tripod-hero-marquee*')
+  .pipe(gulp.dest('./bower_components/tripod-hero-marquee'))
 );
 
 gulp.task('serve',(done) => {
@@ -18,7 +18,7 @@ gulp.task('serve',(done) => {
   },done);
 
 
-  gulp.watch("action-hero*").on("change", gulp.series('copy', browserSync.reload));
+  gulp.watch("tripod-hero-marquee*").on("change", gulp.series('copy', browserSync.reload));
   gulp.watch("demo/**").on("change", gulp.series(browserSync.reload));
   gulp.watch("test/**").on("change", gulp.series(browserSync.reload));
   

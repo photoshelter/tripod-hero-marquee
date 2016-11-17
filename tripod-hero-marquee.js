@@ -1,5 +1,5 @@
 Polymer({
-	is: 'action-hero',
+	is: 'tripod-hero-marquee',
 
 	properties: {
 		/**
