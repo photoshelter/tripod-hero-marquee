@@ -71,5 +71,4 @@ If you already have an account then all you need to do to get SauceLabs working 
   - `$ npm start` to host on the local server
 
 **Contributing**
-
-  - Update the issue and pull request templates by running `source template_refresh.sh` in the root directory of `tripod-hero-marquee`.
+  - Update the issue and pull request templates by running the [template update script](https://github.com/photoshelter/github-templates/blob/master/template_refresh.sh) in the root directory of `tripod-hero-marquee`.
