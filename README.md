@@ -69,3 +69,7 @@ If you already have an account then all you need to do to get SauceLabs working 
   - cd into the cloned directory
   - `$ bower install && npm install`
   - `$ npm start` to host on the local server
+
+**Contributing**
+
+  - Update the issue and pull request templates by running `source template_refresh.sh` in the root directory of `tripod-hero-marquee`.
