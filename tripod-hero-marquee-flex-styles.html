@@ -1,53 +1,60 @@
+<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
+
 <dom-module id="tripod-hero-marquee-flex-content">
-  <link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
   <template>
     <style>
-      @media only screen and (min-width : 480px) {
-        :host {
-          display: flex;
-        }
-        .flex.hero-content {
-          @apply(--layout-vertical);
-          top: 0;
-        }
-        .flex.top-left,
-        .flex.center-left,
-        .flex.bottom-left {
-          left: 0;
-          @apply(--layout-start);
-          width: var(--hero-content-width, 40%);
-          text-align: left;
-        }
-        .flex.top-center,
-        .flex.center-center,
-        .flex.bottom-center {
-          left: 0;
-          @apply(--layout-center);
-          text-align: center;
-        }
-        .flex.top-right,
-        .flex.center-right,
-        .flex.bottom-right {
-          @apply(--layout-end);
-          width: var(--hero-content-width, 40%);
-          right: 0;
-          text-align: right;
-        }
-        .flex.top-left,
-        .flex.top-center,
-        .flex.top-right {
-          @apply(--layout-start-justified);
-        }
-        .flex.center-left,
-        .flex.center-center,
-        .flex.center-right {
-          @apply(--layout-center-justified);
-        }
-        .flex.bottom-left,
-        .flex.bottom-center,
-        .flex.bottom-right {
-          @apply(--layout-end-justified);
-        }
+      :host(:not([handheld-portrait])) {
+        --tripod-hero-content-width-default: {
+          width: 40%;
+          min-width: 385px;
+        };
+        /*--hero-content-width-default: width: 40%;
+        --hero-content-min-width: min-width: 385px;*/
+        @apply(--layout)
+      }
+      .flexbox.hero-content:not([handheld-layout]) {
+        @apply(--layout-vertical);
+        top: 0;
+      }
+      .flexbox.top-left:not([handheld-layout]),
+      .flexbox.center-left:not([handheld-layout]),
+      .flexbox.bottom-left:not([handheld-layout]) {
+        left: 0;
+        @apply(--layout-start);
+        @apply(--tripod-hero-content-width-default);
+        @apply(--tripod-hero-content-width-override);
+        text-align: left;
+      }
+      .flexbox.top-center:not([handheld-layout]),
+      .flexbox.center-center:not([handheld-layout]),
+      .flexbox.bottom-center:not([handheld-layout]) {
+        left: 0;
+        @apply(--layout-center);
+        text-align: center;
+      }
+      .flexbox.top-right:not([handheld-layout]),
+      .flexbox.center-right:not([handheld-layout]),
+      .flexbox.bottom-right:not([handheld-layout]) {
+        @apply(--layout-end);
+        @apply(--tripod-hero-content-width-default);
+        @apply(--tripod-hero-content-width-override);
+        right: 0;
+        text-align: right;
+      }
+      .flexbox.top-left:not([handheld-layout]),
+      .flexbox.top-center:not([handheld-layout]),
+      .flexbox.top-right:not([handheld-layout]) {
+        @apply(--layout-start-justified);
+      }
+      .flexbox.center-left:not([handheld-layout]),
+      .flexbox.center-center:not([handheld-layout]),
+      .flexbox.center-right:not([handheld-layout]) {
+        @apply(--layout-center-justified);
+      }
+      .flexbox.bottom-left:not([handheld-layout]),
+      .flexbox.bottom-center:not([handheld-layout]),
+      .flexbox.bottom-right:not([handheld-layout]) {
+        @apply(--layout-end-justified);
       }
     </style>
   </template>

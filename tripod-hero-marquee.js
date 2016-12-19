@@ -15,8 +15,13 @@ Polymer({
 		 */
 		contentLayout: {
 			type: String,
-			value: 'flex',
+			value: 'flexbox',
 			observer: '_validateContentLayout'
+		},
+		handheldPortrait: {
+			type: Boolean,
+			value: false,
+			reflectToAttribute: true
 		}
 	},
 
@@ -38,9 +43,9 @@ Polymer({
 		};
 	},
 	_validateContentLayout: function() {
-		const allowedLayouts = ['flex', 'grid']
+		const allowedLayouts = ['flexbox', 'grid']
 		if (!this._validate(allowedLayouts, this.contentLayout, 'content-layout')) {
-			this.contentLayout = 'flex'
+			this.contentLayout = 'flexbox'
 		};
 	},
 	_validate: function(allowedValues, inputValue, validateWhat) {
