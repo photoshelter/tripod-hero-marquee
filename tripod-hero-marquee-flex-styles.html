@@ -3,59 +3,74 @@
 <dom-module id="tripod-hero-marquee-flex-content">
   <template>
     <style>
-      :host(:not([handheld-portrait])) {
-        --tripod-hero-content-width-default: {
-          width: 40%;
-          min-width: 385px;
-        };
-        /*--hero-content-width-default: width: 40%;
-        --hero-content-min-width: min-width: 385px;*/
-        @apply(--layout)
-      }
-      .flexbox.hero-content:not([handheld-layout]) {
+    :host {
+      --tripod-hero-flex-layout-default: {
         @apply(--layout-vertical);
         top: 0;
-      }
-      .flexbox.top-left:not([handheld-layout]),
-      .flexbox.center-left:not([handheld-layout]),
-      .flexbox.bottom-left:not([handheld-layout]) {
         left: 0;
-        @apply(--layout-start);
-        @apply(--tripod-hero-content-width-default);
-        @apply(--tripod-hero-content-width-override);
-        text-align: left;
-      }
-      .flexbox.top-center:not([handheld-layout]),
-      .flexbox.center-center:not([handheld-layout]),
-      .flexbox.bottom-center:not([handheld-layout]) {
-        left: 0;
-        @apply(--layout-center);
-        text-align: center;
-      }
-      .flexbox.top-right:not([handheld-layout]),
-      .flexbox.center-right:not([handheld-layout]),
-      .flexbox.bottom-right:not([handheld-layout]) {
-        @apply(--layout-end);
-        @apply(--tripod-hero-content-width-default);
-        @apply(--tripod-hero-content-width-override);
-        right: 0;
-        text-align: right;
-      }
-      .flexbox.top-left:not([handheld-layout]),
-      .flexbox.top-center:not([handheld-layout]),
-      .flexbox.top-right:not([handheld-layout]) {
-        @apply(--layout-start-justified);
-      }
-      .flexbox.center-left:not([handheld-layout]),
-      .flexbox.center-center:not([handheld-layout]),
-      .flexbox.center-right:not([handheld-layout]) {
-        @apply(--layout-center-justified);
-      }
-      .flexbox.bottom-left:not([handheld-layout]),
-      .flexbox.bottom-center:not([handheld-layout]),
-      .flexbox.bottom-right:not([handheld-layout]) {
-        @apply(--layout-end-justified);
-      }
+        height: 100%;
+      };
+    }
+
+    :host([desktop-layout]) .top-left {
+      @apply(--layout-start);
+      @apply(--layout-start-justified)
+    }
+
+    :host([desktop-layout]) .top-center {
+      @apply(--layout-center);
+      @apply(--layout-start-justified);
+    }
+
+    :host([desktop-layout]) .top-right {
+      @apply(--layout-end);
+      @apply(--layout-start-justified);
+    }
+
+    :host([desktop-layout]) .center-left {
+      @apply(--layout-start);
+      @apply(--layout-center-justified);
+      text-align: left;
+      width: var(--tripod-hero-content-side-width, 60%);
+      min-width: var(--tripod-hero-content-side-min-width, 384px);
+    }
+
+    :host([desktop-layout]) .center-left ::slotted(*) {
+      text-align: left;
+    }
+
+    :host([desktop-layout]) .center-center {
+      @apply(--layout-center);
+      @apply(--layout-center-justified);
+    }
+
+    :host([desktop-layout]) .center-right {
+      @apply(--layout-end);
+      @apply(--layout-center-justified);
+      text-align: right;
+      right: 0;
+      width: var(--tripod-hero-content-side-width, 60%);
+    }
+     
+    :host([desktop-layout]) .center-right ::slotted(*) {
+      text-align: right;
+    }
+
+    :host([desktop-layout]) .bottom-left {
+      @apply(--layout-end);
+      @apply(--layout-end-justified);
+    }
+
+    :host([desktop-layout]) .bottom-center {
+      @apply(--layout-center);
+      @apply(--layout-end-justified);
+    }
+
+    :host([desktop-layout]) .bottom-right {
+      @apply(--layout-end);
+      @apply(--layout-end-justified);
+    }
+    
     </style>
   </template>
 </dom-module>
