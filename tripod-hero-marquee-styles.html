@@ -5,79 +5,86 @@
   <template>
     <style>
       :host {
+        display: block;
         position: relative;
         box-sizing: border-box;
 
-
-        --tripod-hero-content-default: {
+        --tripod-hero-content: {
           display: block;
           box-sizing: border-box;
-          width: var(--tripod-hero-content-width, 100%);
-          height: var(--tripod-hero-content-height, 100%);
-          overflow: hidden;
+          padding: 0;
+          width: 100%;
+          text-align: center;
+        };
+        --tripod-hero-content-desktop: {
           position: absolute;
+          overflow: hidden;
           padding: var(--tripod-hero-content-padding, 50px);
+          @apply(--tripod-hero-flex-layout-default);
+          @apply(--tripod-hero-flex-layout-override);
         };
       }
-      .hero-content ::slotted(a.hero-cta) {
-        @apply(--hero-cta-styles-override);
-      }
-      .hero-content ::slotted(h2) {
-        @apply(--hero-h2-styles-override);
-      }
-      .hero-content ::slotted(h3) {
-        @apply(--hero-h3-styles-override);
-      }
+      /* Handheld slotted content positioning */
       .hero-content {
-        @apply(--tripod-hero-content-default);
-        @apply(--tripod-hero-content-override);
-      }
-      
-      .hero-content[handheld-layout] {
-        width: 100%;
-        text-align: center;
-        display: block;
-        position: relative;
-        padding: 0;
-        background-color: white;
-      }
-      .hero-content[handheld-layout] ::slotted(*) {
-        color: black;
+        @apply(--tripod-hero-content);
       }
 
-      .hero-content[handheld-layout] ::slotted(h3) {
-        display: none;
+      /* Desktop slotted content positioning */
+      .hero-content[desktop-layout] {
+        @apply(--tripod-hero-content-desktop);
       }
-      :host([shadow]) .hero-content:not([handheld-layout]).top-left,
-      :host([shadow]) .hero-content:not([handheld-layout]).center-left,
-      :host([shadow]) .hero-content:not([handheld-layout]).bottom-left {
+
+      .hero-content ::slotted(h2) {
+        @apply(--hero-h2-styles);  
+      }
+
+      .hero-content[desktop-layout] ::slotted(h2) {
+        @apply(--hero-h2-wide-styles);
+      }
+      .hero-content ::slotted(h3) {
+        @apply(--hero-h3-styles);  
+      }
+
+      .hero-content[desktop-layout] ::slotted(h3) {
+        @apply(--hero-h3-wide-styles);
+      }
+      .hero-content ::slotted(a) {
+        @apply(--hero-cta-styles);  
+      }
+
+      /*.hero-content[desktop-layout] ::slotted(a) {
+        @apply(--hero-a-wide-styles);
+      }*/
+      :host([shadow]) .hero-content[desktop-layout].top-left,
+      :host([shadow]) .hero-content[desktop-layout].center-left,
+      :host([shadow]) .hero-content[desktop-layout].bottom-left {
         background: none;
         background: -webkit-linear-gradient(to left, transparent 10%, #000 300%);
         background: -moz-linear-gradient(to left, transparent 10%, #000 300%);
         background: -o-linear-gradient(to left, transparent 10%, #000 300%);
         background: linear-gradient(to left, transparent 10%, #000 300%);
       }
-      :host([shadow]) .hero-content:not([handheld-layout]).top-right,
-      :host([shadow]) .hero-content:not([handheld-layout]).center-right,
-      :host([shadow]) .hero-content:not([handheld-layout]).bottom-right {
+      :host([shadow]) .hero-content[desktop-layout].top-right,
+      :host([shadow]) .hero-content[desktop-layout].center-right,
+      :host([shadow]) .hero-content[desktop-layout].bottom-right {
         background: none;
         background: -webkit-linear-gradient(to right, transparent 10%, #000 300%);
         background: -moz-linear-gradient(to right, transparent 10%, #000 300%);
         background: -o-linear-gradient(to right, transparent 10%, #000 300%);
         background: linear-gradient(to right, transparent 10%, #000 300%);
       }
-      :host([shadow]) .hero-content:not([handheld-layout]).top-left,
-      :host([shadow]) .hero-content:not([handheld-layout]).top-center,
-      :host([shadow]) .hero-content:not([handheld-layout]).top-right {
+      :host([shadow]) .hero-content[desktop-layout].top-left,
+      :host([shadow]) .hero-content[desktop-layout].top-center,
+      :host([shadow]) .hero-content[desktop-layout].top-right {
         background: none;
         background: -webkit-linear-gradient(#000 -100%, transparent 50%, transparent);
         background: -moz-linear-gradient(#000 -100%, transparent 50%, transparent);
         background: -o-linear-gradient(#000 -100%, transparent 50%, transparent);
         background: linear-gradient(#000 -100%, transparent 50%, transparent);
       }
-      :host([shadow]) .hero-content:not([handheld-layout]).bottom-left,
-      :host([shadow]) .hero-content:not([handheld-layout]).bottom-center,
-      :host([shadow]) .hero-content:not([handheld-layout]).bottom-right {
+      :host([shadow]) .hero-content[desktop-layout].bottom-left,
+      :host([shadow]) .hero-content[desktop-layout].bottom-center,
+      :host([shadow]) .hero-content[desktop-layout].bottom-right {
         background: none;
         background: -webkit-linear-gradient(transparent, transparent 50%, #000 300%);
         background: -moz-linear-gradient(transparent, transparent 50%, #000 300%);

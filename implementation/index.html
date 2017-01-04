@@ -46,12 +46,25 @@
     </script>
 
     <link rel="import" href="../bower_components/tripod-hero-marquee/tripod-hero-marquee.html">
+    <link rel="import" href="../bower_components/iron-media-query/iron-media-query.html">
     <link rel="import" href="../bower_components/ps-image/ps-image.html">
 
     <style is="custom-style">
       body {
         margin: 0;
         font-family: "Cairo", sans-serif;
+      }
+      tripod-hero-marquee {
+        width: 100%;
+        height: 700px;
+      }
+      ps-image {
+        @apply(--layout);
+        width: 100%;
+        height: 67vw;
+      }
+      tripod-hero-marquee[desktop-layout] ps-image {
+        height: 100%;
       }
       h2 {
         font-size: 2.25em;
@@ -70,52 +83,7 @@
         background: #f4d80d;
         padding: 7px 0px;
       }
-      @media only screen and (max-width: 480px) {
-        tripod-hero-marquee .background,
-        ps-image {
-          height: 100vw;
-          width: 100vw;
-          position: relative;
-        }
-        h2,
-        h3 {
-          color: black;
-        }
-        a.button {
-          display: block;
-        }
-      }
-      @media only screen and (min-width: 480px) {
-        tripod-hero-marquee,
-        ps-image {
-          margin: 0;
-          height: 60vw;
-          width: 100vw;
-        }
-        .hero-content {
-          padding: 20px;
-        }
-        h2 {
-          color: white;
-          font-size: 2.5em;
-          font-size: 7vw;
-          font-weight: 400;
-          line-height: 1;
-          -webkit-margin-before:0.1em;
-          -webkit-margin-after:0.1em;
-        }
-        h3 {
-          color: white;
-          font-size: 1.8em;
-          font-size: 4vw;
-          font-weight: 400;
-          -webkit-margin-before:1em;
-          -webkit-margin-after:1em;
-        }
-        a.button {
-          padding: 14px 21px;
-        }
-      }
+    }
     </style>
 
   </head>
