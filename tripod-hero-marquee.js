@@ -18,10 +18,14 @@ Polymer({
 			value: 'flexbox',
 			observer: '_validateContentLayout'
 		},
-		handheldPortrait: {
+		desktopLayout: {
 			type: Boolean,
 			value: false,
 			reflectToAttribute: true
+		},
+		loaded: {
+			type: Boolean,
+			value: false
 		}
 	},
 
@@ -31,7 +35,9 @@ Polymer({
 	* Life cycle function that gets called when the element is
 	* first attached to the DOM
 	*/
-	attached: function attached() {},
+	attached: function attached() {
+		this.loaded = true;
+	},
 
 	/**
 	 * TODO: When we're ready to move to Polymer 2.0 these would make sense in a setter() function
@@ -49,11 +55,17 @@ Polymer({
 		};
 	},
 	_validate: function(allowedValues, inputValue, validateWhat) {
-		if(!allowedValues.includes(inputValue)) {
+		let valid = false;
+		for (let i = 0; i < allowedValues.length; i++) {
+			if (inputValue === allowedValues[i]) {
+				valid = true;
+			}
+		};
+		if (valid = false) {
 			console.warn(inputValue + ' is not a valid input for ' + validateWhat);
 			return false;
-		} else {
-			return true;
+		} else { 
+			return true 
 		};
 	}
 
