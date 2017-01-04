@@ -55,8 +55,8 @@ Custom property                  | Description                            | Defa
     <style include="tripod-hero-marquee-grid-content"></style>
 
     <slot name="background"></slot>
-    <div class$="hero-content [[contentPosition]] [[contentLayout]]" handheld-layout$={{handheldPortrait}}>
-      <slot></slot>
+    <div class$="hero-content [[contentPosition]] [[contentLayout]]" desktop-layout$={{desktopLayout}}>
+      <slot id="hero-content"></slot>
     </div>
 
   </template>
