@@ -34,21 +34,22 @@
         @apply(--tripod-hero-content-desktop);
       }
 
-      .hero-content ::slotted(h2) {
-        @apply(--hero-h2-styles);  
+      .hero-content ::content .hero-header {
+        @apply(--hero-header-styles);
       }
 
-      .hero-content[desktop-layout] ::slotted(h2) {
-        @apply(--hero-h2-wide-styles);
-      }
-      .hero-content ::slotted(h3) {
-        @apply(--hero-h3-styles);  
+      .hero-content[desktop-layout] ::content .hero-header {
+        @apply(--hero-header-desktop-styles);
       }
 
-      .hero-content[desktop-layout] ::slotted(h3) {
-        @apply(--hero-h3-wide-styles);
+      .hero-content ::content .hero-subheader {
+        @apply(--hero-subheader-styles);  
       }
-      .hero-content ::slotted(a) {
+
+      .hero-content[desktop-layout] ::content .hero-subheader {
+        @apply(--hero-subheader-desktop-styles);
+      }
+      .hero-content ::content .hero-cta {
         @apply(--hero-cta-styles);  
       }
 

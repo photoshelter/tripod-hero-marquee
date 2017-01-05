@@ -7,17 +7,18 @@
       --tripod-hero-flex-layout-default: {
         @apply(--layout-vertical);
         top: 0;
-        left: 0;
         height: 100%;
       };
     }
 
     :host([desktop-layout]) .top-left {
+      left: 0;
       @apply(--layout-start);
       @apply(--layout-start-justified)
     }
 
     :host([desktop-layout]) .top-center {
+      left: 0;
       @apply(--layout-center);
       @apply(--layout-start-justified);
     }
@@ -28,6 +29,7 @@
     }
 
     :host([desktop-layout]) .center-left {
+      left: 0;
       @apply(--layout-start);
       @apply(--layout-center-justified);
       text-align: left;
@@ -40,6 +42,7 @@
     }
 
     :host([desktop-layout]) .center-center {
+      left: 0;
       @apply(--layout-center);
       @apply(--layout-center-justified);
     }
@@ -57,11 +60,13 @@
     }
 
     :host([desktop-layout]) .bottom-left {
+      left: 0;
       @apply(--layout-end);
       @apply(--layout-end-justified);
     }
 
     :host([desktop-layout]) .bottom-center {
+      left: 0;
       @apply(--layout-center);
       @apply(--layout-end-justified);
     }
