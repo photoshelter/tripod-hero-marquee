@@ -4,29 +4,95 @@
 <dom-module id="tripod-hero-marquee-styles">
   <template>
     <style>
-      /* Smartphones (portrait and landscape) ----------- */
-      @media only screen and (max-width : 480px) {
-        :host {
+      :host {
+        display: block;
+        position: relative;
+        box-sizing: border-box;
+
+        --tripod-hero-content: {
           display: block;
-        }
-        .hero-content {
-          text-align: center;
-        }
-      }
-      @media only screen and (min-width: 480px) {
-        :host {
-          position: relative;
           box-sizing: border-box;
-        }
-        .hero-content {
+          padding: 0;
+          width: 100%;
           text-align: center;
-          height: calc(100% - (2 * var(--hero-content-padding, 20px)));
-          width: calc(100% - (2 * var(--hero-content-padding, 20px)));
-          overflow: hidden;
+        };
+        --tripod-hero-content-desktop: {
           position: absolute;
-          padding: var(--hero-content-padding, 20px);
-        }
+          overflow: hidden;
+          padding: var(--tripod-hero-content-padding, 50px);
+          @apply(--tripod-hero-flex-layout-default);
+          @apply(--tripod-hero-flex-layout-override);
+        };
       }
+      /* Handheld slotted content positioning */
+      .hero-content {
+        @apply(--tripod-hero-content);
+      }
+
+      /* Desktop slotted content positioning */
+      .hero-content[desktop-layout] {
+        @apply(--tripod-hero-content-desktop);
+      }
+
+      .hero-content ::content .hero-header {
+        @apply(--hero-header-styles);
+      }
+
+      .hero-content[desktop-layout] ::content .hero-header {
+        @apply(--hero-header-desktop-styles);
+      }
+
+      .hero-content ::content .hero-subheader {
+        @apply(--hero-subheader-styles);  
+      }
+
+      .hero-content[desktop-layout] ::content .hero-subheader {
+        @apply(--hero-subheader-desktop-styles);
+      }
+      .hero-content ::content .hero-cta {
+        @apply(--hero-cta-styles);  
+      }
+
+      /*.hero-content[desktop-layout] ::slotted(a) {
+        @apply(--hero-a-wide-styles);
+      }*/
+      :host([shadow]) .hero-content[desktop-layout].top-left,
+      :host([shadow]) .hero-content[desktop-layout].center-left,
+      :host([shadow]) .hero-content[desktop-layout].bottom-left {
+        background: none;
+        background: -webkit-linear-gradient(to left, transparent 10%, #000 300%);
+        background: -moz-linear-gradient(to left, transparent 10%, #000 300%);
+        background: -o-linear-gradient(to left, transparent 10%, #000 300%);
+        background: linear-gradient(to left, transparent 10%, #000 300%);
+      }
+      :host([shadow]) .hero-content[desktop-layout].top-right,
+      :host([shadow]) .hero-content[desktop-layout].center-right,
+      :host([shadow]) .hero-content[desktop-layout].bottom-right {
+        background: none;
+        background: -webkit-linear-gradient(to right, transparent 10%, #000 300%);
+        background: -moz-linear-gradient(to right, transparent 10%, #000 300%);
+        background: -o-linear-gradient(to right, transparent 10%, #000 300%);
+        background: linear-gradient(to right, transparent 10%, #000 300%);
+      }
+      :host([shadow]) .hero-content[desktop-layout].top-left,
+      :host([shadow]) .hero-content[desktop-layout].top-center,
+      :host([shadow]) .hero-content[desktop-layout].top-right {
+        background: none;
+        background: -webkit-linear-gradient(#000 -100%, transparent 50%, transparent);
+        background: -moz-linear-gradient(#000 -100%, transparent 50%, transparent);
+        background: -o-linear-gradient(#000 -100%, transparent 50%, transparent);
+        background: linear-gradient(#000 -100%, transparent 50%, transparent);
+      }
+      :host([shadow]) .hero-content[desktop-layout].bottom-left,
+      :host([shadow]) .hero-content[desktop-layout].bottom-center,
+      :host([shadow]) .hero-content[desktop-layout].bottom-right {
+        background: none;
+        background: -webkit-linear-gradient(transparent, transparent 50%, #000 300%);
+        background: -moz-linear-gradient(transparent, transparent 50%, #000 300%);
+        background: -o-linear-gradient(transparent, transparent 50%, #000 300%);
+        background: linear-gradient(transparent, transparent 50%, #000 300%);
+      }
+
     </style>
 
   </template>

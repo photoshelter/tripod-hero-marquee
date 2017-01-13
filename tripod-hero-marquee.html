@@ -31,10 +31,14 @@ Example: Use the `tripod-hero-marquee`
 
 Custom property                  | Description                            | Default
 ---------------------------------|----------------------------------------|--------------------
-`--hero-content-padding`     | Padding around the slotted in content                   | 20px
-`--hero-content-width`    | The width of the content container when content-position is `left` or `right`                  | 40%
+`--tripod-hero-content-padding`     | Padding around the slotted in content                   | 50x
 `--hero-content-grid-rows`    | Defines the CSS Grid rows for use with grid layout                  | 1fr 1fr 1fr
 `--hero-content-grid-columns`    | Defines the CSS Grid columns for use with grid layout                  | 1fr 1fr 1fr
+`--hero-header-styles`     | Style mixin for the header in mobile view | none
+`--hero-header-desktop-styles` | Style mixin for the header in desktop view | none
+`--hero-subheader-styles`     | Style mixin for the subheader in mobile view | none
+`--hero-subheader-desktop-styles` | Style mixin for the subheader in desktop view | none
+`--hero-cta-styles`     | Style mixin for the cta button | none
 
 
 @group tripod
@@ -55,8 +59,11 @@ Custom property                  | Description                            | Defa
     <style include="tripod-hero-marquee-grid-content"></style>
 
     <slot name="background"></slot>
-    <div class$="hero-content [[contentPosition]] [[contentLayout]]">
-      <slot></slot>
+    <div class$="hero-content [[contentPosition]] [[contentLayout]]" desktop-layout$={{desktopLayout}}>
+      <content select=".hero-header"></content>
+      <content select=".hero-subheader"></content>
+      <content select=".hero-cta"></content>
+      <content></content>
     </div>
 
   </template>
