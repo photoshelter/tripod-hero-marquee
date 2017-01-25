@@ -4,6 +4,7 @@
   <template>
     <style>
     :host {
+      --tripod-hero-content-side-width: 50%;
       --tripod-hero-flex-layout-default: {
         @apply(--layout-vertical);
         top: 0;
@@ -33,7 +34,7 @@
       @apply(--layout-start);
       @apply(--layout-center-justified);
       text-align: left;
-      width: var(--tripod-hero-content-side-width, 60%);
+      width: var(--tripod-hero-content-side-width);
       min-width: var(--tripod-hero-content-side-min-width, 384px);
     }
 
@@ -52,7 +53,7 @@
       @apply(--layout-center-justified);
       text-align: right;
       right: 0;
-      width: var(--tripod-hero-content-side-width, 60%);
+      width: var(--tripod-hero-content-side-width);
     }
      
     :host([desktop-layout]) .center-right ::slotted(*) {
