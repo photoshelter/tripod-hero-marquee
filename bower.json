@@ -25,7 +25,7 @@
 
   },
   "devDependencies": {
-    "ps-image": "git@gh.corp.bitshelter.com:Components/ps-image.git#eb187cfe76cd36e8ae7642fd109d4ac96e6fcfa3",
+    "ps-image": "git@gh.corp.bitshelter.com:Components/ps-image.git",
     "iron-media-query": "PolymerElements/iron-media-query"
   }
 }
