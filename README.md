@@ -9,10 +9,8 @@ styles, and provides a collection of classes to position the content you
 pass in using flexbox (with support also included for CSS Grid Positioning as
 it gains more browser support!).
 
-The component uses Shadow DOM v1 `slot` elements as a sort of placeholder for you
+The component uses Shadow DOM v0 `content` elements as a sort of placeholder for you
 to add your own markup to be rendered within the element.
-
-A background is specified by assigning it `slot="background"`.
 
 All other content is distributed in a `.hero-content` container in the Shadow DOM.
 
@@ -31,10 +29,14 @@ Example: Use the `tripod-hero-marquee`
 
 Custom property                  | Description                            | Default
 ---------------------------------|----------------------------------------|--------------------
-`--hero-content-padding`     | Padding around the slotted in content                   | 20px
-`--hero-content-width`    | The width of the content container when content-position is `left` or `right`                  | 40%
+`--tripod-hero-content-padding`     | Padding around the slotted in content                   | 50x
 `--hero-content-grid-rows`    | Defines the CSS Grid rows for use with grid layout                  | 1fr 1fr 1fr
 `--hero-content-grid-columns`    | Defines the CSS Grid columns for use with grid layout                  | 1fr 1fr 1fr
+`--hero-header-styles`     | Style mixin for the header in mobile view | none
+`--hero-header-desktop-styles` | Style mixin for the header in desktop view | none
+`--hero-subheader-styles`     | Style mixin for the subheader in mobile view | none
+`--hero-subheader-desktop-styles` | Style mixin for the subheader in desktop view | none
+`--hero-cta-styles`     | Style mixin for the cta button | none
 
 ---
 
