@@ -24,23 +24,24 @@ Polymer({
 		},
 
 		/**
-		 * An attrribute to help with responsive sizing. 
-		 * Gets reflected to the component....
-		 * TODO @will
+		 * An attribute to help with responsive sizing.
+		 * Use with `iron-media-query query-matches={{dekstopLayout}}` to bind a
+		 * breakpoint at which to switch from the mobile layout.
 		**/
 		desktopLayout: {
 			type: Boolean,
 			value: false,
 			reflectToAttribute: true
 		},
-		
+
 		/**
-		 * A loaded check...
-		 * TODO @will
+		 * An attribute used to avoid distributed content (content passed in from the Light DOM) from
+		 * flashing with external styling in browsers using the webcomponent.org shims if the shims.
 		**/
 		loaded: {
 			type: Boolean,
-			value: false
+			value: false,
+			reflectToAttribute: true
 		}
 	},
 
@@ -85,13 +86,13 @@ Polymer({
 		if (valid = false) {
 			console.warn(inputValue + ' is not a valid input for ' + validateWhat);
 			return false;
-		} else { 
-			return true 
+		} else {
+			return true
 		};
 	},
 
 	/**
-	 * Getters 
+	 * Getters
 	**/
 	get _allowedPositions() {
 		return['top-left', 'top-center', 'top-right', 'center-left', 'center-center', 'center-right', 'bottom-left', 'bottom-center', 'bottom-right'];
