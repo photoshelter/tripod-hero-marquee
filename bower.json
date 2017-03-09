@@ -1,14 +1,14 @@
 {
   "name": "tripod-hero-marquee",
   "author":"PhotoShelter Developers",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "Displays a flexible hero banner with text and a button overlaying an image or video",
   "private": true,
-  "license": "https://github.com/PhotoShelter/tripod-hero-marquee/LICENSE.txt",
-  "homepage": "https://github.com/PhotoShelter/tripod-hero-marquee",
+  "license": "https://gh.corp.bitshelter.com/Components/tripod-hero-marquee/LICENSE.txt",
+  "homepage": "https://gh.corp.bitshelter.com/Components/tripod-hero-marquee",
   "repository": {
     "type": "git",
-    "url": "git://github.com/PhotoShelter/tripod-hero-marquee.git"
+    "url": "git://gh.corp.bitshelter.com/Components/tripod-hero-marquee.git"
   },
   "keywords": [
     "web-components",
