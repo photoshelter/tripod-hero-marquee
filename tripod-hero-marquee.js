@@ -83,7 +83,7 @@ Polymer({
 				valid = true;
 			}
 		};
-		if (valid = false) {
+		if (valid == false) {
 			console.warn(inputValue + ' is not a valid input for ' + validateWhat);
 			return false;
 		} else {
