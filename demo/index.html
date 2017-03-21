@@ -6,10 +6,10 @@
 	<title>tripod-hero-marquee Demo</title>
 	<script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
 	<link rel="import" href="../bower_components/tripod-hero-marquee/tripod-hero-marquee.html">
-	<link rel="import" href="../bower_components/ps-image/ps-image.html">
 	<link rel="import" href="../bower_components/iron-demo-helpers/demo-pages-shared-styles.html">
 	<link rel="import" href="../bower_components/iron-demo-helpers/demo-snippet.html">
 	<link rel="import" href="../bower_components/iron-media-query/iron-media-query.html">
+	<link rel="import" href="../bower_components/iron-image/iron-image.html">
 	<style is="custom-style">
 		tripod-hero-marquee {
 			@apply(--layout);
@@ -71,7 +71,7 @@
 	</demo-snippet>
 
 
-	<h3><code>&lt;tripod-hero-marquee&gt;</code> with a distributed <code>&lt;ps-image&gt;</code> background at mobile width.</h3>
+	<h3><code>&lt;tripod-hero-marquee&gt;</code> with a distributed <code>&lt;iron-image&gt;</code> background at mobile width.</h3>
 	<demo-snippet class="centered-demo">
 		<template>
 			<iframe src="mobile.html" width="375px" height="667px"></iframe>
@@ -101,7 +101,7 @@
 						padding: 7px 0px;
 					};
 				}
-				ps-image {
+				 {
 					background-color: black;
 					height: 60vw;
 					width: 100vw;
@@ -112,7 +112,7 @@
 		</head>
 		<body>
 			<tripod-hero-marquee content-position="top center">
-				<ps-image class="hero-background" api-key="PS631731c7" api-root="https://www.photoshelter.com/psapi" iid="I0000eYiPzoOTlPg" sizing="cover" position="center top"></ps-image>
+				<iron-image class="hero-background" api-key="PS631731c7" api-root="https://www.photoshelter.com/psapi" iid="I0000eYiPzoOTlPg" sizing="cover" position="center top"></iron-image>
 				<h2 class="hero-header">Mobile demo.</h2>
 				<h3 class="hero-subheader">Embedded in an iframe to show mobile responsive layout.</h3>
 				<a href="/implementation" class="hero-cta">Sign up now</a>
@@ -122,7 +122,7 @@
 		</template>
 	</demo-snippet>
 
-	<h3><code>&lt;tripod-hero-marquee desktop-layout&gt;</code> with a distributed <code>&lt;ps-image&gt;</code> background and <code>content-position="center-left"</code>.</h3>
+	<h3><code>&lt;tripod-hero-marquee desktop-layout&gt;</code> with a distributed <code>&lt;iron-image&gt;</code> background and <code>content-position="center-left"</code>.</h3>
 	<demo-snippet class="centered-demo">
 		<template>
 			<style is="custom-style">
@@ -147,7 +147,7 @@
 				}
 			</style>
 			<tripod-hero-marquee id="standard-example" content-position="bottom-center" desktop-layout={{desktopLayout}}>
-				<ps-image class="hero-background" api-key="PS631731c7" api-root="https://www.photoshelter.com/psapi" iid="I0000eYiPzoOTlPg" sizing="cover" position="center top"></ps-image>
+				<iron-image src="https://ssl.c.photoshelter.com/img-get2/I00007dPXW9BAIiU/sec=wd0sd0oe0lwe0ms1000ed20170311lyHGYvV7mWMka15/fit=2040x2040/Rutgers-womens-rowing-team-works-out-on-the-Raritan-River.jpg" class="hero-background" sizing="cover" position="center 75%"></iron-image>
 				<h2 class="hero-header">Where photographers get work done</h2>
 				<a href="/demo" class="hero-cta">Sign up now</a>
 			</tripod-hero-marquee>
@@ -186,9 +186,9 @@
 				}
 			</style>
 			<tripod-hero-marquee id="taller-example" content-position="center-left" desktop-layout={{desktopLayout}}>
-				<ps-image class="hero-background" api-key="PS631731c7" api-root="https://www.photoshelter.com/psapi" iid="I0000eYiPzoOTlPg" sizing="cover" position="center top"></ps-image>
+				<iron-image src="https://www.photoshelter.com/img-get2/I0000JLClYTLms_E/sec=wd0sd0oe0lwe0ms1000ed20170311myKzy0ZRlEDk6ds/fill=2040x2040/100723-ALMS-Lime-Rock-186.jpg" class="hero-background" sizing="cover" position="center 10%"></iron-image>
 				<h2 class="hero-header">Where photographers get work done</h2>
-				<h3 class="hero-subheader">Where Photographers get work done.</h3>
+				<h3 class="hero-subheader">The tools your photo business deserves.</h3>
 				<a href="/demo" class="hero-cta">Sign up now</a>
 			</tripod-hero-marquee>
 		</template>
@@ -227,28 +227,43 @@
 		</template>
 	</demo-snippet>
 
-	<h3><code>&lt;tripod-hero-marquee desktop-layout&gt;</code> with a distributed <code>&lt;ps-image&gt;</code> background and <code>content-layout="grid"</code>.</h3>
+	<h3><code>&lt;tripod-hero-marquee desktop-layout&gt;</code> with a distributed <code>&lt;iron-image&gt;</code> background and <code>content-layout="grid"</code>.</h3>
 	<demo-snippet class="centered-demo">
 		<template>
 			<style is="custom-style">
 				#grid-example {
 					--hero-content-grid-rows: 1fr 1fr 1fr ;
 					--hero-content-grid-columns: 1fr 1fr 160px;
+					--hero-header-desktop-styles: {
+						color: white;
+						font-family: sans-serif;
+						font-size: 3em;
+					};
+					--hero-cta-styles: {
+						background-color: #f4d80d;
+						padding: 10px 30px;
+						font-family: sans-serif;
+						text-decoration: none;
+						font-size: 1.4em;
+						font-weight: 900;
+						color: black;
+					};
 				}
 				#grid-example h2 {
 					grid-column-start: 1;
 					grid-column-end: 4;
 					grid-row-start: 1;
 				}
-				#grid-example a.button {
+				#grid-example a.hero-cta {
 					grid-column-start: 3;
-					grid-row-start: 2;
+					grid-row-start: 3;
 					margin: auto;
 				}
 				#grid-example p {
 					grid-column-start: 1;
 					grid-column-end: 2;
 					grid-row-start: 3;
+					color: white;
 				}
 				#grid-example img {
 					grid-column-start: 1;
@@ -257,9 +272,9 @@
 			</style>
 
 			<tripod-hero-marquee id="grid-example" content-layout="grid" desktop-layout={{desktopLayout}}>
-				<ps-image slot="background" class="background" api-key="PS631731c7" api-root="https://ps.dev.bitshelter.com/psapi" iid="I00007PMVmOqiyaE" sizing="cover" position="right bottom"></ps-image>
-				<h2>Content positioned by CSS grid.</h2>
-				<a href="/demo" class="button">Sign up now</a>
+				<iron-image src="https://www.photoshelter.com/img-get2/I0000JLClYTLms_E/sec=wd0sd0oe0lwe0ms1000ed20170311myKzy0ZRlEDk6ds/fill=2040x2040/100723-ALMS-Lime-Rock-186.jpg" class="hero-background" sizing="cover" position="center 10%"></iron-image>
+				<h2 class="hero-header">Content positioned by CSS grid.</h2>
+				<a href="/demo" class="hero-cta">Sign up now</a>
 				<p>
 					Anything can be slotted into the component, like this paragraph element, and positioned with a high degree of specificity with CSS Grid. Browser support isn't great now, but tripod-hero-marquee will be ready when you are!
 				</p>
