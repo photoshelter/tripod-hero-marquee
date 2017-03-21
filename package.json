@@ -15,7 +15,8 @@
     "clean": "rm -rf bower_components/tripod-hero-marquee",
     "build": "gulp",
     "start":"npm run clean && npm run build",
-    "pages":"npm run clean && gulp pages-deployment"
+    "pages":"npm run clean && gulp pages-deployment",
+    "test":"npm run clean && gulp copy && wct"
   },
   "engines": {
     "node": ">=4.0"
