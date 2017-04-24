@@ -1,5 +1,7 @@
 ## &lt;tripod-hero-marquee&gt;
 
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/photoshelter/tripod-hero-marquee)
+
 *[Demo and API Docs](http://engineering.photoshelter.com/tripod-hero-marquee/)*
 
 ### Description
@@ -22,10 +24,42 @@ while external or custom styles can be used to match style with the rest of your
 ### Usage
 
 Example: Use the `tripod-hero-marquee`
+
+<!--
+```
+<custom-template-demo>
+  <template>
+    <link rel="import" href="tripod-hero-marquee.html">
+    <style is="custom-style">
+      tripod-hero-marquee {
+        height: 400px;
+        width: 100%;
+        --hero-cta-styles: {
+          background-color: #f4d80d;
+          padding: 10px 30px;
+          font-family: sans-serif;
+          text-decoration: none;
+          font-weight: 600;
+          color: black;
+        }
+      }
+      .hero-background {
+        height: 100%;
+        width: 100%;
+        background-image:url(data:image/svg+xml;base64,CiAgPHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHhtbG5zOnhsaW5rPSdodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rJyB3aWR0aD0nMTM2JyBoZWlnaHQ9JzIxNy42JyB2aWV3Qm94PScwIDAgMTAgMTYnPgogICAgPGcgaWQ9J2MnPgogICAgICA8cGF0aCBmaWxsPScjZTdlN2U3JyBkPSdNMCAwbDUgM3Y1bC01IC0zeicvPgogIAkJPHBhdGggZmlsbD0nI2E5ZGI4YScgZD0nTTEwIDBsLTUgM3Y1bDUgLTMnLz4KICAJPC9nPgogIAk8dXNlIHg9JzUnIHk9JzgnIHhsaW5rOmhyZWY9JyNjJyAvPgogIAk8dXNlIHg9Jy01JyB5PSc4JyB4bGluazpocmVmPScjYycgLz4KICA8L3N2Zz4KICA=);
+      }
+    </style>
+  </template>
+</custom-template-demo>
+```
+-->
+
 ```html
 <tripod-hero-marquee>
-  <div slot="background" style="background-image:url(/image.jpg);background-size:cover;"></div>
-  <h2>Headers, button, and backbround all slotted in from light DOM.</h2>
+  <div class="hero-background" id="background"></div>
+  <h2 class="hero-header">Headers, button, and background all slotted in from light DOM.</h2>
+  <h3 class="hero-subheader">You can slot in all kinds of elements. They inherit their styles from the outside.</h3>
+  <a href="http://engineering.photoshelter.com/tripod-hero-marquee" target="_blank" class="hero-cta">More info in the docs</a>
 </tripod-hero-marquee>
 ```
 
