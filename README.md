@@ -1,6 +1,6 @@
 ## &lt;tripod-hero-marquee&gt;
 
-*[Demo and API Docs](https://gh.corp.bitshelter.com/pages/Components/tripod-hero-marquee)*
+*[Demo and API Docs](http://engineering.photoshelter.com/tripod-hero-marquee/)*
 
 ### Description
 

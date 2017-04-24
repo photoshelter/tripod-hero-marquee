@@ -13,20 +13,18 @@ During development there are 3 pages you might be interested in.
 **note:** If you are finding that when reloading it is switching from demos back to docs, then in the browser add the route `/demo` to the url and then the refreshes will happen on that route.
 
 
-### Demos and Releases 
+### Demos and Releases
 
-All components should follow semver versioning. 
+All components should follow semver versioning.
 
 - You can run one of three commands to bump and tag your new release.
   - `gulp release-patch` updates from 0.0.1 to 0.0.2
   - `gulp release-minor` updates from 0.0.1 to 0.1.0
   - `gulp release-major` updates from 0.0.1 to 1.0.0
 
-- All projects also come with built in demos and docs. 
-  - `npm run pages` is the command to deploy a [Github Pages](https://pages.github.com/) site for your project 
-  
-  [one-comp](https://gh.corp.bitshelter.com/pages/Components/tripod-hero-marquee)
-  
+- All projects also come with built in demos and docs.
+  - `npm run pages` is the command to deploy a [Github Pages](https://pages.github.com/) site for your project
+
   - **note:**
     - This creates a orphan branch with no history.
     - Always run this from `master` after pulling the latest build to ensure your docs reflect the most recent version.
@@ -49,4 +47,3 @@ If you already have an account then all you need to do to get SauceLabs working 
 - `travis encrypt SAUCE_ACCESS_KEY=[your access key] --add`
 - Commit and push .travis.yml
 - You're done!
-
