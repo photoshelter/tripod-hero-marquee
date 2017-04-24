@@ -1,0 +1,48 @@
+
+<link rel="import" href="../polymer/polymer.html">
+
+
+<!--
+Generates a link to an image creator's PhotoShelter customization with their name as the label.
+-->
+
+<!--
+Example: Use the ps-credit
+```html
+<ps-credit image=[[image]]></ps-credit>
+```
+
+### Styling
+
+Custom property                  | Description                            | Default
+---------------------------------|----------------------------------------|--------------------
+`--ps-credit-width`     | Width of the element                   | 256px
+
+
+@group ps
+@element ps-credit
+@demo
+@test test/index.html
+-->
+
+
+<link rel="import" href="ps-credit-styles.html">
+
+<dom-module id="ps-credit">
+
+  <template>
+
+    <style include="ps-credit-styles"></style>
+    
+    <template is="dom-if" if="[[image.Creator]]">
+      <a href="[[creatorUrl]]" target="_blank">Photo by <span>[[creatorName]]</span></a>
+    </template>
+    <!--TODO: Add ability for ps-video to surface creator information -->
+    <!--<template is="dom-if" if="[[video.Creator]]">
+      <a href="[[creatorUrl]]" target="_blank">Video by <span>[[creatorName]]</span></a>
+    </template> -->
+
+  </template>
+
+  <script src="ps-credit.js"></script>
+</dom-module>

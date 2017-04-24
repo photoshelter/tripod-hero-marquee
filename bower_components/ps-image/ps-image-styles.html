@@ -1,0 +1,25 @@
+<dom-module id="ps-image-styles">
+    <template>
+        <style>
+            :host {
+                display: inline-block;
+                box-sizing: border-box;
+              }
+            :host iron-image {
+                --iron-image-placeholder: {
+                    background-position: center center;
+                    background-repeat: no-repeat;
+                    background-size: 75% !important;
+                }
+            }
+            :host:not([loaded]) iron-image {
+                width: 100%;
+                height: 100%;
+            }
+            ps-image-impl {
+                @apply(--layout);
+                @apply(--layout-flex);
+            }
+        </style>
+    </template>
+</dom-module>

@@ -1,0 +1,63 @@
+<script>
+    var PSBehaviors = PSBehaviors || {};
+    PSBehaviors.ApiBehavior = {
+        properties: {
+            /**
+             * `apiRoot` sets the root of the data API (particularly user for DEV
+             * vs PROD switching)
+             */
+            apiRoot: {
+                type: String,
+                value: '/psapi'
+            },
+            /**
+             * `version` sets the version of the API to request against.
+             */
+            apiVersion: {
+                type: String,
+                value: '3'
+            },
+            /**
+             * `apiKey` registers your requests against the API in the name of your
+             * account.
+             */
+            apiKey: {
+                type: String
+            },
+            apiFields: {
+                type: Array,
+                value: function() {
+                    return ['*'];
+                }
+            },
+            _params: {
+                type: Object,
+				computed: '_computeParams(apiKey)'
+            },
+            /**
+            * `auto` controls whether the iron-ajax requests new data on ever change
+            * to `this.url`.
+            */
+            auto: {
+                type: Boolean,
+                value: true
+            }
+        },
+	    /**
+	     * Pass a hard call to the iron-ajax component for new data based on the
+	     * current URL.
+	     *
+	     * @return {!IronRequestElement}
+	     *
+	     */
+	    generateRequest: function() {
+	        return this.$.api.generateRequest();
+	    },
+        _computeParams: function(apiKey) {
+            var params = {
+                api_key: apiKey
+            };
+            return params;
+        }
+    };
+</script>

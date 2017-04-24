@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+	<title>ps-image Demo</title>
+	<script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+	<link rel="import" href="../bower_components/ps-image/ps-image.html">
+	<link rel="import" href="../bower_components/iron-demo-helpers/demo-pages-shared-styles.html">
+  <link rel="import" href="../bower_components/iron-demo-helpers/demo-snippet.html">
+</head>
+<body unresolved>
+	<style is="custom-style">
+		
+	</style>
+
+	<h3>This works locally, but not on pages because of https</h3>
+
+	<demo-snippet class="centered-demo">
+		<template>
+			<ps-image api-key="TESTKEY" api-root="http://ps.dev.bitshelter.com:8180/psapi" iid="I0000YCtJeryFsu0"></ps-image>
+		</template>
+	</demo-snippet>
+
+	<h3>This doesnt locally, because of ::ERR_SSL_PROTOCOL_ERROR</h3>
+	<h3>This would work on pages but doesnt because of CORS</h3>
+	<demo-snippet class="centered-demo">
+		<template>
+			<ps-image api-key="TESTKEY" api-root="https://ps.dev.bitshelter.com/psapi" iid="I0000YCtJeryFsu0"></ps-image>
+		</template>
+	</demo-snippet>
+
+	<demo-snippet class="centered-demo">
+		<template>
+			<style is="custom-style">
+				#sized-demo {
+					@apply(--layout);
+					width: 1000px;
+					height: 667px;
+				}
+			</style>
+			<ps-image id="sized-demo" api-key="TESTKEY" api-root="https://ps.dev.bitshelter.com/psapi" iid="I0000YCtJeryFsu0" sizing="cover"></ps-image>
+		</template>
+	</demo-snippet>
+
+</body>
+</html>

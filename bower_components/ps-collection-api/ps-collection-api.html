@@ -1,0 +1,123 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../ps-api/ps-extend-behavior.html">
+<link rel="import" href="../iron-ajax/iron-ajax.html">
+
+<!--
+An element requesting PhotoShelter COLLECTION data from the API.
+
+Example:
+
+    <ps-collection-api></ps-collection-api>
+-->
+<dom-module id="ps-collection-api">
+<style>
+:host {
+    display: none;
+}
+</style>
+<template>
+    <iron-ajax id="api"
+            auto$="[[auto]]"
+            url="[[_url]]"
+            params="[[_params]]"
+            handle-as="json"
+            on-response="_handleResponse">
+    </iron-ajax>
+</template>
+</dom-module>
+
+<script>
+
+Polymer({
+
+    is: 'ps-collection-api',
+
+    behaviors: [PSBehaviors.ApiExtendBehavior],
+
+    properties: {
+        /**
+         * `keyImage` reports the keyImage data returned by the API based on
+         * the CID and the extends requested.
+         */
+        keyImage: {
+            type: Object,
+            value: function() {
+                return {};
+            },
+            notify: true
+        },
+        /**
+         * `cid` sets the CID against which to request data from the API.
+         */
+         cid: {
+             type: String
+         },
+         /**
+         * `_url` will use the cid, apiKey, _apiExtend to form the rest to be
+         * made to the server
+         */
+        _url: {
+            type: String,
+            computed: '_computeUrl(cid, apiKey, _apiExtend)',
+            value: null
+        }
+    },
+
+    // Element Lifecycle
+
+    created: function() {
+        this._apiExtendTypes = [
+            'ImageLink',
+            'KeyImage'
+        ];
+    },
+
+    ready: function() {
+        // `ready` is called after all elements have been configured, but
+        // propagates bottom-up. This element's children are ready, but parents
+        // are not.
+        //
+        // This is the point where you should make modifications to the DOM (when
+        // necessary), or kick off any processes the element wants to perform.
+        this.auto = true;
+    },
+
+    attached: function() {
+        // `attached` fires once the element and its parents have been inserted
+        // into a document.
+        //
+        // This is a good place to perform any work related to your element's
+        // visual state or active behavior (measuring sizes, beginning animations,
+        // loading resources, etc).
+    },
+
+    detached: function() {
+        // The analog to `attached`, `detached` fires when the element has been
+        // removed from a document.
+        //
+        // Use this to clean up anything you did in `attached`.
+    },
+
+    /**
+     * Pass a hard call to the iron-ajax component for new data based on the
+     * current URL.
+     *
+     * @return {!IronRequestElement}
+     *
+     */
+    generateRequest: function() {
+        return this.$.api.generateRequest();
+    },
+
+    _computeUrl: function(cid, apiKey, apiExtend) {
+        if (cid === null) return undefined;
+        return this.apiRoot + '/v' + this.apiVersion + '/collection/' + cid
+    },
+
+    _handleResponse: function(e, resp) {
+        this.keyImage = resp.response.data.Collection.KeyImage
+    }
+
+});
+
+</script>

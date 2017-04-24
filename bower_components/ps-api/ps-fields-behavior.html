@@ -1,0 +1,43 @@
+<link rel="import" href="../ps-api/ps-api-behavior.html">
+<script>
+    var PSBehaviors = PSBehaviors || {};
+    PSBehaviors.FieldsBehaviorImpl = {
+        properties: {
+            apiFields: {
+                type: Array,
+                value: function() {
+                    return ['*'];
+                }
+            },
+			_idAs: {
+				type: String
+				//Functionally set from compose target?
+			},
+            _params: {
+                type: Object,
+				computed: '_computeParams(apiKey, apiFields)'
+            }
+        },
+		_idCheck: function(fields) {
+            if (Object.keys(fields).length && fields[0] !== '*'
+                    && fields.indexOf(this._idAs) === -1) {
+                        fields.push(this._idAs);
+                    }
+			return fields;
+		},
+        _computeParams: function(apiKey, fields) {
+			//TODO(WJ) abstract this check.
+			if (arguments.length < 2) return;
+			fields = this._idCheck(fields);
+            var params = {
+                api_key: apiKey,
+                fields: fields.join(',')
+            };
+            return params;
+        }
+    };
+	PSBehaviors.ApiFieldsBehavior = [
+		PSBehaviors.ApiBehavior,
+		PSBehaviors.FieldsBehaviorImpl
+	];
+</script>

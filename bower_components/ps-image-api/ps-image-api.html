@@ -1,0 +1,139 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../ps-api/ps-extend-behavior.html">
+<link rel="import" href="../iron-ajax/iron-ajax.html">
+<link rel="import" href="../iron-meta/iron-meta.html">
+
+<!--
+An element requesting PhotoShelter IMAGE data from the API.
+
+Example:
+
+    <ps-image-api></ps-image-api>
+-->
+<dom-module id="ps-image-api">
+<template>
+	<style>
+	:host {
+	    display: none;
+	}
+	</style>
+    <iron-meta id="apiCache"></iron-meta>
+    <iron-ajax id="api"
+            auto$="[[auto]]"
+            url="[[_url]]"
+            params="[[_params]]"
+            handle-as="json"
+            on-response="_handleResponse">
+    </iron-ajax>
+</template>
+</dom-module>
+
+<script>
+
+Polymer({
+
+    is: 'ps-image-api',
+
+    behaviors: [PSBehaviors.ApiExtendBehavior],
+
+    properties: {
+        /**
+        * `image` reports the data returned by the API based on the IID and
+        * the extends requested.
+        */
+        image: {
+            type: Object,
+            value: function() {
+                return {};
+            },
+            notify: true
+        },
+        /**
+        * `iid` sets the IID against which to request data from the API.
+        */
+        iid: {
+            type: String
+        },
+        /**
+        * `_url` will use the iid, apiKey, _apiExtend to form the rest to be
+        * made to the server
+        */
+        _url: {
+            type: String,
+            computed: '_computeUrl(iid, apiKey, _apiExtend)',
+            value: null
+        },
+        _cached: {
+            type: Boolean,
+            // computed: '_compute_cached(iid)'
+        }
+    },
+
+    // Element Lifecycle
+
+    created: function() {
+        this._apiExtendTypes = [
+            'ImageLink',
+            'Iptc',
+            'Creator'
+        ];
+    },
+
+    ready: function() {
+        // `ready` is called after all elements have been configured, but
+        // propagates bottom-up. This element's children are ready, but parents
+        // are not.
+        //
+        // This is the point where you should make modifications to the DOM (when
+        // necessary), or kick off any processes the element wants to perform.
+        var apiMeta = this.$.apiCache.byKey('apiMeta');
+        if (typeof apiMeta !== 'undefined') {
+            this.apiRoot = apiMeta.apiRoot || this.apiRoot;
+            this.apiVersion = apiMeta.apiVersion || this.apiVersion;
+            this.apiKey = apiMeta.apiKey || this.apiKey;
+        }
+    },
+
+    attached: function() {
+        // `attached` fires once the element and its parents have been inserted
+        // into a document.
+        //
+        // This is a good place to perform any work related to your element's
+        // visual state or active behavior (measuring sizes, beginning animations,
+        // loading resources, etc).
+    },
+
+    detached: function() {
+        // The analog to `attached`, `detached` fires when the element has been
+        // removed from a document.
+        //
+        // Use this to clean up anything you did in `attached`.
+    },
+
+    // _compute_cached: function(iid) {
+    //     var apiImage = this.$.apiCache.byKey('apiImage')
+    //     if (apiImage && apiImage.hasOwnProperty(iid)) {
+    //         this.image = apiImage[iid];
+    //     } else {
+    //         this.auto = true;
+    //     }
+    //     return true;
+    // },
+
+    _computeUrl: function(iid, apiKey, apiExtend) {
+        if (iid === null) return undefined;
+        return this.apiRoot + '/v' + this.apiVersion + '/image/' + iid;
+    },
+
+    _handleResponse: function(e, resp) {
+        var apiImage = this.$.apiCache.byKey('apiImage');
+        //this.auto = false;
+        this.image = resp.response.data.Image;
+        if (typeof apiImage !== 'undefined') {
+            apiImage[this.iid] = this.image;
+        }
+    }
+
+});
+
+</script>

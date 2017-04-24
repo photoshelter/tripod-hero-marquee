@@ -1,0 +1,98 @@
+
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-image/iron-image.html">
+<link rel="import" href="../iron-resizable-behavior/iron-resizable-behavior.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../ps-image-api/ps-image-api.html">
+<link rel="import" href="../ps-gallery-api/ps-gallery-api.html">
+<link rel="import" href="../ps-collection-api/ps-collection-api.html">
+<link rel="import" href="../ps-image-impl/ps-image-impl.html">
+<link rel="import" href="../ps-credit/ps-credit.html">
+
+
+<!--
+An element displaying a PhotoShelter image.  Based on the input settings there
+are a variety of ways to request the image.  IID will give you direct access to
+an image, GID and CID will give you access to the associated Key Image, SRC
+will directly point to the file in question, and when an Image Object is provided
+the associated URL will be derived from there.
+
+Example:
+
+    <ps-image iid="I0000xxxxxxxxxxx"></ps-image>
+
+Example:
+
+    <ps-image gid="G0000xxxxxxxxxxx"></ps-image>
+
+Example:
+
+    <ps-image cid="C0000xxxxxxxxxxx"></ps-image>
+
+Example:
+
+    <ps-image src="img/location.png"></ps-image>
+
+TO-DO:
+* add cascade sequences to JSON+LD content
+
+@demo
+-->
+
+
+<link rel="import" href="ps-image-styles.html">
+
+<dom-module id="ps-image">
+
+  <template>
+
+    <style include="ps-image-styles"></style>
+    
+    <ps-image-api
+            id="imageApi"
+            iid="[[iid]]"
+            image="{{image}}"
+            api-key="[[apiKey]]"
+            api-root="[[apiRoot]]"
+            api-extends="[[apiExtends.Image]]"
+        ></ps-image-api>
+    <ps-gallery-api
+            id="galleryApi"
+            gid="[[gid]]"
+            key-image="{{image}}"
+            api-key="[[apiKey]]"
+            api-root="[[apiRoot]]"
+            api-extends="[[apiExtends.Gallery]]"
+        ></ps-gallery-api>
+    <ps-collection-api
+            id="collectionApi"
+            cid="[[cid]]"
+            key-image="{{image}}"
+            api-key="[[apiKey]]"
+            api-root="[[apiRoot]]"
+            api-extends="[[apiExtends.Collection]]"
+        ></ps-collection-api>
+    <ps-image-impl
+            id="psimg"
+            image="[[image]]"
+            src="[[src]]"
+            prevent-load="[[preventLoad]]"
+            position="[[position]]"
+            preload
+            fade$="[[fade]]"
+            sizing="[[sizing]]"
+            position="[[position]]"
+            placeholder="[[placeholder]]"
+            loaded="{{loaded}}"
+            loading="{{loading}}"
+        ></ps-image-impl>
+    <template is="dom-if" if="[[credited]]">
+        <ps-credit
+            id="pscredit"
+            image="[[image]]"
+        ></ps-credit>
+    </template>
+  </template>
+
+  <script src="ps-image.js"></script>
+</dom-module>

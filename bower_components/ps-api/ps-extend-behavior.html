@@ -1,0 +1,61 @@
+<link rel="import" href="../ps-api/ps-api-behavior.html">
+<link rel="import" href="../ps-api/ps-fields-behavior.html">
+<script>
+    var PSBehaviors = PSBehaviors || {};
+    PSBehaviors.ExtendBehaviorImpl = {
+        properties: {
+            apiExtends: {
+                type: Array
+            },
+            _apiExtendTypes: {
+                type: Array
+				//Functionally set from compose target?
+            },
+            _apiExtend: {
+                type: Object,
+                computed: '_extendApi(apiExtends)'
+            },
+            _params: {
+                type: Object,
+				computed: '_computeParams(apiKey, _apiExtend, apiFields)'
+            }
+        },
+        _extendApi: function(apiExtends) {
+            var apiExtend = {};
+            apiExtends.forEach(function(extend) {
+                apiExtend = this._wrapExtend(apiExtend, extend);
+            }, this);
+            return apiExtend;
+        },
+        _wrapExtend: function(apiExtend, extend) {
+            if (typeof extend !== 'object') {
+                if (!this._validateExtend(extend)) return apiExtend;
+                apiExtend[extend] = {"fields":"*"};
+            } else {
+                if (!this._validateExtend(extend[0])) return apiExtend;
+                apiExtend[extend[0]] = extend[1];
+            }
+            return apiExtend;
+        },
+        _validateExtend: function(extend) {
+            return this._apiExtendTypes.indexOf(extend) > -1;
+        },
+        _computeParams: function(apiKey, apiExtend, fields) {
+			if (arguments.length < 3) return;
+			fields = this._idCheck(fields);
+            var params = {
+                api_key: apiKey,
+                extend: JSON.stringify(apiExtend),
+                fields: fields.join(',')
+            };
+            return params;
+        },
+        _isExtended: function() {
+            //abstract or needs to be created.
+        }
+    };
+	PSBehaviors.ApiExtendBehavior = [
+		PSBehaviors.ApiFieldsBehavior,
+		PSBehaviors.ExtendBehaviorImpl
+	];
+</script>

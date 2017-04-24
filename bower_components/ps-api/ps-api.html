@@ -1,0 +1,124 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-meta/iron-meta.html">
+
+<!--
+The `ps-api` component manages the local cache of photoshelter.com API data. API
+specific data points like `apiRoot`, `apiVersion`, and `apiKey` are also managed
+via the components public API.
+
+Example:
+
+    <ps-api></ps-api>
+
+@group PhotoShelter.com Elements
+@element ps-api
+@hero hero.svg
+-->
+<dom-module id="ps-api">
+
+<template>
+    <style>
+    :host {
+        display: block;
+        box-sizing: border-box;
+    }
+    </style>
+    <iron-meta id="api"></iron-meta>
+    <iron-meta id="apiMeta" key="apiMeta"></iron-meta>
+    <iron-meta id="apiImage" key="apiImage" value="{}"></iron-meta>
+</template>
+
+</dom-module>
+
+<script>
+
+Polymer({
+
+    is: 'ps-api',
+
+    /**
+    * List the events that you component emits and associated documentation to
+    * undestand the most beneficial way to leverage those events here.
+    *
+    * @event ps-seed-event
+    */
+
+    properties: {
+
+        /**
+         * `apiRoot` sets the root of the data API (particularly user for DEV
+         * vs PROD switching)
+         */
+        apiRoot: {
+            type: String,
+            value: '',
+            observer: '_apiRootChanged'
+        },
+        /**
+         * `version` sets the version of the API to request against.
+         */
+        apiVersion: {
+            type: String,
+            value: '3',
+            observer: '_apiVersionChanged'
+        },
+        /**
+         * `apiKey` registers your requests against the API in the name of your
+         * account.
+         */
+        apiKey: {
+            type: String,
+            value: 'TESTKEY',
+            observer: '_apiKeyChanged'
+        }
+
+    },
+
+    // Element Lifecycle
+
+    ready: function() {
+        // `ready` is called after all elements have been configured, but
+        // propagates bottom-up. This element's children are ready, but parents
+        // are not.
+        //
+        // This is the point where you should make modifications to the DOM (when
+        // necessary), or kick off any processes the element wants to perform.
+    },
+
+    attached: function() {
+        // `attached` fires once the element and its parents have been inserted
+        // into a document.
+        //
+        // This is a good place to perform any work related to your element's
+        // visual state or active behavior (measuring sizes, beginning animations,
+        // loading resources, etc).
+    },
+
+    detached: function() {
+        // The analog to `attached`, `detached` fires when the element has been
+        // removed from a document.
+        //
+        // Use this to clean up anything you did in `attached`.
+    },
+
+    _apiRootChanged: function(newVal, oldVal) {
+        var meta = this.$.api.byKey('apiMeta') || {};
+        meta.apiRoot = newVal;
+        this.$.apiMeta.value = meta;
+    },
+
+    _apiVersionChanged: function(newVal, oldVal) {
+        var meta = this.$.api.byKey('apiMeta') || {};
+        meta.apiVersion = newVal;
+        this.$.apiMeta.value = meta;
+    },
+
+    _apiKeyChanged: function(newVal, oldVal) {
+        var meta = this.$.api.byKey('apiMeta') || {};
+        meta.apiKey = newVal;
+        this.$.apiMeta.value = meta;
+    }
+
+});
+
+</script>

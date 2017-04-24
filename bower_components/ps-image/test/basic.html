@@ -1,0 +1,169 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+    <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../bower_components/web-component-tester/browser.js"></script>
+    <script src="../bower_components/test-fixture/test-fixture-mocha.js"></script>
+
+    <!-- Step 1: import the element to test -->
+    <link rel="import" href="../bower_components/ps-image/ps-image.html">
+    <link rel="import" href="../bower_components/ps-api/test/ps-sinon-api.html">
+    <link rel="import" href="../bower_components/test-fixture/test-fixture.html">
+</head>
+<body>
+
+  <!-- You can use the document as a place to set up your fixtures. -->
+  <test-fixture id="ps-image">
+      <template>
+          <ps-image api-key="TESTKEY" api-root="http://ps.dev.bitshelter.com:8180/psapi" iid="I0000YCtJeryFsu0"></ps-image>
+      </template>
+  </test-fixture>
+
+  <script>
+    var image,
+        server,
+        clock;
+
+
+    before(function() {
+        server = sinon.fakeServer.create();
+        PSsinonApi(server);
+        //this should work at somepoint... replace('iron-image').with('fake-iron-image');
+    });
+
+    beforeEach(function() {
+      //replace('iron-image').with('fake-iron-image');
+      image = fixture('ps-image');
+    });
+
+    describe('<ps-image>', function() {
+
+      a11ySuite('ps-image');
+
+      it('some defaults were set', function() {
+        expect(image.loaded).to.be.equal(false);
+        expect(image.loading).to.be.equal(false);
+        expect(image.position).to.be.equal('center');
+        expect(image.placeholder).to.be.equal('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0xOTQuOCA0MzcuOSAxNTAuNiAzMiI+PHBhdGggZmlsbD0iIzZFQkU0NiIgZD0iTS0xNzQuNSA0NDUuMXYxMC44bDE1LjcgNC4ydi0xOCIvPjxwYXRoIGZpbGw9IiNDNUMyQzIiIGQ9Ik0tMTU4LjggNDQyLjFsLTIwLjMgMy45LTE1LjctNC4yIDIwLjMtMy45Ii8+PHBhdGggZmlsbD0iIzkzQ0I3MSIgZD0iTS0xNzQuNSA0NTUuOWwtNC42Ljl2Ny4ybDIwLjMtMy45Ii8+PHBhdGggZmlsbD0iI0ZGRiIgZD0iTS0xOTQuOCA0NDEuOGwxNS43IDQuMnYyMy45bC0xNS43LTEwLjEiLz48ZyBmaWxsPSIjRkZGIj48cGF0aCBkPSJNLTk0LjcgNDUwLjRjLS42LS44LTEuNi0xLjItMi42LTEuNS0uMy0uMS0uNi0uMS0uOC0uMi0uNS0uMS0xLS4yLTEuMy0uNy0uMi0uNC0uMS0xIC4yLTEuMi40LS4zIDEuMS0uMyAxLjYgMCAuMi4yLjQuNC41LjcuMS4yIDAgLjMuMS4zaDIuN2MwLTEuMi0uNi0yLjItMS42LTIuOC0xLjEtLjctMi40LS44LTMuNi0uNS0xIC4zLTEuOSAxLjEtMi4zIDIuMS0uMi41LS4yIDEtLjIgMS41IDAgLjQuMS45LjMgMS4zLjQuOCAxLjMgMS4yIDIuMSAxLjUuNi4yIDEuMi4zIDEuNy41czEgLjUgMSAxLjFjMCAuNi0uNSAxLTEuMSAxLjEtLjYuMS0xLjItLjItMS40LS44IDAtLjEgMC0uMS0uMS0uMnYtLjNoLTIuOXYuNWMuMiAxLjEgMSAyIDIgMi41IDEuMS42IDIuNS43IDMuNy4zIDEtLjQgMS45LTEuMSAyLjMtMi4yLjQtMSAuMy0yLjItLjMtM3pNLTEyMS44IDQ0NC41djIuNWgyLjR2OC42aDIuOFY0NDdoMi40di0yLjVNLTE0NS4xIDQ1MS4yYy0xIC44LTIgMS0zLjMgMWgtMS4ydjMuNWgtMi43di0xMS4yaDMuN2MxLjEgMCAyLjUgMCAzLjQuOC45LjcgMS4zIDEuOCAxLjMgMyAwIDEtLjQgMi4yLTEuMiAyLjl6bS0zLjQtNC4yaC0xLjF2Mi43aDEuMmMuOSAwIDEuOC0uMiAxLjgtMS4zIDAtMS4zLTEtMS40LTEuOS0xLjR6TS0xMzYuNyA0NTUuNnYtNC41aC0zLjd2NC41aC0yLjl2LTExLjJoMi45djQuMmgzLjd2LTQuMmgyLjl2MTEuMmgtMi45ek0tMTI3LjQgNDU1LjhjLTMuMiAwLTUuOS0yLjQtNS45LTUuNyAwLS44LjEtMS42LjQtMi40LjItLjQuNC0uOS43LTEuMyAxLjEtMS41IDIuOC0yLjMgNC43LTIuMyAzLjMgMCA1LjkgMi41IDUuOSA1LjguMSAzLjQtMi41IDUuOS01LjggNS45em0wLTljLTEuOCAwLTMgMS41LTMgMy4zIDAgMS44IDEuMiAzLjMgMy4xIDMuMyAxLjggMCAzLTEuNiAzLTMuMyAwLTEuOC0xLjItMy4zLTMuMS0zLjN6TS0xMDguNyA0NTUuOGMtMy4yIDAtNS45LTIuNC01LjktNS43IDAtLjguMS0xLjYuNC0yLjQuMi0uNC40LS45LjctMS4zIDEuMS0xLjUgMi44LTIuMyA0LjctMi4zIDMuMyAwIDUuOSAyLjUgNS45IDUuOC4xIDMuNC0yLjUgNS45LTUuOCA1Ljl6bS4xLTljLTEuOCAwLTMgMS41LTMgMy4zIDAgMS44IDEuMiAzLjMgMy4xIDMuMyAxLjggMCAzLTEuNiAzLTMuMy0uMS0xLjgtMS4zLTMuMy0zLjEtMy4zek0tODYuOSA0NTUuNnYtNC41aC0zLjd2NC41aC0yLjl2LTExLjJoMi45djQuMmgzLjd2LTQuMmgyLjl2MTEuMmgtMi45ek0tODIuOSA0NTUuNnYtMTEuMmg3LjF2Mi41aC00LjR2MS43aDMuOHYyLjVoLTMuOHYxLjloNC40djIuNWMwIC4xLTcuMS4xLTcuMS4xek0tNjEuMSA0NTUuNnYtMTEuMmg3LjF2Mi41aC00LjR2MS43aDMuOHYyLjVoLTMuOHYxLjloNC40djIuNWMwIC4xLTcuMS4xLTcuMS4xek0tNzQuNiA0NTUuNnYtMTEuMmgyLjl2OC43aDMuM3YyLjVoLTYuMnpNLTY5LjYgNDQ0LjV2Mi41aDIuNHY4LjZoMi45VjQ0N2gyLjR2LTIuNU0tNDcuNSA0NTUuNmwtMi42LTMuNnYzLjZoLTIuN3YtMTEuMmgzLjVjMS4yIDAgMi41IDAgMy40LjguOS43IDEuNCAxLjkgMS40IDMgMCAxLjctMSAzLjItMi44IDMuNWwzIDMuOC0zLjIuMXptLTEuNi04LjZoLTF2My4xaDFjMS4xIDAgMS45LS41IDEuOS0xLjZzLS45LTEuNS0xLjktMS41eiIvPjwvZz48L3N2Zz4=');
+      });
+
+      it('setting src sets _processedSrc', function() {
+          image.set('src','http://addyosmani.com/blog/wp-content/uploads/2013/04/unicorn.jpg');
+          expect(image._processedSrc).to.be.equal('http://addyosmani.com/blog/wp-content/uploads/2013/04/unicorn.jpg');
+      });
+
+      it('setting iid sets _processedSrc', function(done) {
+          image.addEventListener('loaded-changed', function onLoadedChanged(event) {
+              image.removeEventListener('loaded-changed', onLoadedChanged);
+              assert.match(image._processedSrc, /^http:\/\/cdn.c.photoshelter.com\/img-get2\/I0000k39LnA3OI_Q/, 'regexp matches');
+              done();
+          });
+          image.set('iid', 'I0000k39LnA3OI_Q');
+      });
+
+      it('setting gid sets _processedSrc', function(done) {
+          image.addEventListener('loaded-changed', function onLoadedChanged(event) {
+              image.removeEventListener('loaded-changed', onLoadedChanged);
+              assert.match(image._processedSrc, /^http:\/\/cdn.c.photoshelter.com\/img-get2\/I00000Y9V._5.Yc0/, 'regexp matches');
+              done();
+          });
+          image.set('gid', 'G0000ligFGLD1Ixs');
+      });
+
+      it('setting cid sets _processedSrc', function(done) {
+          image.addEventListener('loaded-changed', function onLoadedChanged(event) {
+              image.removeEventListener('loaded-changed', onLoadedChanged);
+              assert.match(image._processedSrc, /^http:\/\/cdn.c.photoshelter.com\/img-get2\/I0000lxMrRVezMxo/, 'regexp matches');
+              done();
+          });
+          image.set('cid', 'C0000RNjRm1rSUOU');
+      });
+
+      it('setting image sets _processedSrc', function(done) {
+          image.addEventListener('loaded-changed', function onLoadedChanged(event) {
+              image.removeEventListener('loaded-changed', onLoadedChanged);
+              assert.match(image._processedSrc, /^http:\/\/cdn.c.photoshelter.com\/img-get2\/I0000PtZNoAA1OhA/, 'regexp matches');
+              done();
+          });
+          image.set('image', {"ImageLink":{"link":"http:\/\/cdn.c.photoshelter.com\/img-get2\/I0000PtZNoAA1OhA\/sec=wd0sd0oe0lwe0ms1000ed20150906dFvZ2W8Wklc9s8V\/fit=500x500\/DSC4552.jpg","base":"http:\/\/cdn.c.photoshelter.com\/img-get2\/I0000PtZNoAA1OhA","token":"wd0sd0oe0lwe0ms1000ed20150906dFvZ2W8Wklc9s8V"}});
+      });
+
+      it('setting iid then gid and then iid sets the correct _processedSrc', function(done) {
+          var changes = 0;
+          image.addEventListener('loaded-changed', function onLoadedChanged(event) {
+              if (!image.loaded) return;
+              changes++;
+              if (changes === 1) {
+                  assert.match(image._processedSrc, /^http:\/\/cdn.c.photoshelter.com\/img-get2\/I0000k39LnA3OI_Q/, 'regexp matches');
+                  image.set('gid', 'G0000ligFGLD1Ixs');
+              } else if (changes === 2) {
+                  assert.match(image._processedSrc, /^http:\/\/cdn.c.photoshelter.com\/img-get2\/I00000Y9V._5.Yc0/, 'regexp matches');
+                  image.set('iid', 'I0000k39LnA3OI_Q');
+              } else if (changes === 3) {
+                  assert.match(image._processedSrc, /^http:\/\/cdn.c.photoshelter.com\/img-get2\/I0000k39LnA3OI_Q/, 'regexp matches');
+                  image.removeEventListener('loaded-changed', onLoadedChanged);
+                  done();
+              }
+          });
+          image.set('iid', 'I0000k39LnA3OI_Q');
+      });
+
+      it('will reload when image/src/iid/gid/cid changes', function(done) {
+        var loadCount = 0;
+        image.addEventListener('loaded-changed', function onLoadedChanged(event) {
+            if (image.loaded === true) {
+                loadCount++
+                switch(loadCount) {
+                case 1:
+                    assert.match(image._processedSrc, /^http:\/\/cdn.c.photoshelter.com\/img-get2\/I0000PtZNoAA1OhA/, 'regexp matches');
+                    window.requestAnimationFrame(function () {
+        image.set('cid', 'C0000RNjRm1rSUOU')
+      });
+                    break;
+                case 2:
+                    assert.match(image._processedSrc, /^http:\/\/cdn.c.photoshelter.com\/img-get2\/I0000lxMrRVezMxo/, 'regexp matches');
+                    window.requestAnimationFrame(function () {
+        image.set('gid', 'G0000ligFGLD1Ixs')
+      });
+                    break;
+                case 3:
+                    assert.match(image._processedSrc, /^http:\/\/cdn.c.photoshelter.com\/img-get2\/I00000Y9V._5.Yc0/, 'regexp matches');
+                    window.requestAnimationFrame(function () {
+        image.set('iid', 'I0000k39LnA3OI_Q')
+      });
+                    break;
+                case 4:
+                    assert.match(image._processedSrc, /^http:\/\/cdn.c.photoshelter.com\/img-get2\/I0000k39LnA3OI_Q/, 'regexp matches');
+                    window.requestAnimationFrame(function () {
+        image.set('src','http://cdn.c.photoshelter.com/img-get2/I0000QUcj8ewuIYE/sec=wdfsdfoeflwefms1440ed20151206QhglyZ4UgOPFkD0/fit=1440x1440')
+      });
+                    break;
+                case 5:
+                    expect(image._processedSrc).to.be.equal('http://cdn.c.photoshelter.com/img-get2/I0000QUcj8ewuIYE/sec=wdfsdfoeflwefms1440ed20151206QhglyZ4UgOPFkD0/fit=1440x1440');
+                    window.requestAnimationFrame(function () {
+        image.set('image', {"ImageLink":{"link":"http:\/\/cdn.c.photoshelter.com\/img-get2\/I0000PtZNoAA1OhA\/sec=wd0sd0oe0lwe0ms1000ed20150906dFvZ2W8Wklc9s8V\/fit=500x500\/DSC4552.jpg","base":"http:\/\/cdn.c.photoshelter.com\/img-get2\/I0000PtZNoAA1OhA","token":"wd0sd0oe0lwe0ms1000ed20150906dFvZ2W8Wklc9s8V"}})
+      });
+                    break;
+                case 6:
+                    assert.match(image._processedSrc, /^http:\/\/cdn.c.photoshelter.com\/img-get2\/I0000PtZNoAA1OhA/, 'regexp matches');
+                    window.requestAnimationFrame(function () {
+        image.removeEventListener('loaded-changed', onLoadedChanged)
+      });
+                    done();
+                    break;
+                }
+            }
+        });
+        image.set('image', {"ImageLink":{"link":"http:\/\/cdn.c.photoshelter.com\/img-get2\/I0000PtZNoAA1OhA\/sec=wd0sd0oe0lwe0ms1000ed20150906dFvZ2W8Wklc9s8V\/fit=500x500\/DSC4552.jpg","base":"http:\/\/cdn.c.photoshelter.com\/img-get2\/I0000PtZNoAA1OhA","token":"wd0sd0oe0lwe0ms1000ed20150906dFvZ2W8Wklc9s8V"}});
+    });
+
+
+
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-image/iron-image.html">
+<link rel="import" href="../iron-resizable-behavior/iron-resizable-behavior.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
+
+<!--
+Implements a PhotoShelter image from an image object.
+
+Example:
+
+    <ps-image-impl
+    	sizing="contain"
+    	image='{"type":"image","ImageLink":{"link":"http://ps.dev.bitshelter.com:8051/img-get2/I0000v8WzGOQCCe4/sec=wdfsdfoeflwefms2040ed20160805dmhj2hhWiesk7ss/fit=500x500/12-0852.jpg","base":"http://ps.dev.bitshelter.com:8051/img-get2/I0000v8WzGOQCCe4","token":"wdfsdfoeflwefms2040ed20160805dmhj2hhWiesk7ss"},"Iptc":{"image_id":"I0000v8WzGOQCCe4","title":"","keyword":"a filter, something for everyone","instructions":"","author":"Sunny K. Awazuhara-Reed","position":"","city":"","state":"Alaska, AK","country":"United States of America, U.S.A","headline":"\"Grizzly\" / Brown Bear, Katmai National Park, Alaska","trans_ref":"","credit":"","source":"","copyright":"© Sunny K. Awazuhara-Reed.  All Rights Reserved.","caption":"Adult Bear fishing in Brooks River\r\n\r\nA caption with a line break.","rights":"For price quote, contact to info@spiritofnaturephoto.com","scene":"","web_statement":"","publish_date":null,"sdate":"2006-06-27 20:34:53 GMT","ctime":"2016-04-05 22:06:57 GMT","mtime":"2016-05-11 13:43:40 GMT","display_caption":"Adult Bear fishing in Brooks River\r\n\r\nA caption with a line break."},"file_name":"\"Grizzly\" / Brown Bear, Katmai National Park, Alaska","width":"3504","height":"2336"}'
+    ></ps-image-impl>
+
+@group PhotoShelter.com Elements
+@element ps-image-impl
+@demo
+-->
+
+
+<link rel="import" href="ps-image-impl-styles.html">
+
+<dom-module id="ps-image-impl">
+	<template>
+		<style include="ps-image-impl-styles"></style>
+
+		<iron-image
+			id="psimg"
+			src="[[_processedSrc]]"
+			prevent-load="[[preventLoad]]"
+			position="[[position]]"
+			preload="[[preload]]"
+			fade$="[[fade]]"
+			sizing="[[sizing]]"
+			position="[[position]]"
+			placeholder="[[placeholder]]"
+			loaded="{{loaded}}"
+			loading="{{loading}}"
+			alt="[[_alt(alt, image)]]"
+			context-menu="[[contextMenu]]"
+		></iron-image>
+		<script type="application/ld+json" id="schema"></script>
+	</template>
+
+	<script src="ps-image-impl.js"></script>
+</dom-module>

@@ -1,0 +1,31 @@
+{
+  "name": "ps-collection-api",
+  "version": "0.1.0",
+  "authors": [
+    "Westbrook Johnson <westbrook@photoshelter.com>"
+  ],
+  "description": "Used to cache data from the API",
+  "keywords": [
+    "webcomponent",
+    "webcomponents",
+    "polymer",
+    "photoshelter"
+  ],
+  "main": "ps-collection-api.html",
+  "license": "https://www.github.com/photoshelter/ps-collection-api/LICENSE",
+  "homepage": "https://github.com/photoshelter/ps-collection-api/",
+  "ignore": [
+    "/.*",
+    "/test/",
+    "/demo/",
+    "/bower_components/"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.7.0",
+    "iron-meta": "PolymerElements/iron-meta#^1.1.2"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "web-component-tester": "*"
+  }
+}

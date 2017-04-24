@@ -1,0 +1,31 @@
+{
+  "name": "ps-image",
+  "author": "kendrick caranicas",
+  "version": "0.1.0",
+  "description": "Displays images",
+  "private": true,
+  "license": "https://github.com/Components/ps-image/LICENSE.txt",
+  "homepage": "https://github.com/Components/ps-image",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Components/ps-image.git"
+  },
+  "keywords": [
+    "web-components",
+    "web-component",
+    "polymer"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.6.0",
+    "iron-component-page": "PolymerElements/iron-component-page#^1.1.7",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.2.5",
+    "ps-image-api": "git@gh.corp.bitshelter.com:Components/ps-image-api.git#0.1.0",
+    "ps-gallery-api": "git@gh.corp.bitshelter.com:Components/ps-gallery-api.git#0.1.0",
+    "ps-collection-api": "git@gh.corp.bitshelter.com:Components/ps-collection-api.git#0.1.0",
+    "ps-image-impl": "git@gh.corp.bitshelter.com:Components/ps-image-impl.git#0.1.2",
+    "ps-credit": "git@gh.corp.bitshelter.com:Components/ps-credit.git",
+    "web-component-tester": "*",
+    "iron-resizable-behavior": "PolymerElements/iron-resizable-behavior#^1.0.5",
+    "ps-api": "git@gh.corp.bitshelter.com:Components/ps-api.git#0.1.0"
+  }
+}

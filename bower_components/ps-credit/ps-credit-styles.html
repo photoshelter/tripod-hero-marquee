@@ -1,0 +1,39 @@
+<dom-module id="ps-credit-styles">
+  <template>
+    <style>
+    :host {
+        display: block;
+    }
+    
+    :host > * {
+      --ps-credit-a-defaults : {
+        display: inline-block;
+        position: absolute;
+        text-decoration: none;
+        font-family: var(--ps-credit-font-family, "Roboto", Arial, "Helvetica Neue", Helvetica, sans-serif);
+        font-size: var(--ps-credit-font-size, 0.8em);
+        bottom: var(--ps-credit-bottom-pad, 17px);
+        left: var(--ps-credit-left-pad, 50px);
+        color: var(--ps-credit-link-color, white);
+        font-weight: var(--ps-credit-link-weight, 300);
+        z-index: var(--ps-credit-z-index, 1);
+      };
+      --ps-credit-span-defaults : {
+        display: inline-block;
+        font-weight: var(--ps-credit-name-weight, 700);
+      };
+    }
+    
+    a {
+      @apply --ps-credit-a-defaults;
+      @apply --ps-credit-a-override;
+    }
+
+    span {
+      @apply --ps-credit-span-defaults;
+      @apply --ps-credit-span-override;
+    }
+
+    </style>
+  </template>
+</dom-module>

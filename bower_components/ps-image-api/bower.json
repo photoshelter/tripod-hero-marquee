@@ -1,0 +1,32 @@
+{
+  "name": "ps-image-api",
+  "version": "0.1.0",
+  "authors": [
+    "Westbrook Johnson <westbrook@photoshelter.com>"
+  ],
+  "description": "This is used to cache data related to the api",
+  "keywords": [
+    "webcomponent",
+    "webcomponents",
+    "polymer",
+    "photoshelter"
+  ],
+  "main": "ps-image-api.html",
+  "license": "https://github.com/photoshelter/ps-image-api/LICENSE",
+  "homepage": "https://github.com/photoshelter/ps-image-api/",
+  "ignore": [
+    "/.*",
+    "/test/",
+    "/demo/",
+    "/bower_components/"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.7.0",
+    "iron-meta": "PolymerElements/iron-meta#^1.1.2",
+    "ps-api": "git@gh.corp.bitshelter.com:Components/ps-api#^0.1.0"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "web-component-tester": "*"
+  }
+}
