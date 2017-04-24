@@ -3,7 +3,7 @@
   "author":"PhotoShelter Developers",
   "version": "1.0.1",
   "description": "Displays a flexible hero banner with text and a button overlaying an image or video",
-  "private": true,
+  "private": false,
   "license": "https://github.com/photoshelter/tripod-hero-marquee/blob/master/LICENSE",
   "homepage": "https://www.github.com/photoshelter/tripod-hero-marquee",
   "repository": {
