@@ -47,7 +47,7 @@
 
     <link rel="import" href="../bower_components/tripod-hero-marquee/tripod-hero-marquee.html">
     <link rel="import" href="../bower_components/iron-media-query/iron-media-query.html">
-    <link rel="import" href="../bower_components/ps-image/ps-image.html">
+    <link rel="import" href="../bower_components/iron-image/iron-image.html">
 
     <style is="custom-style">
       body {
@@ -58,30 +58,37 @@
         width: 100%;
         height: 700px;
       }
-      ps-image {
-        @apply(--layout);
-        width: 100%;
-        height: 67vw;
+      #svg-example {
+        height: 500px;
       }
-      tripod-hero-marquee[desktop-layout] ps-image {
+      .hero-background {
         height: 100%;
+        width: 100%;
       }
-      h2 {
-        font-size: 2.25em;
-        -webkit-margin-before:0.1em;
-        -webkit-margin-after:0.1em;
+      #background {
+        background-image:url(data:image/svg+xml;base64,CiAgPHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHhtbG5zOnhsaW5rPSdodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rJyB3aWR0aD0nMTM2JyBoZWlnaHQ9JzIxNy42JyB2aWV3Qm94PScwIDAgMTAgMTYnPgogICAgPGcgaWQ9J2MnPgogICAgICA8cGF0aCBmaWxsPScjZTdlN2U3JyBkPSdNMCAwbDUgM3Y1bC01IC0zeicvPgogIAkJPHBhdGggZmlsbD0nI2E5ZGI4YScgZD0nTTEwIDBsLTUgM3Y1bDUgLTMnLz4KICAJPC9nPgogIAk8dXNlIHg9JzUnIHk9JzgnIHhsaW5rOmhyZWY9JyNjJyAvPgogIAk8dXNlIHg9Jy01JyB5PSc4JyB4bGluazpocmVmPScjYycgLz4KICA8L3N2Zz4KICA=);
       }
-      h3 {
-        -webkit-margin-before:0.5em;
-        -webkit-margin-after:0.5em;
+      #svg-example {
+        --hero-cta-styles: {
+          background-color: #f4d80d;
+          padding: 10px 30px;
+          font-family: sans-serif;
+          text-decoration: none;
+          font-weight: 600;
+          color: black;
+        };
+        --hero-header-styles {
+          font-size: 2.25em;
+          -webkit-margin-before:0.1em;
+          -webkit-margin-after:0.1em;
+        };
+        --hero-subheader-styles {
+          -webkit-margin-before:0.5em;
+          -webkit-margin-after:0.5em;
+        }
       }
-      a.button {
-        color: black;
-        font-size: 1em;
-        font-weight: 700;
-        text-decoration: none;
-        background: #f4d80d;
-        padding: 7px 0px;
+      tripod-hero-marquee[desktop-layout] iron-image {
+        height: 100%;
       }
     }
     </style>
@@ -94,11 +101,11 @@
     <br/>
     <br/>
     <h1 style="font-family:sans-serif;text-align:center">This is what an <code>tripod-hero-marquee</code> looks like</h1>
-      <tripod-hero-marquee>
-          <h2>Your photos work here.</h2>
-          <h3>Where photographers get work done.</h3>
-          <a href="/implementation" class="button">Sign up now</a>
-          <ps-image slot="background" api-key="PS631731c7" api-root="http://ps.dev.bitshelter.com:8170/psapi" iid="I00007PMVmOqiyaE" sizing="cover" position="right bottom"></ps-image>
+      <tripod-hero-marquee id="svg-example" desktop-layout={{desktopLayout}}>
+        <div class="hero-background" id="background"></div>
+        <h2 class="hero-header">Headers, button, and backbround all slotted in from light DOM.</h2>
+        <h3 class="hero-subheader">You can slot in all kinds of elements. They inherit their styles from the outside.</h3>
+        <a href="/" class="hero-cta">More info in the docs</a>
       </tripod-hero-marquee>
   </body>
   <script>
