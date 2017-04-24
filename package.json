@@ -5,12 +5,12 @@
   "description": "Displays a flexible, generic hero banner with text and a button overlaying an image or video with visible attribution",
   "repository": {
     "type": "git",
-    "url": "https://gh.corp.bitshelter.com/Components/PhotoShelter/tripod-hero-marquee.git"
+    "url": "https://www.github.com/photoshelter/tripod-hero-marquee.git"
   },
   "bugs": {
-    "url": "https://gh.corp.bitshelter.com/Components/PhotoShelter/tripod-hero-marquee/issues"
+    "url": "https://www.github.com/photoshelter/tripod-hero-marquee/issues"
   },
-  "license": "https://gh.corp.bitshelter.com/Components/PhotoShelter/tripod-hero-marquee/LICENSE.txt",
+  "license": "https://github.com/photoshelter/tripod-hero-marquee/blob/master/LICENSE",
   "scripts": {
     "clean": "rm -rf bower_components/tripod-hero-marquee",
     "build": "gulp",
