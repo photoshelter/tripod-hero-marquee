@@ -1,7 +1,7 @@
 {
   "name": "tripod-hero-marquee",
   "author":"PhotoShelter Developers",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Displays a flexible, generic hero banner with text and a button overlaying an image or video with visible attribution",
   "repository": {
     "type": "git",
