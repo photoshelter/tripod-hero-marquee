@@ -36,7 +36,7 @@
         if (!webComponentsSupported) {
           var script = document.createElement('script');
           script.async = true;
-          script.src = '/bower_components/webcomponentsjs/webcomponents-lite.min.js';
+          script.src = 'bower_components/webcomponentsjs/webcomponents-lite.min.js';
           script.onload = onload;
           document.head.appendChild(script);
         } else {
@@ -45,16 +45,16 @@
       })();
     </script>
 
-    
 
-    
+
+
       <link rel="import" href="bower_components/iron-component-page/iron-component-page.html">
-    
+
 
     <!--
-    
+
       <link rel="import" href="/tripod-hero-marquee/tripod-hero-marquee.html">
-    
+
     -->
 
     <style>
@@ -69,9 +69,9 @@
   <body>
 
     <!--TODO: CHANGE THIS CHECK ONCE 2.0 iron-component-page IS AVAILABLE -->
-    
+
       <iron-component-page src="bower_components/tripod-hero-marquee/tripod-hero-marquee.html" active="tripod-hero-marquee"></iron-component-page>
-    
+
 
 
 
